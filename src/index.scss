@@ -5,6 +5,28 @@
 @import './sass/utils/container';
 @import './sass/utils/helpers';
 
+@font-face {
+  font-family: Circe-Regular;
+  src: local('Circe-Regular'),
+    url(./assets/fonts/Circe-Regular.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: Circe-Bold;
+  src: local('Circe-Bold'), url(./assets/fonts/Circe-Bold.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: poppins_reg;
+  src: local('Poppins-Bold'),
+    url(./assets/fonts/Poppins-Regular.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: poppins_bold;
+  src: local('Poppins-Bold'), url(./assets/fonts/Poppins-Bold.ttf) format('ttf');
+}
+
 html {
   box-sizing: border-box;
 }
