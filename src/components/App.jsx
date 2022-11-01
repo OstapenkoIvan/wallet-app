@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Route, Routes } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
+import DeviceTypeInformer from './DeviceTypeInformer/DeviceTypeInformer';
 
 // import PrivateRoute from './Routes/PrivateRoute';
 // import PublicRoute from './Routes/PublicRoute';
@@ -21,19 +22,9 @@ const ExchangeMobilePage = lazy(() =>
 );
 
 export const App = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isTabletFrom = useMediaQuery({ query: '(min-width: 480px)' });
-  const isTabletTo = useMediaQuery({ query: '(max-width: 768px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
-  const isTablet = isTabletFrom && isTabletTo;
-
   return (
     <div className={scss.App}>
-      <div className={scss.device}>
-        <p>Mobile</p> <p>{isMobile ? 'YES' : 'NO'}</p>
-        <p>Tablet</p> <p>{isTablet ? 'YES' : 'NO'}</p>
-        <p>Desktop</p> <p>{isDesktop ? 'YES' : 'NO'}</p>
-      </div>
+      <DeviceTypeInformer />
       <Layout>
         <Suspense>
           <Routes>
