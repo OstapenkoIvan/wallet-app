@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  font-size: 14px;
+  color: #010101;
+  font-family: 'poppins_bold';
+  min-height: 100vh;
+}
+.device {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  font-family: sans-serif;
+
+  z-index: 2000;
+
+  padding: 4px;
+
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
