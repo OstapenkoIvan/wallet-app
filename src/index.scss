@@ -1,4 +1,9 @@
 @import-normalize; /* bring in normalize.css styles */
+// @import url('/src/stylesheet/fonts.css');
+@import './sass/utils/variables';
+@import './sass/utils/mixins';
+@import './sass/utils/container';
+@import './sass/utils/helpers';
 
 html {
   box-sizing: border-box;
@@ -28,7 +33,6 @@ a {
 }
 
 body {
-  background-color: #0e0e0e;
   font-family: 'Montserrat', sans-serif;
 }
 

@@ -2,6 +2,7 @@ export const App = () => {
   return (
     <div
       style={{
+        fontFamily: 'poppins_bold',
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',

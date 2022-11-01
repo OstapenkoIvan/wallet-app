@@ -1,0 +1,16 @@
+@font-face {
+  font-family: circle_reg;
+  src: url(/src/assets/fonts/Circe-Regular.ttf);
+}
+@font-face {
+  font-family: circle_bold;
+  src: url(/src/assets/fonts/Circe-Bold.ttf);
+}
+@font-face {
+  font-family: poppins_reg;
+  src: url(/src/assets/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: poppins_bold;
+  src: url(/src/assets/fonts/Poppins-Bold.ttf);
+}
