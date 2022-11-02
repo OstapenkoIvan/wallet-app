@@ -1,0 +1,41 @@
+@import-normalize; /* bring in normalize.css styles */
+@import url('/src/stylesheet/fonts.css');
+@import './sass/utils/variables';
+@import './sass/utils/mixins';
+@import './sass/utils/container';
+@import './sass/utils/helpers';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+section {
+  min-width: 320px;
+}
