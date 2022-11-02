@@ -1,13 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useMediaQuery } from 'react-responsive';
+// import PropTypes from 'prop-types';
+import sprite from '../../../assets/images/sprite.svg'
+
 import { NavLink } from 'react-router-dom';
 
 import { Mobile } from 'components/DeviceTypeControl/DeviseTypeController';
 
 import scss from './NavBar.module.scss';
 const NavBar = props => {
-
   return (
     <nav className={scss.navBar}>
       <ul className={scss.navList}>
@@ -16,9 +16,12 @@ const NavBar = props => {
             className={({ isActive }) =>
               isActive ? scss.activeLink : scss.primaryLink
             }
-            to="/home"
+            to="/"
+            end
           >
-            <div className={scss.navIcon}></div>
+            <div className={scss.navIcon}>
+              <svg className={scss.svg} ><use href={`${sprite}#icon-home`}></use></svg>
+            </div>
             <span className={scss.navText}>Home</span>
           </NavLink>
         </li>
@@ -29,7 +32,9 @@ const NavBar = props => {
             }
             to="/statistics"
           >
-            <div className={scss.navIcon}></div>
+            <div className={scss.navIcon}>
+            <svg className={scss.svg} ><use href={`${sprite}#icon-chart`}></use></svg>
+            </div>
             <span className={scss.navText}>Statistics</span>
           </NavLink>
         </li>
@@ -41,7 +46,9 @@ const NavBar = props => {
               }
               to="/exchangeMobile"
             >
-              <div className={scss.navIcon}></div>
+              <div className={scss.navIcon}>
+              <svg className={scss.svg} ><use href={`${sprite}#icon-dollar`}></use></svg>
+              </div>
               <span className={scss.navText}>Exchange</span>
             </NavLink>
           </li>
@@ -54,4 +61,3 @@ const NavBar = props => {
 NavBar.propTypes = {};
 
 export default NavBar;
-

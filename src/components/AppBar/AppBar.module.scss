@@ -1,18 +1,34 @@
 .AppBar {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 28px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-basis: 250px;
+    flex-grow: 1;
+  }
+  padding-top: 12px;
+  @media screen and (min-width: 768px) {
+    padding-top: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-top: 40px;
+  }
   & .balance {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
 
-    padding: 8px 32px 12px;
+    padding: 8px 32px;
+    min-width: 280px;
 
     background-color: #fff;
     overflow: hidden;
     border-radius: 30px;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
   & .title {
     font-family: 'Circe', sans-serif;
@@ -28,5 +44,23 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 45px;
+  }
+}
+.appBarWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 393px;
+    gap: 32px;
+  }
+}
+.Currency {
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    padding-top: 32px;
   }
 }

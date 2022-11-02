@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from 'constans/constans';
 import axios from 'axios';
 
+
 export const userApi = axios.create({
   baseURL: BASE_URL,
 });

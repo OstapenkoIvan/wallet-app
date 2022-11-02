@@ -10,6 +10,7 @@
   background-image: url(../../assets/images/vawe.svg);
   background-size: initial;
   background-repeat: no-repeat;
+  background-position: bottom;
   @include tablet {
     width: 336px;
     height: 182px;

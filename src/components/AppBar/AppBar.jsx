@@ -1,21 +1,51 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import NavBar from 'components/NavBar/NavBar'
+// import PropTypes from 'prop-types';
 
-import scss from './AppBar.module.scss'
+import NavBar from 'components/AppBar/NavBar/NavBar';
+import Currency from 'components/Currency';
+import {
+  NotMobile,
+  Mobile,
+  MobileEndRoute,
+} from 'components/DeviceTypeControl/DeviseTypeController';
 
-const AppBar = props => {
+import scss from './AppBar.module.scss';
+
+const AppBar = () => {
   return (
-    <div className={scss.AppBar}><AppBar/>
-    <div className={scss.balance}>
-      <span className={scss.text}>your balance</span>
-      <span className={scss.value}>$ 651 651</span>
-    </div>
-    </div>
-  )
-}
+    <div className={scss.appBarWrapper}>
+      <div className={scss.AppBar}>
+        <NavBar />
+        <NotMobile>
+          <div className={scss.balance}>
+            <span className={scss.title}>your balance</span>
+            <span className={scss.value}>₴ 651 651.00</span>
+          </div>
+        </NotMobile>
 
-AppBar.propTypes = {}
+        <MobileEndRoute
+          path={'/'}
+          element={
+            <div className={scss.balance}>
+              <span className={scss.title}>your balance</span>
+              <span className={scss.value}>₴ 651 651.00</span>
+            </div>
+          }
+          end={true}
+        />
+      </div>
 
-export default AppBar
+      <NotMobile>
+        <div className={scss.Currency}>
+          <Currency />
+        </div>
+      </NotMobile>
+    </div>
+  );
+};
+
+AppBar.propTypes = {};
+
+export default AppBar;

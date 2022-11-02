@@ -5,7 +5,8 @@ import scss from './StatisticsPage.module.scss'
 const StatisticsPage = props => {
   
   return (
-    <div title='StatisticsPage'>StatisticsPage</div>
+    <div className={scss.Statistics}><span>STATISTICS </span>
+    <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur nobis inventore tempore odio eius. Hic dolorem commodi excepturi suscipit dignissimos temporibus pariatur accusantium illum. Maiores enim asperiores dolore saepe aut!</span></div>
   )
 }
 
