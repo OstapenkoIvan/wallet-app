@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import scss from './StatisticsPage.module.scss'
 
 const StatisticsPage = props => {
+  
   return (
-    <div>StatisticsPage</div>
+    <div title='StatisticsPage'>StatisticsPage</div>
   )
 }
 

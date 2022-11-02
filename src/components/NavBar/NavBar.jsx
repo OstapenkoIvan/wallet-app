@@ -7,7 +7,6 @@ import { Mobile } from 'components/DeviceTypeControl/DeviseTypeController';
 
 import scss from './NavBar.module.scss';
 const NavBar = props => {
-  const isMobile = useMediaQuery({ maxWidth: 480 });
 
   return (
     <nav className={scss.navBar}>

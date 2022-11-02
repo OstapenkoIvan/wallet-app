@@ -1,13 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import scss from './HomePage.module.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  NotMobile,
+  Mobile,
+} from 'components/DeviceTypeControl/DeviseTypeController';
+import scss from './HomePage.module.scss';
 
 const HomePage = props => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div className={scss.HomePage}>
+      <Mobile>LittleTABLE</Mobile>
+      <NotMobile>BigTABLE</NotMobile>
+    </div>
+  );
+};
 
-HomePage.propTypes = {}
+HomePage.propTypes = {};
 
-export default HomePage
+export default HomePage;
