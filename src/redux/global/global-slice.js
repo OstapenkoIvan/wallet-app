@@ -61,4 +61,5 @@ export const {
   toggleIsLoading,
   resetGlobal,
 } = globalSlice.actions;
+//
 export const globalReducer = globalSlice.reducer;
