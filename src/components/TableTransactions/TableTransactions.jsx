@@ -162,9 +162,9 @@ const TableTransactions = () => {
 
   return (
     <div className={scss.container}>
-      <table>
-        <thead>
-          <tr>
+      <table className={scss.table}>
+        <thead className={scss.thead}>
+          <tr className={scss.theadRow}>
             {tableHeaders.map((el, idx) => (
               <th
                 key={idx}
@@ -183,37 +183,47 @@ const TableTransactions = () => {
             );
             console.log(findedCategObj);
             return (
-              <tr key={item.id}>
-                <th>{item.transactionDate.replaceAll('-', '.')}</th>
-                <th>{item.type === 'INCOME' ? '+' : '-'}</th>
-                <th>{findedCategObj.name}</th>
-                <th>{item.comment}</th>
-                <th>{item.amount}</th>
-                <th>{item.balanceAfter}</th>
+              <tr className={scss.tbodyRow} key={item.id}>
+                <th className={[scss.col, scss['col-1']].join(' ')}>
+                  {item.transactionDate.replaceAll('-', '.')}
+                </th>
+                <th className={[scss.col, scss['col-2']].join(' ')}>
+                  {item.type === 'INCOME' ? '+' : '-'}
+                </th>
+                <th className={[scss.col, scss['col-3']].join(' ')}>
+                  {findedCategObj.name}
+                </th>
+                <th className={[scss.col, scss['col-4']].join(' ')}>
+                  {item.comment}
+                </th>
+                {item.type === 'INCOME' ? (
+                  <th
+                    className={[scss.col, scss.income, scss['col-5']].join(' ')}
+                  >
+                    {item.amount}
+                  </th>
+                ) : (
+                  <th
+                    className={[scss.col, scss.expense, scss['col-5']].join(
+                      ' '
+                    )}
+                  >
+                    {item.amount}
+                  </th>
+                )}
+                {/* <th className={[scss.col, scss['col-5']].join(' ')}>
+                  {item.amount}
+                </th> */}
+                <th className={[scss.col, scss['col-6']].join(' ')}>
+                  {item.balanceAfter}
+                </th>
               </tr>
             );
           })}
         </tbody>
-
-        {/* {Data.map((el)=><th></th>)} */}
       </table>
     </div>
   );
 };
 
 export default TableTransactions;
-
-// <tbody>
-//   {Data.map(item => (
-//     <tr>
-//       {tableDataKeys.map((el, idx) => (
-//         <th
-//           key={idx}
-//           className={[scss.colHead, scss[`colHead${idx + 1}`]].join(' ')}
-//         >
-//           {item[el]}
-//         </th>
-//       ))}
-//     </tr>
-//   ))}
-// </tbody>;
