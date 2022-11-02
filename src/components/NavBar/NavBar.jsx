@@ -7,8 +7,6 @@ import scss from './NavBar.module.scss';
 const NavBar = props => {
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
-
-
   return (
     <nav className={scss.navBar}>
       <ul className={scss.navList}>
@@ -19,7 +17,7 @@ const NavBar = props => {
             }
             to="/signin"
           >
-            <div className={scss.navIcon}></div>{' '}
+            <div className={scss.navIcon}></div>
             <span className={scss.navText}>Вхід</span>
           </NavLink>
         </li>
@@ -30,7 +28,7 @@ const NavBar = props => {
             }
             to="/signup"
           >
-            <div className={scss.navIcon}></div>{' '}
+            <div className={scss.navIcon}></div>
             <span className={scss.navText}>Реєстрація</span>
           </NavLink>
         </li> */}
@@ -41,8 +39,8 @@ const NavBar = props => {
             }
             to="/home"
           >
-            <div className={scss.navIcon}></div>{' '}
-            <span className={scss.navText}>Дім</span>
+            <div className={scss.navIcon}></div>
+            <span className={scss.navText}>Home</span>
           </NavLink>
         </li>
         <li className={scss.navItem}>
@@ -52,8 +50,8 @@ const NavBar = props => {
             }
             to="/statistics"
           >
-            <div className={scss.navIcon}></div>{' '}
-            <span className={scss.navText}>Статистика</span>
+            <div className={scss.navIcon}></div>
+            <span className={scss.navText}>Statistics</span>
           </NavLink>
         </li>
         {isMobile && (
@@ -64,8 +62,8 @@ const NavBar = props => {
               }
               to="/exchangeMobile"
             >
-              <div className={scss.navIcon}></div>{' '}
-              <span className={scss.navText}>Обмін валют моб</span>
+              <div className={scss.navIcon}></div>
+              <span className={scss.navText}>Exchange</span>
             </NavLink>
           </li>
         )}

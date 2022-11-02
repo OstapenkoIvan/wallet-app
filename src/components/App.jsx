@@ -20,6 +20,7 @@ const DashboardPage = lazy(() => import('./Pages/DashboardPage/DashboardPage'));
 const ExchangeMobilePage = lazy(() =>
   import('./Pages/ExchangeMobilePage/ExchangeMobilePage')
 );
+const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   return (
@@ -35,6 +36,7 @@ export const App = () => {
               <Route path="statistics" element={<StatisticsPage />} />
               <Route path="exchangeMobile" element={<ExchangeMobilePage />} />
             </Route>
+              <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </Layout>

@@ -5,18 +5,18 @@
   @include phone {
     padding-left: $dist20;
     padding-right: $dist20;
-    max-width: 320px;
+    max-width: 480px;
   }
 
   @include tablet {
     padding-left: $dist32;
     padding-right: $dist32;
-    width: 768px;
+    max-width: 768px;
   }
 
   @include desktop {
     padding-left: $dist16;
     padding-right: $dist16;
-    width: 1280px;
+    min-width: 768px;
   }
 }

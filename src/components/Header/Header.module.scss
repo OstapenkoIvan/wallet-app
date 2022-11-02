@@ -1,0 +1,54 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  min-height: 60px;
+  @media screen and (min-width: 480px) {
+    min-height: 80px;
+
+    padding: 16px 20px;
+  }
+}
+.logoBox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  @media screen and (min-width: 480px) {
+    gap: 20px;
+  }
+}
+.logoImgBox {
+  width: 30px;
+  height: 30px;
+  @media screen and (min-width: 480px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+.logoText {
+  width: 121px;
+  height: 40px;
+  left: 92px;
+  top: 20px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+}
+.nameBox{
+  display: flex;
+  align-items: center;
+
+  
+}

@@ -7,11 +7,18 @@ import { Outlet } from 'react-router-dom';
 import scss from './DashboardPage.module.scss';
 const DashboardPage = props => {
   return (
-    <div>
-      <Header/>
-      <NavBar/>
-      <Outlet />
-    </div>
+    <>
+      <Header />
+      <div className="container">
+        <div className={scss.wrapper}>
+          <div>
+            <NavBar />
+            <div className={scss.currencyTable}>currency table</div>
+          </div>
+          <Outlet />
+        </div>
+      </div>
+    </>
   );
 };
 
