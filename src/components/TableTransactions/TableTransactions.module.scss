@@ -3,7 +3,6 @@
 .container {
   width: 100vw;
   height: 100vh;
-
   background-color: rgb(245, 245, 245);
 }
 
@@ -19,6 +18,10 @@
 }
 
 .thead {
+  height: 58px;
+  border: none;
+  color: #000000;
+  overflow: hidden;
 }
 
 .theadRow {
@@ -27,14 +30,20 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
-  height: 58px;
-  padding: 20px 20px;
+}
+
+.colHead {
   background-color: #ffffff;
-  border-bottom: 1px solid #dcdcdf;
-  border-radius: 29px;
-  overflow: hidden;
-  box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.6);
-  color: #000000;
+  // padding: 20px 0;
+}
+
+.colHead:first-child {
+  border-radius: 29px 0 0 29px;
+}
+
+.colHead:last-child {
+  border-radius: 0 29px 29px 0;
+  // background-color: #ffffff;
 }
 
 .tbodyRow {
