@@ -34,7 +34,6 @@
 
 .colHead {
   background-color: #ffffff;
-  // padding: 20px 0;
 }
 
 .colHead:first-child {
@@ -43,27 +42,51 @@
 
 .colHead:last-child {
   border-radius: 0 29px 29px 0;
-  // background-color: #ffffff;
 }
 
-.tbodyRow {
-  text-align: center;
-  border-collapse: collapse;
-  border-radius: 20px;
-  padding: 16px 20px;
+.tbody {
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 18px;
 }
 
-.colHead {
-  color: #000000;
+.tbodyRow {
+  text-align: center;
+  padding: 16px 20px;
 }
 
-.colHead1 {
-  color: #000000;
+.td {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #dcdcdf;
+  // box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.6);
+}
+
+.col-1 {
+  width: 95px;
+}
+
+.col-2 {
+  width: 120px;
+}
+
+.col-3 {
+  width: 130px;
+}
+
+.col-4 {
+  width: 160zpx;
+  text-transform: capitalize;
+}
+
+.col-5 {
+  width: 90px;
+}
+
+.col-6 {
+  width: 120px;
 }
 
 .income {

@@ -188,14 +188,18 @@ const TableTransactions = () => {
             {tableHeaders.map((el, idx) => (
               <th
                 key={idx}
-                className={[scss.colHead, scss[`colHead${idx + 1}`]].join(' ')}
+                className={[
+                  scss.colHead,
+                  scss[`col${idx + 1}`],
+                  scss[`colHead${idx + 1}`],
+                ].join(' ')}
               >
                 {el}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className={scss.tbody}>
           {Data.map(item => {
             console.log(item);
             const findedCategObj = categoryIdArr.find(
@@ -204,37 +208,42 @@ const TableTransactions = () => {
             console.log(findedCategObj);
             return (
               <tr className={scss.tbodyRow} key={item.id}>
-                <td className={[scss.col, scss['col-1']].join(' ')}>
+                <td className={[scss.col, scss.td, scss['col-1']].join(' ')}>
                   {item.transactionDate.replaceAll('-', '.')}
                 </td>
-                <td className={[scss.col, scss['col-2']].join(' ')}>
+                <td className={[scss.col, scss.td, scss['col-2']].join(' ')}>
                   {item.type === 'INCOME' ? '+' : '-'}
                 </td>
-                <td className={[scss.col, scss['col-3']].join(' ')}>
+                <td className={[scss.col, scss.td, scss['col-3']].join(' ')}>
                   {findedCategObj.name}
                 </td>
-                <td className={[scss.col, scss['col-4']].join(' ')}>
+                <td className={[scss.col, scss.td, scss['col-4']].join(' ')}>
                   {item.comment}
                 </td>
                 {item.type === 'INCOME' ? (
                   <td
-                    className={[scss.col, scss.income, scss['col-5']].join(' ')}
+                    className={[
+                      scss.col,
+                      scss.td,
+                      scss.income,
+                      scss['col-5'],
+                    ].join(' ')}
                   >
                     {item.amount}
                   </td>
                 ) : (
                   <td
-                    className={[scss.col, scss.expense, scss['col-5']].join(
-                      ' '
-                    )}
+                    className={[
+                      scss.col,
+                      scss.td,
+                      scss.expense,
+                      scss['col-5'],
+                    ].join(' ')}
                   >
                     {item.amount}
                   </td>
                 )}
-                {/* <th className={[scss.col, scss['col-5']].join(' ')}>
-                  {item.amount}
-                </th> */}
-                <td className={[scss.col, scss['col-6']].join(' ')}>
+                <td className={[scss.col, scss.td, scss['col-6']].join(' ')}>
                   {item.balanceAfter}
                 </td>
               </tr>
