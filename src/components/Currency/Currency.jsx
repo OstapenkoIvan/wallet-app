@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+
 import s from 'components/Currency/Currency.module.scss';
-// import { ReactComponent as Wave } from 'assets/images/vawe.svg';
 
 export default function Currency() {
   const [rates, setRates] = useState([]);
+  const [value, setValue] = useState(100);
+  const [exchangeType, setExchangeType] = useState('UAHUSD');
 
   useEffect(() => {
     const fetchCurrency = async () => {
@@ -24,6 +26,34 @@ export default function Currency() {
   const usdSale = rates.length > 0 ? Number(rates[0].sale).toFixed(2) : 0;
   const eurSale = rates.length > 0 ? Number(rates[1].sale).toFixed(2) : 0;
 
+  const calculateExchange = (value, exchangeType) => {
+    switch (exchangeType) {
+      case 'UAHUSD':
+        if (!value) {
+          break;
+        }
+        return Number(value / usdBuy).toFixed(2);
+      case 'UAHEUR':
+        if (!value) {
+          break;
+        }
+        return Number(value / eurBuy).toFixed(2);
+      case 'USDUAH':
+        if (!value) {
+          break;
+        }
+        return Number(value * usdSale).toFixed(2);
+      case 'EURUAH':
+        if (!value) {
+          break;
+        }
+        return Number(value * eurSale).toFixed(2);
+      default:
+        break;
+    }
+  };
+
+  const result = calculateExchange(value, exchangeType);
   return (
     <div className={s.thumb}>
       <table className={s.tables}>
@@ -45,9 +75,35 @@ export default function Currency() {
             <td>{eurBuy}</td>
             <td>{eurSale}</td>
           </tr>
+          <tr>
+            <td>
+              <input
+                className={s.inputField}
+                name="value"
+                type="number"
+                value={value}
+                onChange={e => setValue(e.target.value)}
+              />
+            </td>
+            <td>
+              <select
+                className={s.selectField}
+                name="exchangeType"
+                value={exchangeType}
+                onChange={e => setExchangeType(e.target.value)}
+              >
+                <option value="UAHUSD">UAH {'>'} USD</option>
+                <option value="UAHEUR">UAH {'>'} EUR</option>
+                <option value="USDUAH">USD {'>'} UAH</option>
+                <option value="EURUAH">EUR {'>'} UAH</option>
+              </select>
+            </td>
+            <td>
+              <span className={s.resultField}>{result}</span>
+            </td>
+          </tr>
         </tbody>
       </table>
-      {/* <Wave className={s.icon} /> */}
     </div>
   );
 }

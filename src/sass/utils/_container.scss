@@ -5,7 +5,8 @@
   @include phone {
     padding-left: $dist20;
     padding-right: $dist20;
-    max-width: 320px;
+    min-width: 320px;
+    max-width: 480px;
   }
 
   @include tablet {

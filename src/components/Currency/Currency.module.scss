@@ -1,36 +1,55 @@
 @import '../../sass/utils/variables';
 @import '../../sass/utils/mixins';
 
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 .thumb {
   position: relative;
   width: 280px;
   height: 174px;
   background-color: getColor('clr-main');
   border-radius: 30px;
-  background-image: url(../../assets/images/vawe.svg);
+  background-image: url(../../assets/images/wave_mobile.svg);
+  background-position: bottom;
   background-size: initial;
   background-repeat: no-repeat;
   @include tablet {
     width: 336px;
     height: 182px;
+    background-image: url(../../assets/images/wave_tablet.svg);
   }
   @include desktop {
     width: 393px;
     height: 347px;
+    background-image: url(../../assets/images/wave_desktop.svg);
   }
 }
 
 table {
   width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
   color: getColor('clr-white');
   border-collapse: collapse;
   border-radius: 30px 30px 0 0;
-  //   @include tablet {
-  //     width: 336;
-  //   }
-  //   @include desktop {
-  //     width: 393px;
-  //   }
 }
 
 thead {
@@ -39,25 +58,72 @@ thead {
 
 th {
   //   font-family: Circe-Bold;
-  padding-top: 17px;
-  padding-bottom: 16px;
+  width: calc(100% / 3);
+  padding-top: 11px;
+  padding-bottom: 18px;
+  font-size: 18px;
+  line-height: calc(21 / 18);
+
+  @include desktop {
+    padding-top: 17px;
+    padding-bottom: 16px;
+  }
 }
 
 th:first-child {
   border-top-left-radius: 30px;
+  @include toDesktop {
+    text-align: left;
+    padding-left: 20px;
+  }
 }
 th:last-child {
   border-top-right-radius: 30px;
+  @include toDesktop {
+    padding-right: 20px;
+    text-align: right;
+  }
 }
 
 td {
   //   font-family: Circe-Regular;
-  padding: 24px;
+  font-size: 16px;
+  line-height: calc(19 / 16);
   text-align: center;
 }
 
 tbody > tr:first-child > td {
-  padding-top: 20px;
+  padding-top: 12px;
+
+  @include tablet {
+    padding-top: 16px;
+  }
+
+  @include desktop {
+    padding-top: 20px;
+  }
+}
+
+tbody > tr:not(:first-child) > td {
+  padding-top: 17px;
+
+  @include desktop {
+    padding-top: 29px;
+  }
+}
+
+tbody > tr > td:first-child {
+  @include toDesktop {
+    padding-left: 20px;
+    text-align: left;
+  }
+}
+
+tbody > tr > td:last-child {
+  @include toDesktop {
+    padding-right: 20px;
+    text-align: right;
+  }
 }
 
 .icon {
@@ -65,4 +131,32 @@ tbody > tr:first-child > td {
   bottom: 0;
   left: 0;
   background-size: contain;
+}
+
+.inputField {
+  width: 100%;
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  color: getColor('clr-white');
+  background-color: getColor('clr-accent');
+  border: transparent;
+  border-bottom-left-radius: 10px;
+}
+
+.selectField {
+  width: 100%;
+  font-size: 16px;
+  color: getColor('clr-white');
+  background-color: getColor('clr-accent');
+  border: transparent;
+}
+
+.resultField {
+  display: block;
+  width: 100%;
+  line-height: calc(20 / 16);
+  padding-left: 0;
+  background-color: getColor('clr-accent');
+  border: transparent;
+  border-bottom-right-radius: 10px;
 }
