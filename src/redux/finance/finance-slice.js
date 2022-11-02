@@ -7,8 +7,6 @@ import {
 } from './finance-operation';
 import { logOut, refresh } from 'redux/session/auth-operation';
 
-import { toast } from 'react-toastify';
-
 const initialState = {
   data: null,
   totalBalance: null,
@@ -33,9 +31,6 @@ const financeSlice = createSlice({
     [allTransactions.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      if (payload) {
-        toast.error('Fatal error');
-      }
     },
     [getSummary.pending]: state => {
       state.loading = true;
@@ -47,11 +42,7 @@ const financeSlice = createSlice({
     },
     [getSummary.rejected]: (state, { payload }) => {
       state.loading = false;
-      console.log('getSummary', payload);
       state.error = payload;
-      if (payload) {
-        toast.error('Fatal error');
-      }
     },
 
     [getCategories.pending]: state => {
@@ -66,32 +57,19 @@ const financeSlice = createSlice({
     [getCategories.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      if (payload) {
-        toast.error('Fatal error');
-      }
     },
     [addTransaction.pending]: state => {
       state.loading = true;
     },
     [addTransaction.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      if (payload) {
-        toast.success('Add successfull');
-      } else {
-        toast.error('Try later');
-      }
+
       state.data = [...state.data, payload];
       state.totalBalance = payload.balanceAfter;
     },
     [addTransaction.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      console.log('addTransaction', payload);
-      if (payload === 'Request failed with status code 409') {
-        toast.error('Error, try another one');
-      } else {
-        toast.error('Try later');
-      }
     },
     [logOut.pending]: state => {
       state.loading = true;
@@ -106,11 +84,7 @@ const financeSlice = createSlice({
     },
     [logOut.rejected]: (state, { payload }) => {
       state.loading = false;
-      if (payload) {
-        toast.error('You are not authorized');
-      } else {
-        toast.error('Try later');
-      }
+
       state.error = payload;
     },
 

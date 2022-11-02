@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from 'constans/constans';
 import axios from 'axios';
 
-axios.defaults.baseURL = BASE_URL;
+export const userApi = axios.create({
+  baseURL: BASE_URL,
+});
 
 export const token = {
   set(token) {
@@ -16,9 +18,8 @@ export const token = {
 export const register = createAsyncThunk(
   'auth/register',
   async (user, { rejectWithValue }) => {
-    const { confirmPassword, ...userData } = user;
     try {
-      const { data } = await axios.post('auth/sign-up', userData);
+      const data = await userApi.post('auth/sign-up', user);
       if (data.token) token.set(data.token);
       return data;
     } catch (error) {
@@ -31,8 +32,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (user, { rejectWithValue }) => {
     try {
-      const { username, ...logUser } = user;
-      const { data } = await axios.post('auth/sign-in', logUser);
+      const data = await userApi.post('auth/sign-in', user);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -45,7 +45,7 @@ export const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
     try {
-      const data = await axios.delete('auth/sign-out');
+      const data = await userApi.delete('auth/sign-out');
       token.unset(data.token);
     } catch (error) {
       rejectWithValue(error.message);
@@ -63,7 +63,7 @@ export const refresh = createAsyncThunk(
 
     token.set(localStorageToken);
     try {
-      const { data } = await axios.get('users/current');
+      const data = await userApi.get('users/current');
       return data;
     } catch (error) {
       rejectWithValue(error.message);

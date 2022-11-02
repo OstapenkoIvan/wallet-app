@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refresh } from './auth-operation';
-import { toast } from 'react-toastify';
 
 const initialState = {
   isAuth: false,
@@ -32,11 +31,6 @@ const sessionSlice = createSlice({
     [register.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error.message;
-      if (state.error === 'Rejected') {
-        toast.error('This user is already signup');
-      } else {
-        toast.error('Oops, something went wrong, please try again');
-      }
     },
     [logIn.pending](state) {
       state.loading = true;
@@ -50,11 +44,6 @@ const sessionSlice = createSlice({
     [logIn.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error.message;
-      if (state.error === 'Rejected') {
-        toast.error('Invalid credentials');
-      } else {
-        toast.error('Oops, something went wrong, please try again');
-      }
     },
     [logOut.pending](state) {
       state.loading = true;
@@ -68,9 +57,6 @@ const sessionSlice = createSlice({
     [logOut.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error.message;
-      if (state.error === 'Rejected') {
-        toast.error('Oops, something went wrong, please try again');
-      }
     },
     [refresh.pending](state) {
       state.currentUser = true;
