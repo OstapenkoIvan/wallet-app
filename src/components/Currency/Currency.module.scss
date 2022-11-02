@@ -98,7 +98,6 @@ tbody > tr:first-child > td {
   @include tablet {
     padding-top: 16px;
   }
-
   @include desktop {
     padding-top: 20px;
   }
@@ -117,11 +116,19 @@ tbody > tr > td:first-child {
     padding-left: 20px;
     text-align: left;
   }
+  @include desktop {
+    text-align: left;
+    padding-left: 59px;
+  }
 }
 
 tbody > tr > td:last-child {
   @include toDesktop {
     padding-right: 20px;
+    text-align: right;
+  }
+  @include desktop {
+    padding-right: 59px;
     text-align: right;
   }
 }
@@ -149,6 +156,10 @@ tbody > tr > td:last-child {
   color: getColor('clr-white');
   background-color: getColor('clr-accent');
   border: transparent;
+
+  @include desktop {
+    text-align: center;
+  }
 }
 
 .resultField {
