@@ -1,3 +1,5 @@
+import TableTransactions from './TableTransactions/TableTransactions';
+
 export const App = () => {
   return (
     <div
@@ -11,7 +13,8 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      React homework template upd
+      {/* React homework template upd */}
+      <TableTransactions></TableTransactions>
     </div>
   );
 };
