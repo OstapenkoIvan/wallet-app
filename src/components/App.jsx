@@ -1,9 +1,10 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Route, Routes } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
 import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
+
 
 // import PrivateRoute from './Routes/PrivateRoute';
 // import PublicRoute from './Routes/PublicRoute';
@@ -21,8 +22,10 @@ const ExchangeMobilePage = lazy(() =>
   import('./Pages/ExchangeMobilePage/ExchangeMobilePage')
 );
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
-
+// !       <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}>НАПОВНЕННЯ МОДАЛКИ</Modal>
 export const App = () => {
+  const [isOpenModal, setIsOpenModal] = useState(true);
+
   return (
     <div className={scss.App}>
       <DeviceTypeInformer />
