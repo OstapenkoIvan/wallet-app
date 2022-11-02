@@ -17,7 +17,6 @@ export default function Currency() {
 
       setRates(data);
     };
-
     fetchCurrency().catch(console.error);
   }, []);
 
