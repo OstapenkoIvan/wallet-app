@@ -204,39 +204,39 @@ const TableTransactions = () => {
             console.log(findedCategObj);
             return (
               <tr className={scss.tbodyRow} key={item.id}>
-                <th className={[scss.col, scss['col-1']].join(' ')}>
+                <td className={[scss.col, scss['col-1']].join(' ')}>
                   {item.transactionDate.replaceAll('-', '.')}
-                </th>
-                <th className={[scss.col, scss['col-2']].join(' ')}>
+                </td>
+                <td className={[scss.col, scss['col-2']].join(' ')}>
                   {item.type === 'INCOME' ? '+' : '-'}
-                </th>
-                <th className={[scss.col, scss['col-3']].join(' ')}>
+                </td>
+                <td className={[scss.col, scss['col-3']].join(' ')}>
                   {findedCategObj.name}
-                </th>
-                <th className={[scss.col, scss['col-4']].join(' ')}>
+                </td>
+                <td className={[scss.col, scss['col-4']].join(' ')}>
                   {item.comment}
-                </th>
+                </td>
                 {item.type === 'INCOME' ? (
-                  <th
+                  <td
                     className={[scss.col, scss.income, scss['col-5']].join(' ')}
                   >
                     {item.amount}
-                  </th>
+                  </td>
                 ) : (
-                  <th
+                  <td
                     className={[scss.col, scss.expense, scss['col-5']].join(
                       ' '
                     )}
                   >
                     {item.amount}
-                  </th>
+                  </td>
                 )}
                 {/* <th className={[scss.col, scss['col-5']].join(' ')}>
                   {item.amount}
                 </th> */}
-                <th className={[scss.col, scss['col-6']].join(' ')}>
+                <td className={[scss.col, scss['col-6']].join(' ')}>
                   {item.balanceAfter}
-                </th>
+                </td>
               </tr>
             );
           })}
