@@ -1,3 +1,4 @@
+import TableMobile from './TableMobile/TableMobile';
 import TableTransactions from './TableTransactions/TableTransactions';
 
 export const App = () => {
@@ -6,7 +7,7 @@ export const App = () => {
       style={{
         fontFamily: 'poppins_bold',
         height: '100vh',
-        display: 'flex',
+        // display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
@@ -15,6 +16,7 @@ export const App = () => {
     >
       {/* React homework template upd */}
       <TableTransactions></TableTransactions>
+      <TableMobile></TableMobile>
     </div>
   );
 };

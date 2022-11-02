@@ -201,11 +201,9 @@ const TableTransactions = () => {
         </thead>
         <tbody className={scss.tbody}>
           {Data.map(item => {
-            console.log(item);
             const findedCategObj = categoryIdArr.find(
               el => el.id === item.categoryId
             );
-            console.log(findedCategObj);
             return (
               <tr className={scss.tbodyRow} key={item.id}>
                 <td className={[scss.col, scss.td, scss['col-1']].join(' ')}>
