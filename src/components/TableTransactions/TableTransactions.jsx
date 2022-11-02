@@ -238,7 +238,7 @@ const TableTransactions = () => {
                       scss['col-5'],
                     ].join(' ')}
                   >
-                    {item.amount}
+                    {item.amount.toString().slice(1)}
                   </td>
                 )}
                 <td className={[scss.col, scss.td, scss['col-6']].join(' ')}>
