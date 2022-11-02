@@ -1,12 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Mobile } from 'components/DeviceTypeControl/DeviseTypeController';
 import scss from './ExchangeMobilePage.module.scss';
 const ExchangeMobilePage = props => {
   return (
-    <div>ExchangeMobilePage</div>
-  )
-}
+    <Mobile>
+      <div className={scss.currencyTable}>currency table</div>
+    </Mobile>
+  );
+};
 
-ExchangeMobilePage.propTypes = {}
+ExchangeMobilePage.propTypes = {};
 
-export default ExchangeMobilePage
+export default ExchangeMobilePage;

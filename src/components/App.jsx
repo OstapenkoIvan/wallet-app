@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Route, Routes } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
-import DeviceTypeInformer from './DeviceTypeInformer/DeviceTypeInformer';
+import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
 
 // import PrivateRoute from './Routes/PrivateRoute';
 // import PublicRoute from './Routes/PublicRoute';
@@ -36,7 +36,7 @@ export const App = () => {
               <Route path="statistics" element={<StatisticsPage />} />
               <Route path="exchangeMobile" element={<ExchangeMobilePage />} />
             </Route>
-              <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </Layout>

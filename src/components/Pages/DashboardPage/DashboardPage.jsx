@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from 'components/Header/Header';
 import NavBar from 'components/NavBar/NavBar';
 import { Outlet } from 'react-router-dom';
+import { NotMobile } from 'components/DeviceTypeControl/DeviseTypeController';
 
 import scss from './DashboardPage.module.scss';
 const DashboardPage = props => {
@@ -13,7 +14,9 @@ const DashboardPage = props => {
         <div className={scss.wrapper}>
           <div>
             <NavBar />
-            <div className={scss.currencyTable}>currency table</div>
+            <NotMobile>
+              <div className={scss.currencyTable}>currency table for NOT MOBILE</div>
+            </NotMobile>
           </div>
           <Outlet />
         </div>
