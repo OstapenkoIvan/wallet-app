@@ -24,15 +24,14 @@ const financeSlice = createSlice({
   extraReducers: {
     [allTransactions.pending]: state => {
       state.loading = true;
-      state.error = null;
     },
     [allTransactions.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.data = payload;
+      state.error = null;
     },
     [allTransactions.rejected]: (state, { payload }) => {
       state.loading = false;
-      console.log('allTransactions', payload);
       state.error = payload;
       if (payload) {
         toast.error('Fatal error');
@@ -40,11 +39,11 @@ const financeSlice = createSlice({
     },
     [getSummary.pending]: state => {
       state.loading = true;
-      state.error = null;
     },
     [getSummary.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.summary = payload;
+      state.error = null;
     },
     [getSummary.rejected]: (state, { payload }) => {
       state.loading = false;
@@ -57,7 +56,6 @@ const financeSlice = createSlice({
 
     [getCategories.pending]: state => {
       state.loading = true;
-      state.error = null;
     },
     [getCategories.fulfilled]: (state, { payload }) => {
       state.loading = false;
@@ -67,7 +65,6 @@ const financeSlice = createSlice({
     },
     [getCategories.rejected]: (state, { payload }) => {
       state.loading = false;
-      console.log('getCategories', payload);
       state.error = payload;
       if (payload) {
         toast.error('Fatal error');
@@ -75,7 +72,6 @@ const financeSlice = createSlice({
     },
     [addTransaction.pending]: state => {
       state.loading = true;
-      state.error = null;
     },
     [addTransaction.fulfilled]: (state, { payload }) => {
       state.loading = false;
@@ -99,7 +95,6 @@ const financeSlice = createSlice({
     },
     [logOut.pending]: state => {
       state.loading = true;
-      state.error = null;
     },
     [logOut.fulfilled]: state => {
       state.loading = false;
@@ -121,10 +116,11 @@ const financeSlice = createSlice({
 
     [refresh.pending]: state => {
       state.loading = true;
-      state.error = null;
     },
     [refresh.fulfilled]: (state, { payload }) => {
       state.loading = false;
+      state.error = null;
+
       state.totalBalance = payload.balance;
     },
     [refresh.rejected]: (state, { payload }) => {

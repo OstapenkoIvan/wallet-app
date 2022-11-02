@@ -23,6 +23,9 @@ const globalSlice = createSlice({
     },
   },
   extraReducers: {
+    [logOut.pending]: state => {
+      state.isLoading = true;
+    },
     [logOut.fulfilled]: state => {
       state.isModalAddTransactionOpen = false;
       state.isModalLogoutOpen = false;

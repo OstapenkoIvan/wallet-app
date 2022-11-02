@@ -18,7 +18,7 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     const { confirmPassword, ...userData } = user;
     try {
-      const { data } = await axios.post('/api/auth/sign-up', userData);
+      const { data } = await axios.post('auth/sign-up', userData);
       if (data.token) token.set(data.token);
       return data;
     } catch (error) {
@@ -31,8 +31,8 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (user, { rejectWithValue }) => {
     try {
-      const { username, confirmPassword, ...logUser } = user;
-      const { data } = await axios.post('/api/auth/sign-in', logUser);
+      const { username, ...logUser } = user;
+      const { data } = await axios.post('auth/sign-in', logUser);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -45,7 +45,7 @@ export const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
     try {
-      const data = await axios.delete('/api/auth/sign-out');
+      const data = await axios.delete('auth/sign-out');
       token.unset(data.token);
     } catch (error) {
       rejectWithValue(error.message);
@@ -63,7 +63,7 @@ export const refresh = createAsyncThunk(
 
     token.set(localStorageToken);
     try {
-      const { data } = await axios.get('/api/users/current');
+      const { data } = await axios.get('users/current');
       return data;
     } catch (error) {
       rejectWithValue(error.message);

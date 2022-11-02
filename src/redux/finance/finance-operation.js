@@ -20,7 +20,6 @@ export const addTransaction = createAsyncThunk(
       const { data } = await axios.post('/api/transactions', transaction);
       const fixedData = {
         ...data,
-        balanceAfter: Number(data.balanceAfter.toFixed(2)),
       };
       return fixedData;
     } catch (error) {
@@ -33,7 +32,7 @@ export const getSummary = createAsyncThunk(
   'getSummary',
   async (period = '', { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`api/transactions-summary${period}`);
+      const { data } = await axios.get(`transactions-summary${period}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -45,7 +44,7 @@ export const getCategories = createAsyncThunk(
   'getCategories',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/api/transaction-categories');
+      const { data } = await axios.get('transaction-categories');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -19,7 +19,7 @@ import { globalReducer } from './global/global-slice';
 const persistSession = {
   key: 'session',
   storage,
-  blacklist: ['error', 'currentUser'],
+  whitelist: ['token'],
 };
 
 const rootReducer = combineReducers({
