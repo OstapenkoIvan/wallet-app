@@ -1,4 +1,3 @@
-import css from 'pages/AuthPage/AuthPage.module.scss';
 import {
   logo,
   desktopImageSignUp,
@@ -11,6 +10,8 @@ import {
   tabletImage2x,
 } from 'assets/images';
 import Form from 'components/Form/Form';
+
+import css from './AuthPage.module.scss';
 
 const AuthPage = () => {
   return (

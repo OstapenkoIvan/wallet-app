@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import NavBar from 'components/AppBar/NavBar/NavBar';
-import Currency from 'components/Currency';
+// import Currency from 'components/Currency';
 import {
   NotMobile,
   Mobile,
@@ -39,7 +39,7 @@ const AppBar = () => {
 
       <NotMobile>
         <div className={scss.Currency}>
-          <Currency />
+          {/* <Currency /> */}
         </div>
       </NotMobile>
     </div>
