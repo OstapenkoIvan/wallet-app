@@ -1,5 +1,6 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
+import RowComp from './RowComponent/RowComponent';
 import scss from './TableMobile.module.scss';
 
 const TableMobile = () => {
@@ -66,7 +67,8 @@ const TableMobile = () => {
       id: '813404c8-6fbc-49a8-a0f3-0bc4905c4211',
       transactionDate: '2022-11-01',
       type: 'INCOME',
-      comment: 'aplles',
+      comment:
+        'My favorite apples from Ukraine, my favorite apples from ukraine',
       amount: 100000,
       balanceAfter: 100000,
       categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
@@ -86,7 +88,7 @@ const TableMobile = () => {
       id: '813404c8-6fbc-49a8-a0f3-0bc6005c4211',
       transactionDate: '2022-11-02',
       type: 'INCOME',
-      comment: 'aplles',
+      comment: 'Aplles',
       amount: 1000,
       balanceAfter: 100900,
       categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
@@ -188,11 +190,12 @@ const TableMobile = () => {
   const filteredArr = Data.map(el => {
     return {
       id: el.id,
-      date: el.transactionDate,
-      type: el.type,
+      date: el.transactionDate.replaceAll('-', '.'),
+      type: el.type === 'INCOME' ? '+' : '-',
       category: categoryName(el.categoryId).name,
       comment: el.comment,
-      sum: el.amount,
+      //   sum: el.amount,
+      sum: el.type === 'INCOME' ? el.amount : el.amount.toString().slice(1),
       balance: el.balanceAfter,
     };
   });
@@ -201,43 +204,18 @@ const TableMobile = () => {
   return (
     <div className={scss.container}>
       <ul className={scss.tablesList}>
-        {filteredArr.map(el => {
+        {filteredArr.map(rowObj => {
           return (
-            <li className="listItem" key={el.id}>
-              <table className={scss.table}>
+            <li className={scss.listItem} key={rowObj.id}>
+              <table
+                className={
+                  rowObj.type === '+' ? scss.tableINCOME : scss.tableEXPENSE
+                }
+              >
                 <tbody className={scss.tbody}>
-                  {Object.keys(el).map((item, idx) => {
-                    return (
-                      <tr key={idx} className={scss[`row${idx + 1}`]}>
-                        <th>{item}</th>
-                        <td>{el[item]}</td>
-                      </tr>
-                    );
+                  {Object.keys(rowObj).map((item, idx) => {
+                    return <RowComp tdTitle={item} value={rowObj[item]} />;
                   })}
-                  {/* <tr>
-                    <th>{el.date}</th>
-                    <td>{el.date}</td>
-                  </tr>
-                  <tr>
-                    <th>{el.type}</th>
-                    <td>{el.type}</td>
-                  </tr>
-                  <tr>
-                    <th>{el.category}</th>
-                    <td>{el.category}</td>
-                  </tr>
-                  <tr>
-                    <th>{el.comment}</th>
-                    <td>{el.comment}</td>
-                  </tr>
-                  <tr>
-                    <th>{el.sum}</th>
-                    <td>{el.sum}</td>
-                  </tr>
-                  <tr>
-                    <th>{el.balance}</th>
-                    <td>{el.balance}</td>
-                  </tr> */}
                 </tbody>
               </table>
             </li>

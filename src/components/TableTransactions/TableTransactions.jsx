@@ -66,7 +66,8 @@ const TableTransactions = () => {
       id: '813404c8-6fbc-49a8-a0f3-0bc4905c4211',
       transactionDate: '2022-11-01',
       type: 'INCOME',
-      comment: 'aplles',
+      comment:
+        'My favorite apples from Ukraine, my favorite apples from ukraine',
       amount: 100000,
       balanceAfter: 100000,
       categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
@@ -190,7 +191,7 @@ const TableTransactions = () => {
                 key={idx}
                 className={[
                   scss.colHead,
-                  scss[`col${idx + 1}`],
+                  scss[`col-${idx + 1}`],
                   scss[`colHead${idx + 1}`],
                 ].join(' ')}
               >
@@ -212,10 +213,16 @@ const TableTransactions = () => {
                 <td className={[scss.col, scss.td, scss['col-2']].join(' ')}>
                   {item.type === 'INCOME' ? '+' : '-'}
                 </td>
-                <td className={[scss.col, scss.td, scss['col-3']].join(' ')}>
+                <td
+                  className={[scss.col, scss.td, scss['col-3']].join(' ')}
+                  title={findedCategObj.name}
+                >
                   {findedCategObj.name}
                 </td>
-                <td className={[scss.col, scss.td, scss['col-4']].join(' ')}>
+                <td
+                  className={[scss.col, scss.td, scss['col-4']].join(' ')}
+                  title={item.comment}
+                >
                   {item.comment}
                 </td>
                 {item.type === 'INCOME' ? (
