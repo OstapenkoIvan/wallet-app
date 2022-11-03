@@ -6,7 +6,7 @@ const RowStatComponent = ({ arr }) => {
     const { name, type, total } = el;
 
     return type === 'EXPENSE' ? (
-      <tr key={idx}>
+      <tr key={idx} className={scss.tbodyRow}>
         <td className={[scss.colName, scss[`col-${idx + 1}`]].join(' ')}>
           <div
             className={[scss.colored, scss[`colored-${idx + 1}`]].join(' ')}
