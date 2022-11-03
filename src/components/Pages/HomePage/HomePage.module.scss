@@ -1,16 +1,4 @@
 .HomeTableBox{
   height: 100%;
-  @media screen and (max-width: 767px) {
-    // padding-top: 12px;
-  }
-
-  @media screen and (min-width: 768px) {
-    // padding-top: 32px;
-  }
-  @media screen and (min-width: 1280px) {
-    padding-top: 40px;
-    padding-left: 69px;
-    // border-left: 1px solid #E7E5F2;
-    border-left: 1px solid red;
-  }
+  width: 100%;
 }

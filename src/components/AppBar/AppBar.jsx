@@ -38,9 +38,7 @@ const AppBar = () => {
       </div>
 
       <NotMobile>
-        <div className={scss.Currency}>
-          <Currency />
-        </div>
+        <Currency />
       </NotMobile>
     </div>
   );

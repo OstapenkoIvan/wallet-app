@@ -49,7 +49,26 @@ body {
 section {
   min-width: 320px;
 }
-
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+table {
+  table-layout:fixed ;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 section,
 ul,
@@ -57,3 +76,4 @@ li,
 div {
   // outline: 1px solid tomato;
 }
+

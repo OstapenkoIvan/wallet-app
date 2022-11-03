@@ -24,21 +24,18 @@ const ExchangeMobilePage = lazy(() =>
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 // ? const [isOpenModal, setIsOpenModal] = useState(true);
-// ? <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}>НАПОВНЕННЯ МОДАЛКИ</Modal>
 
 export const App = () => {
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  // const [isOpenModal, setIsOpenModal] = useState(true);
+
   return (
     <div className={scss.App}>
-      {/* <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}>
-        НАПОВНЕННЯ МОДАЛКИ
-      </Modal> */}
       <DeviceTypeInformer />
-      {/* <Layout> */}
+      <Layout>
       <Suspense fallback={'Loading app...'}>
         <Routes>
           <Route path="signin" element={<AuthPage />} />
-          <Route path="signup" element={<AuthPage forRegister/>} />
+          <Route path="signup" element={<AuthPage forRegister />} />
           <Route path="/" element={<DashboardPage />}>
             <Route index element={<HomePage />} />
             <Route path="statistics" element={<StatisticsPage />} />
@@ -47,7 +44,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-      {/* </Layout> */}
+      </Layout>
     </div>
   );
 };

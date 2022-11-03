@@ -55,27 +55,27 @@ export default function Currency() {
   const result = calculateExchange(value, exchangeType);
   return (
     <div className={s.thumb}>
-      <table className={s.tables}>
-        <thead>
-          <tr>
-            <th>Currency</th>
-            <th>Purchase</th>
-            <th>Sale</th>
+      <table className={s.table}>
+        <thead className={s.thead}>
+          <tr className={s.thRow}>
+            <th className={s.th_1}>Currency</th>
+            <th className={s.th_2}>Purchase</th>
+            <th className={s.th_3}>Sale</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>USD</td>
-            <td>{usdBuy}</td>
-            <td>{usdSale}</td>
+        <tbody className={s.tbody}>
+          <tr className={s.tr}>
+            <td className={s.td_1}>USD</td>
+            <td className={s.td_2}>{usdBuy}</td>
+            <td className={s.td_3}>{usdSale}</td>
           </tr>
-          <tr>
-            <td>EUR</td>
-            <td>{eurBuy}</td>
-            <td>{eurSale}</td>
+          <tr className={s.tr}>
+            <td className={s.td_1}>EUR</td>
+            <td className={s.td_2}>{eurBuy}</td>
+            <td className={s.td_3}>{eurSale}</td>
           </tr>
-          <tr>
-            <td>
+          <tr className={[s.tr, s.trInput].join(' ')}>
+            <td className={s.td_1}>
               <input
                 className={s.inputField}
                 name="value"
@@ -84,7 +84,7 @@ export default function Currency() {
                 onChange={e => setValue(e.target.value)}
               />
             </td>
-            <td>
+            <td className={s.td_2}>
               <select
                 className={s.selectField}
                 name="exchangeType"
@@ -97,7 +97,7 @@ export default function Currency() {
                 <option value="EURUAH">EUR {'>'} UAH</option>
               </select>
             </td>
-            <td>
+            <td className={s.td_3}>
               <span className={s.resultField}>{result}</span>
             </td>
           </tr>

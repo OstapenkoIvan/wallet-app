@@ -1,23 +1,46 @@
 .blur {
-  // position: relative;
   min-height: 100vh;
   width: 100%;
 
   backdrop-filter: blur(25px);
 }
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+.gridPage {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content;
+  min-height: (calc(100vh - 80px));
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .gridPage {
+    gap: 32px;
+  }
+  .AppBarBox {
+    padding-top: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .gridPage {
+    gap: 32px;
+  }
+  .AppBarBox {
+    padding-top: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .gridPage {
+    grid-template-columns: 464px calc(100% - 464px);
+  }
+  .AppBarBox,
+  .OutletBox {
+    padding-top: 46px;
+  }
+  .AppBarBox {
+    padding-right: 69px;
 
-  // padding-top: 12px;
-  // @media screen and (min-width: 768px) {
-  //   padding-top: 32px;
-  // }
-  @media screen and (min-width: 1280px) {
-    gap: 69px;
-    flex-direction: row;
-    justify-content: space-between;
+    border-right: 1px solid rgb(205, 205, 205);
+  }
+  .OutletBox {
+    padding-left: 69px;
   }
 }

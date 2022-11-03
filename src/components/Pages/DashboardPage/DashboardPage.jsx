@@ -11,9 +11,9 @@ const DashboardPage = props => {
     <div className={scss.blur}>
       <Header />
       <div className="container">
-        <div className={scss.wrapper}>
-          <AppBar />
-          <Outlet />
+        <div className={scss.gridPage}> 
+          <div className={scss.AppBarBox}><AppBar /></div>
+          <div className={scss.OutletBox}><Outlet /></div>
         </div>
       </div>
     </div>
@@ -23,3 +23,5 @@ const DashboardPage = props => {
 DashboardPage.propTypes = {};
 
 export default DashboardPage;
+// AppBarBox
+// OutletBox
