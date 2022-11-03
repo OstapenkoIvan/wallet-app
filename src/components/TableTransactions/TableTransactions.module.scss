@@ -46,14 +46,14 @@
 .colHead {
   background-color: #ffffff;
   padding: 16px 20px;
-}
 
-.colHead:first-child {
-  border-radius: 29px 0 0 29px;
-}
+  &:first-child {
+    border-radius: 29px 0 0 29px;
+  }
 
-.colHead:last-child {
-  border-radius: 0 29px 29px 0;
+  &:last-child {
+    border-radius: 0 29px 29px 0;
+  }
 }
 
 .tbody {

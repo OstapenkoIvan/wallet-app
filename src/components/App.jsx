@@ -1,3 +1,4 @@
+import StatisticsTable from './StatisticsTable/StatisticsTable';
 import TableMobile from './TableMobile/TableMobile';
 import TableTransactions from './TableTransactions/TableTransactions';
 
@@ -15,6 +16,7 @@ export const App = () => {
       }}
     >
       {/* React homework template upd */}
+      <StatisticsTable></StatisticsTable>
       <TableTransactions></TableTransactions>
       <TableMobile></TableMobile>
     </div>

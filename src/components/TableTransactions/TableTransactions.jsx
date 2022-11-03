@@ -194,7 +194,7 @@ const TableTransactions = () => {
     <div className={scss.container}>
       <table className={scss.table}>
         <thead className={scss.thead}>
-          <tr className={scss.theadRow}>
+          <tr c>
             {tableHeaders.map((el, idx) => (
               <th
                 key={idx}

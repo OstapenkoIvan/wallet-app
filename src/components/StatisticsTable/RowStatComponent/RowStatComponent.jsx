@@ -1,11 +1,19 @@
-const RowStatComponent = arr => {
-  arr.map(({ name, type, total }, idx) => {
+import React from 'react';
+import scss from '../StatisticsTable.module.scss';
+
+const RowStatComponent = ({ arr }) => {
+  return arr.map((el, idx) => {
+    const { name, type, total } = el;
+
     return type === 'EXPENSE' ? (
       <tr key={idx}>
         <td className={[scss.colName, scss[`col-${idx + 1}`]].join(' ')}>
+          <div
+            className={[scss.colored, scss[`colored-${idx + 1}`]].join(' ')}
+          ></div>
           {name}
         </td>
-        <td className={[scss.colTotal, scss[`col-${idx + 1}`]].join(' ')}>
+        <td className={[scss.colData, scss[`col-${idx + 1}`]].join(' ')}>
           {total}
         </td>
       </tr>
