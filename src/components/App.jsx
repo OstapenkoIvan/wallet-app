@@ -1,9 +1,26 @@
 
+import { useState } from 'react';
+import Headertest from "./HeaderTest/HeaderTest";
+import ButtonAddTransactions from "./ButtonAddTransactions/ButtonAddTransactions";
+import ModalAddTransactions from "./ModalAddTransactions/ModalAddTransactions";
 import Currency from 'components/Currency';
-// import s from 'components/App.module.scss';
 
 export const App = () => {
-  return <Currency />;
-  // return <div className={s.main}>React homework template upd</div>;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = toggle => {
+      setIsModalOpen(toggle)
+    }
+
+  return (
+    <>
+      <Headertest />
+      
+      <ButtonAddTransactions onOpen={() => toggleModal(true)} />
+      {isModalOpen &&
+        <ModalAddTransactions onClose={toggleModal} />
+      }
+    </>
+  );
 
 };
