@@ -32,6 +32,7 @@ const financeSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+    
     [getSummary.pending]: state => {
       state.loading = true;
     },
@@ -58,6 +59,7 @@ const financeSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+
     [addTransaction.pending]: state => {
       state.loading = true;
     },
@@ -71,6 +73,7 @@ const financeSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+
     [logOut.pending]: state => {
       state.loading = true;
     },

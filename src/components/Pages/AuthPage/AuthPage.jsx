@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Form from 'components/Form/Form';
 import {
@@ -60,10 +60,12 @@ const AuthPage = ({ forRegister }) => {
           <h1 className={css.title}>Finance App</h1>
         </div>
         <div className={css.formContainer}>
-          <div className={css.formTitleWrapper}>
-            <img src={logo} alt="Logo" className={css.logo} />
-            <h1 className={css.formTitle}>Wallet</h1>
-          </div>
+          <Link to="/">
+            <div className={css.formTitleWrapper}>
+              <img src={logo} alt="Logo" className={css.logo} />
+              <h1 className={css.formTitle}>Wallet</h1>
+            </div>
+          </Link>
           {forRegister ? <Form userRegister /> : <Form />}
         </div>
       </div>

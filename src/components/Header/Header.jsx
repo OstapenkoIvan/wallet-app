@@ -9,15 +9,17 @@ import scss from './Header.module.scss';
 
 const Header = props => {
   return (
-    <div className={['container', scss.Header].join(' ')}>
-      {/* <div className={[ scss.wrapper].join(' ')}> */}
-        <div className={scss.logoBox}>
-          <img className={scss.logoImg} src={logoImg} alt="logo" />
-          <span className={scss.logoText}>Wallet</span>
-        </div>
+    <div className={scss.Header}>
+      <div className={['container', scss.wrapper].join(' ')}>
+        <Link to="/">
+          <div className={scss.logoBox}>
+            <img className={scss.logoImg} src={logoImg} alt="logo" />
+            <span className={scss.logoText}>Wallet</span>
+          </div>
+        </Link>
         <div className={scss.wrapper}>
           <span className={scss.userName}>ІМЯ</span>
-          <Link to='signin' replace={true}>
+          <Link to="signin" replace={true}>
             <span className={scss.exitLink}>
               <svg className={scss.svg}>
                 <use href={`${sprite}#icon-logout`}></use>
@@ -26,7 +28,7 @@ const Header = props => {
             </span>
           </Link>
         </div>
-      {/* </div> */}
+      </div>
     </div>
   );
 };

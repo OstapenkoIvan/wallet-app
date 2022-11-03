@@ -23,6 +23,7 @@ const sessionSlice = createSlice({
       state.loading = true;
     },
     [register.fulfilled](state, action) {
+      console.log(action,'action reg full')
       state.loading = false;
       state.user = action.payload.user;
       state.token = action.payload.token;
