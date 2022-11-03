@@ -67,7 +67,7 @@ const TableTransactions = () => {
       transactionDate: '2022-11-01',
       type: 'INCOME',
       comment:
-        'My favorite apples from Ukraine, my favorite apples from ukraine',
+        'My favorite apples from Ukraine, my favorite apples from Ukraine',
       amount: 100000,
       balanceAfter: 100000,
       categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
@@ -77,7 +77,7 @@ const TableTransactions = () => {
       id: '2a31e754-f816-4db4-b9e8-401adfa26afc',
       transactionDate: '2022-11-04',
       type: 'EXPENSE',
-      comment: 'orange',
+      comment: 'My favorite apples fromUkraine, myfavorite apples from Ukraine',
       amount: -100,
       balanceAfter: 99900,
       categoryId: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402',
@@ -223,7 +223,7 @@ const TableTransactions = () => {
                   className={[scss.col, scss.td, scss['col-4']].join(' ')}
                   title={item.comment}
                 >
-                  {item.comment}
+                  <div className={scss.comentWrap}>{item.comment}</div>
                 </td>
                 {item.type === 'INCOME' ? (
                   <td
