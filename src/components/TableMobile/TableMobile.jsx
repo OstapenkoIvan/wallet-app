@@ -186,10 +186,19 @@ const TableMobile = () => {
     return categoryIdArr.find(el => el.id === categId);
   };
 
+  const getTransactionDate = elDate => {
+    const date = new Date(elDate);
+    const day = date.getDate().toString().padStart(2, 0);
+    const month = (date.getMonth() + 1).toString().padStart(2, 0);
+    const year = date.getFullYear().toString().slice(2);
+
+    return `${day}.${month}.${year} `;
+  };
+
   const filteredArr = Data.map(el => {
     return {
       id: el.id,
-      date: el.transactionDate.replaceAll('-', '.'),
+      date: getTransactionDate(el.transactionDate),
       type: el.type === 'INCOME' ? '+' : '-',
       category: categoryName(el.categoryId).name,
       comment: el.comment,
@@ -197,7 +206,6 @@ const TableMobile = () => {
       balance: el.balanceAfter,
     };
   });
-  console.log(filteredArr);
 
   return (
     <div className={scss.container}>

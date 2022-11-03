@@ -123,6 +123,15 @@ const TableTransactions = () => {
     'balanceAfter',
   ];
 
+  const getTransactionDate = elDate => {
+    const date = new Date(elDate);
+    const day = date.getDate().toString().padStart(2, 0);
+    const month = (date.getMonth() + 1).toString().padStart(2, 0);
+    const year = date.getFullYear().toString().slice(2);
+
+    return `${day}.${month}.${year} `;
+  };
+
   const categoryIdArr = [
     {
       id: 'c9d9e447-1b83-4238-8712-edc77b18b739',
@@ -208,7 +217,7 @@ const TableTransactions = () => {
             return (
               <tr className={scss.tbodyRow} key={item.id}>
                 <td className={[scss.col, scss.td, scss['col-1']].join(' ')}>
-                  {item.transactionDate.replaceAll('-', '.')}
+                  {getTransactionDate(item.transactionDate)}
                 </td>
                 <td className={[scss.col, scss.td, scss['col-2']].join(' ')}>
                   {item.type === 'INCOME' ? '+' : '-'}

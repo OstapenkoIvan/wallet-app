@@ -16,11 +16,10 @@
 
 .trow {
   margin: 0;
-  border-bottom: 1px solid #dcdcdf;
-}
-
-.trow:first-child {
-  display: none;
+  // border-bottom: 1px solid #dcdcdf;
+  &.trow:first-child {
+    display: none;
+  }
 }
 
 .th {
