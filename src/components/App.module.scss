@@ -1,0 +1,6 @@
+@import '../sass/utils/variables';
+
+.main {
+  color: getColor('clr-main');
+  margin: $dist16;
+}

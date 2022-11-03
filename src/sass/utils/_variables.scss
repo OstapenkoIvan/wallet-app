@@ -14,14 +14,14 @@ $colors: (
 @function getColor($color) {
   @return map-get($colors, $color);
 }
-//color: getColor('font-clr2');
+//color: getColor('clr-main');
 
 $dist16: 9px;
 $dist16: 16px;
 $dist20: 20px;
 $dist32: 32px;
-$dist32: 40px;
-$dist32: 46px;
-$dist60: 69px;
+$dist40: 40px;
+$dist46: 46px;
+$dist69: 69px;
 
 $time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
