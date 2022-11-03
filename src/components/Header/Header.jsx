@@ -17,7 +17,7 @@ const Header = props => {
         </div>
         <div className={scss.wrapper}>
           <span className={scss.userName}>ІМЯ</span>
-          <Link>
+          <Link to='signin' replace={true}>
             <span className={scss.exitLink}>
               <svg className={scss.svg}>
                 <use href={`${sprite}#icon-logout`}></use>
