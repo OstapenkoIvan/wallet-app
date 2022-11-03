@@ -14,23 +14,18 @@
   margin-bottom: 8px;
 }
 
-// .table {
-//   width: 280px;
-//   margin-left: auto;
-//   margin-right: auto;
-//   background: #ffffff;
-//   border-radius: 10px;
-//   overflow: hidden;
-// }
+.trow {
+  margin: 0;
+  border-bottom: 1px solid #dcdcdf;
+}
 
-.tr:first-child {
+.trow:first-child {
   display: none;
 }
 
 .th {
   width: 50%;
   text-transform: capitalize;
-  border-bottom: 1px solid #dcdcdf;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 700;
@@ -40,6 +35,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-bottom: 1px solid #dcdcdf;
 }
 
 .td {
@@ -72,7 +68,6 @@
   width: 280px;
   margin-left: auto;
   margin-right: auto;
-  background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
   table-layout: fixed;

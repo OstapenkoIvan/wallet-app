@@ -5,7 +5,7 @@ import scss from '../TableMobile.module.scss';
 const RowComp = ({ tdTitle, value }) => {
   console.log(tdTitle, value);
   return (
-    <tr className={scss.tr}>
+    <tr className={scss.trow}>
       <th className={scss.th}>{tdTitle}</th>
       <td
         title={value}

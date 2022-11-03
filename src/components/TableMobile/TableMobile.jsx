@@ -64,7 +64,7 @@ const TableMobile = () => {
 
   const Data = [
     {
-      id: '813404c8-6fbc-49a8-a0f3-0bc4905c4211',
+      id: '823404c8-6fbc-49a8-a0f3-0bc4905c4211',
       transactionDate: '2022-11-01',
       type: 'INCOME',
       comment:
@@ -75,7 +75,7 @@ const TableMobile = () => {
       userId: '25bd0249-20d5-42e0-8a23-55256739b6a3',
     },
     {
-      id: '2a31e754-f816-4db4-b9e8-401adfa26afc',
+      id: '2a41e754-f816-4db4-b9e8-401adfa26afc',
       transactionDate: '2022-11-04',
       type: 'EXPENSE',
       comment: 'orange',
@@ -183,7 +183,6 @@ const TableMobile = () => {
   ];
 
   const categoryName = categId => {
-    // console.log(categId);
     return categoryIdArr.find(el => el.id === categId);
   };
 
@@ -194,7 +193,6 @@ const TableMobile = () => {
       type: el.type === 'INCOME' ? '+' : '-',
       category: categoryName(el.categoryId).name,
       comment: el.comment,
-      //   sum: el.amount,
       sum: el.type === 'INCOME' ? el.amount : el.amount.toString().slice(1),
       balance: el.balanceAfter,
     };
@@ -214,7 +212,9 @@ const TableMobile = () => {
               >
                 <tbody className={scss.tbody}>
                   {Object.keys(rowObj).map((item, idx) => {
-                    return <RowComp tdTitle={item} value={rowObj[item]} />;
+                    return (
+                      <RowComp key={idx} tdTitle={item} value={rowObj[item]} />
+                    );
                   })}
                 </tbody>
               </table>
