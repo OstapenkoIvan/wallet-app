@@ -38,7 +38,7 @@ export const App = () => {
       <Suspense fallback={'Loading app...'}>
         <Routes>
           <Route path="signin" element={<AuthPage />} />
-          <Route path="signup" element={<AuthPage />} />
+          <Route path="signup" element={<AuthPage forRegister/>} />
           <Route path="/" element={<DashboardPage />}>
             <Route index element={<HomePage />} />
             <Route path="statistics" element={<StatisticsPage />} />

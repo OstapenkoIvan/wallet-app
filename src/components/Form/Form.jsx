@@ -1,10 +1,12 @@
+import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
+
 import PasswordStrengthBar from 'react-password-strength-bar';
-import sprite from 'assets/images/sprite.svg';
 import Button from 'components/Button/Button';
 import ButtonLink from 'components/ButtonLink/ButtonLink';
+import sprite from 'assets/images/sprite.svg';
+
 import css from 'components/Form/Form.module.scss';
-import { useRef } from 'react';
 
 const SignInForm = ({ userRegister }) => {
   const {
@@ -145,12 +147,12 @@ const SignInForm = ({ userRegister }) => {
           )}
 
           <Button buttonType="submit" text="REGISTER" />
-          <ButtonLink text="LOG IN" navigateTo="/" />
+          <ButtonLink text="LOG IN" navigateTo="/signin" />
         </>
       ) : (
         <>
           <Button buttonType="submit" text="LOG IN" />
-          <ButtonLink text="REGISTER" navigateTo="/" />
+          <ButtonLink text="REGISTER" navigateTo="/signup" />
         </>
       )}
     </form>

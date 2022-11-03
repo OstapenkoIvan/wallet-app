@@ -1,3 +1,6 @@
+import { Routes, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Form from 'components/Form/Form';
 import {
   logo,
   desktopImageSignUp,
@@ -9,16 +12,15 @@ import {
   tabletImage,
   tabletImage2x,
 } from 'assets/images';
-import Form from 'components/Form/Form';
 
 import css from './AuthPage.module.scss';
 
-const AuthPage = () => {
+const AuthPage = ({ forRegister }) => {
   return (
     <div className={css.section}>
       <div className={`${css.pageContainer} container`}>
         <div className={css.titleWrapper}>
-          {true ? (
+          {!forRegister ? (
             <>
               <picture>
                 <source
@@ -62,11 +64,14 @@ const AuthPage = () => {
             <img src={logo} alt="Logo" className={css.logo} />
             <h1 className={css.formTitle}>Wallet</h1>
           </div>
-          {false ? <Form userRegister /> : <Form />}
+          {forRegister ? <Form userRegister /> : <Form />}
         </div>
       </div>
     </div>
   );
 };
 
+AuthPage.propTypes = {
+  forRegister: PropTypes.bool,
+};
 export default AuthPage;
