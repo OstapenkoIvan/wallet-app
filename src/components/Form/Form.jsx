@@ -6,9 +6,13 @@ import Button from 'components/Button/Button';
 import ButtonLink from 'components/ButtonLink/ButtonLink';
 import sprite from 'assets/images/sprite.svg';
 
+import { useDispatch } from 'react-redux';
+import { register as registerAction } from 'redux/session/auth-operation';
+
 import css from 'components/Form/Form.module.scss';
 
 const SignInForm = ({ userRegister }) => {
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors },
@@ -22,15 +26,19 @@ const SignInForm = ({ userRegister }) => {
     const { username, email, password } = data;
     if (userRegister) {
       const userData = { username, email, password };
-
+      dispatch(registerAction(userData));
+      console.log(userData);
       return userData;
     } else {
       const userData = { email, password };
-
+      dispatch(registerAction(userData));
       return userData;
     }
   };
-
+// jlblbjhbkjhb
+// asgasfd@mail.com
+//  sdrhsdgfshfgnd
+  // console.log(object);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={css.formField}>
