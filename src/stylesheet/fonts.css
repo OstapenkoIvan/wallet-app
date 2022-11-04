@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Circe-Regular;
+  font-family: "Circe-Regular";
   src: local('Circe-Regular'),
 
     url(../assets/fonts/Circe-Regular.ttf) format("truetype");

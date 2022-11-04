@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Headertest from './HeaderTest/HeaderTest';
 import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 import ModalAddTransactions from './ModalAddTransactions/ModalAddTransactions';
+import AuthPage from 'pages/AuthPage/AuthPage';
 
 //!STORE TEST CODE//
 // import { authOperation } from 'redux/session';
@@ -77,10 +78,12 @@ export const App = () => {
   //
   return (
     <>
-      <Headertest />
+      {/* <Headertest />
+
 
       <ButtonAddTransactions onOpen={() => toggleModal(true)} />
-      {isModalOpen && <ModalAddTransactions onClose={toggleModal} />}
+      {isModalOpen && <ModalAddTransactions onClose={toggleModal} />} */}
+      <AuthPage />
     </>
   );
 };

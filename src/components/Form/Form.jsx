@@ -5,6 +5,8 @@ import Button from 'components/Button/Button';
 import ButtonLink from 'components/ButtonLink/ButtonLink';
 import css from 'components/Form/Form.module.scss';
 import { useRef } from 'react';
+import { authOperation } from 'redux/session';
+import { useDispatch } from 'react-redux';
 
 const SignInForm = ({ userRegister }) => {
   const {
@@ -16,15 +18,17 @@ const SignInForm = ({ userRegister }) => {
   const password = useRef({});
   password.current = watch('password', '');
 
+  const dispatch = useDispatch();
+
   const onSubmit = data => {
     const { username, email, password } = data;
     if (userRegister) {
       const userData = { username, email, password };
-
+      dispatch(authOperation.register(userData));
       return userData;
     } else {
       const userData = { email, password };
-
+      dispatch(authOperation.logIn(userData));
       return userData;
     }
   };

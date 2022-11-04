@@ -11,25 +11,28 @@ import {
   tabletImage2x,
 } from 'assets/images';
 import Form from 'components/Form/Form';
+import { useLocation } from 'react-router-dom';
 
 const AuthPage = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className={css.section}>
       <div className={`${css.pageContainer} container`}>
         <div className={css.titleWrapper}>
-          {true ? (
+          {pathname === '/signup' ? (
             <>
               <picture>
                 <source
                   srcSet={`${desktopImageSignUp} 1x, ${desktopImageSignUp2x} 2x`}
-                  sizes="(min-width: 1280px)"
+                  media="(min-width: 1280px)"
                 />
                 <source
                   srcSet={`${tabletImageSignUp} 1x, ${tabletImageSignUp2x} 2x`}
-                  sizes="(min-width: 768px)"
+                  media="(min-width: 768px)"
                 />
                 <img
-                  src={tabletImageSignUp}
+                  src={`${tabletImageSignUp} 1x`}
                   alt="Background"
                   className={css.backgroundImage}
                 />
@@ -40,14 +43,14 @@ const AuthPage = () => {
               <picture>
                 <source
                   srcSet={`${desktopImage} 1x, ${desktopImage2x} 2x`}
-                  sizes="(min-width: 1280px)"
+                  media="(min-width: 1280px)"
                 />
                 <source
                   srcSet={`${tabletImage} 1x, ${tabletImage2x} 2x`}
-                  sizes="(min-width: 768px)"
+                  media="(min-width: 768px)"
                 />
                 <img
-                  src={tabletImage}
+                  src={`${tabletImage} 1x`}
                   alt="Background"
                   className={css.backgroundImage}
                 />
@@ -61,7 +64,7 @@ const AuthPage = () => {
             <img src={logo} alt="Logo" className={css.logo} />
             <h1 className={css.formTitle}>Wallet</h1>
           </div>
-          {false ? <Form userRegister /> : <Form />}
+          {pathname === '/signup' ? <Form userRegister /> : <Form />}
         </div>
       </div>
     </div>
