@@ -15,7 +15,7 @@ export const token = {
   },
 };
 
-export const register = createAsyncThunk(
+export const registerThunk = createAsyncThunk(
   'auth/register',
   async (user, { rejectWithValue }) => {
     try {
@@ -28,7 +28,7 @@ export const register = createAsyncThunk(
   }
 );
 
-export const logIn = createAsyncThunk(
+export const logInThunk = createAsyncThunk(
   'auth/login',
   async (user, { rejectWithValue }) => {
     try {
@@ -41,7 +41,7 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk(
+export const logOutThunk = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
     try {
@@ -53,7 +53,7 @@ export const logOut = createAsyncThunk(
   }
 );
 
-export const refresh = createAsyncThunk(
+export const refreshThunk = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const {

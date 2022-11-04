@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Form from 'components/Form/Form';
@@ -15,23 +15,10 @@ import {
   tabletImage2x,
 } from 'assets/images';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { authOperation } from 'redux/session';
-import { financeOperation } from 'redux/finance';
-import { sessionSlice } from 'redux/session';
-import { sessionSelectors } from 'redux/session';
-
 import css from './AuthPage.module.scss';
 
 const AuthPage = ({ forRegister }) => {
-  const { getAuthToken ,getIsAuth} = sessionSelectors;
-  const isAuth = useSelector(getIsAuth);
-  const authToken = useSelector(getAuthToken);
-  console.log(isAuth,authToken);
-  
-
   useEffect(() => {}, []);
-
 
   return (
     <div className={css.section}>

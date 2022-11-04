@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { authOperation } from 'redux/session';
 // import { register as registerAction } from 'reduxOld/session/auth-operation';
 
-
 import css from 'components/Form/Form.module.scss';
 
 const SignInForm = ({ userRegister }) => {
@@ -28,19 +27,15 @@ const SignInForm = ({ userRegister }) => {
     const { username, email, password } = data;
     if (userRegister) {
       const userData = { username, email, password };
-      dispatch(authOperation.register(userData));
-      // console.log(userData);
+      dispatch(authOperation.registerThunk(userData));
       return userData;
     } else {
       const userData = { email, password };
-      dispatch(authOperation.logIn(userData));
+      dispatch(authOperation.logInThunk(userData));
       return userData;
     }
   };
-// jlblbjhbkjhb
-// asgasfd@mail.com
-//  sdrhsdgfshfgnd
-  // console.log(object);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={css.formField}>

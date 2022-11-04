@@ -1,22 +1,17 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
-import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
-import ModalAddTransactions from './ModalAddTransactions/ModalAddTransactions';
 import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
 import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
-import { financeOperation } from 'redux/finance';
-import { sessionSlice } from 'redux/session';
-import { sessionSelectors } from 'redux/session';
 
-import Modal from './Modal/Modal';
+import { sessionSelectors } from 'redux/session';
 
 import scss from './App.module.scss';
 
@@ -32,17 +27,10 @@ const ExchangeMobilePage = lazy(() =>
   import('./Pages/ExchangeMobilePage/ExchangeMobilePage')
 );
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
-//* isAuth(pin):true
-//* token(pin):"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2M2ZjOWJhZS0xNGNiLTQ5NjEtOGI2NC1hMTQwNDdlYWQxNmMiLCJpYXQiOjE2Njc1MTEzMjEsImV4cCI6MTAwMDAwMDE2Njc1MTEzMjB9.AaUpdtIojxF5bEyu4r1naPJwj37NlwYJgMnv89FGevI"
-//* username(pin):"tester"
-//* email(pin):"testerovych5@mail.com"
-//* id(pin):"5c322c08-ac8e-4bfb-b99e-1aea479bcda5"
-//* balance(pin):0
-//* error(pin):null
-//* isLoading(pin):false
+
 export const App = () => {
-  const { getAuthToken, getIsAuth, getIsLoading } = sessionSelectors;
-  const isAuth = useSelector(getIsAuth);
+  const { getAuthToken, getIsLoading } = sessionSelectors;
+
   const isAuthLoading = useSelector(getIsLoading);
   const authToken = useSelector(getAuthToken);
 
@@ -52,7 +40,7 @@ export const App = () => {
 
   useEffect(() => {
     if (authToken) {
-      dispatch(authOperation.refresh());
+      dispatch(authOperation.refreshThunk());
       return;
     }
   }, [dispatch, authToken]);

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ButtonLink from 'components/ButtonLink/ButtonLink';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 import { sprite } from 'assets/images/sprite';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { authOperation } from 'redux/session';
 
 import s from './LogOutConfirm.module.scss';
@@ -13,10 +13,7 @@ import s from './LogOutConfirm.module.scss';
 const LogOutConfirm = props => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-const dispatch = useDispatch()
-
-
-
+  const dispatch = useDispatch();
 
   function onToggleModal() {
     setIsModalOpen(!isModalOpen);
@@ -24,7 +21,7 @@ const dispatch = useDispatch()
 
   function onConfrimLogOut() {
     onToggleModal();
-    dispatch(authOperation.logOut())
+    dispatch(authOperation.logOutThunk());
     console.log('ACCEPTED LOG OT');
   }
   function onDeclineLogOut() {
@@ -46,11 +43,15 @@ const dispatch = useDispatch()
             {/* <button type="button" onClick={onConfrimLogOut}>
               YES
             </button> */}
-            <ButtonLink type="button" onClick={onConfrimLogOut}>YES</ButtonLink>
+            <ButtonLink type="button" onClick={onConfrimLogOut}>
+              YES
+            </ButtonLink>
             {/* <button type="button" onClick={onDeclineLogOut}>
               NO
             </button> */}
-            <Button type="button" onClick={onDeclineLogOut}>NO</Button>
+            <Button type="button" onClick={onDeclineLogOut}>
+              NO
+            </Button>
           </div>
         </Modal>
       )}
@@ -58,6 +59,6 @@ const dispatch = useDispatch()
   );
 };
 
-LogOutConfirm.propTypes = {};
+// LogOutConfirm.propTypes = {};
 
 export default LogOutConfirm;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import TableMobile from 'components/TableMobile/TableMobile';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
 import {
@@ -29,6 +29,6 @@ const TransactionsPage = props => {
   );
 };
 
-TransactionsPage.propTypes = {};
+// TransactionsPage.propTypes = {};
 
 export default TransactionsPage;

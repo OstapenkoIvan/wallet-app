@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 
@@ -17,6 +17,6 @@ const CreateTransaction = props => {
   );
 };
 
-CreateTransaction.propTypes = {};
+// CreateTransaction.propTypes = {};
 
 export default CreateTransaction;

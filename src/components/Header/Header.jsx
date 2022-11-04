@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import LogOutConfirm from './LogOutConfirm/LogOutConfirm';
 import { useSelector } from 'react-redux';
 import { getSessionInfo } from 'redux/session/session-selectors';
 
-import { sprite } from 'assets/images/sprite';
+// import { sprite } from 'assets/images/sprite';
 import logoImg from '../../assets/images/logo.png';
 
 import scss from './Header.module.scss';
@@ -42,6 +42,6 @@ const Header = props => {
   );
 };
 
-Header.propTypes = {};
+// Header.propTypes = {};
 
 export default Header;

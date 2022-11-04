@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refresh } from './auth-operation';
+import {
+  registerThunk,
+  logInThunk,
+  logOutThunk,
+  refreshThunk,
+} from './auth-operation';
 
 const initialState = {
   isAuth: false,
@@ -18,54 +23,54 @@ const sessionSlice = createSlice({
   name: 'session',
   initialState,
   extraReducers: {
-    [register.pending](state) {
+    [registerThunk.pending](state) {
       state.isLoading = true;
     },
-    [register.fulfilled](state, { payload }) {
+    [registerThunk.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.user = payload.data.user;
       state.token = payload.data.token;
       state.isAuth = true;
     },
-    [register.rejected]: (state, { payload }) => {
+    [registerThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [logIn.pending](state) {
+    [logInThunk.pending](state) {
       state.isLoading = true;
     },
-    [logIn.fulfilled](state, { payload }) {
+    [logInThunk.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.user = payload.user;
       state.token = payload.token;
       state.isAuth = true;
     },
-    [logIn.rejected]: (state, { payload }) => {
+    [logInThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [logOut.pending](state) {
+    [logOutThunk.pending](state) {
       state.isLoading = true;
     },
-    [logOut.fulfilled](state) {
+    [logOutThunk.fulfilled](state) {
       state.isLoading = false;
       state.user = { username: '', email: '', id: '', balance: '' };
       state.token = null;
       state.isAuth = false;
     },
-    [logOut.rejected]: (state, { payload }) => {
+    [logOutThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [refresh.pending](state) {
+    [refreshThunk.pending](state) {
       state.isLoading = true;
     },
-    [refresh.fulfilled](state, { payload }) {
+    [refreshThunk.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.user = payload;
       state.isAuth = true;
     },
-    [refresh.rejected](state, { payload }) {
+    [refreshThunk.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },

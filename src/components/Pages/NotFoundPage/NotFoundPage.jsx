@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import scss from './NotFoundPage.module.scss';
 import Header from 'components/Header/Header';
 

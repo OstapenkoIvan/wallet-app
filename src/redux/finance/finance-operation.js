@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authOperation } from 'redux/session';
 
-export const getTransactions = createAsyncThunk(
+export const getTransactionsThunk = createAsyncThunk(
   'transactions',
   async (_, { rejectWithValue }) => {
     try {
@@ -13,7 +13,7 @@ export const getTransactions = createAsyncThunk(
   }
 );
 
-export const addTransaction = createAsyncThunk(
+export const addTransactionThunk = createAsyncThunk(
   'add',
   async (transaction, { rejectWithValue }) => {
     try {
@@ -28,7 +28,7 @@ export const addTransaction = createAsyncThunk(
   }
 );
 
-export const deleteTransaction = createAsyncThunk(
+export const deleteTransactionThunk = createAsyncThunk(
   'delete',
   async (id, { rejectWithValue }) => {
     try {
@@ -40,7 +40,7 @@ export const deleteTransaction = createAsyncThunk(
   }
 );
 
-export const editTransaction = createAsyncThunk(
+export const editTransactionThunk = createAsyncThunk(
   'edit',
   async ({ id, transaction }, { rejectWithValue }) => {
     try {
@@ -55,7 +55,7 @@ export const editTransaction = createAsyncThunk(
   }
 );
 
-export const getSummary = createAsyncThunk(
+export const getSummaryThunk = createAsyncThunk(
   'getSummary',
   async ({ month = 1, year = 2021 }, { rejectWithValue }) => {
     try {
@@ -69,7 +69,7 @@ export const getSummary = createAsyncThunk(
   }
 );
 
-export const getCategories = createAsyncThunk(
+export const getCategoriesThunk = createAsyncThunk(
   'getCategories',
   async (_, { rejectWithValue }) => {
     try {

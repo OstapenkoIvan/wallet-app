@@ -5,10 +5,7 @@ import { getUserBalance } from 'redux/session/session-selectors';
 
 import NavBar from 'components/AppBar/NavBar/NavBar';
 import Currency from 'components/Currency';
-import {
-  NotMobile,
-  MobileEndRoute,
-} from 'components/DeviceTypeControl/DeviseTypeController';
+import { NotMobile } from 'components/DeviceTypeControl/DeviseTypeController';
 
 import scss from './AppBar.module.scss';
 
@@ -26,13 +23,6 @@ const AppBar = () => {
             <span className={scss.value}>₴ {userBalance}</span>
           </div>
         </NotMobile>
-
-        {/* <MobileEndRoute path={'/'} end={true}>
-          <div className={scss.balance}>
-            <span className={scss.title}>your balance</span>
-            <span className={scss.value}>₴ {userBalance}</span>
-          </div>
-        </MobileEndRoute> */}
       </div>
 
       <NotMobile>
