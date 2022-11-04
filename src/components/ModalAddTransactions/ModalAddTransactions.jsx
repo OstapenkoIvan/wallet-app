@@ -5,12 +5,17 @@ import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import scss from './ModalAddTransactions.module.scss';
 import sprite from '../../images/sprite.svg';
+
 const modalRoot = document.querySelector('#modal-root');
 
-export default function ModalAddTransactions({onClose}) {
+export default function ModalAddTransactions({ onClose }) {
+    
     const [checked, setChecked] = useState(true);
     const [selectActive, setSelectActive] = useState(false);
-    const [hiddenInputValue, setHiddenInputValue] = useState('Select a category')
+    const [categoryId, setCategoryId] = useState('Select a category')
+    const [comment, setComment] = useState('');
+    const [amount, setAmount] = useState('')
+
     const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)'
     })
@@ -39,40 +44,62 @@ export default function ModalAddTransactions({onClose}) {
         setSelectActive(!selectActive);
     };
 
-    const handleHiddenInputValue = event => {
+    const handleCategoryId = event => {
         const value = event.target.id
-        setHiddenInputValue(value)
+        setCategoryId(value)
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault()
+
+        const inputs = event.target;
+        
+        setCategoryId(categoryId);
+        const transactionDate = inputs.elements.transactionDate.value;
+        const type = inputs.elements.type.value;        
+        setComment(comment);
+        setAmount(amount);
+        
+        console.log({ transactionDate, type, categoryId, comment, amount })
+
+        onClose()
     }
 
     return createPortal(
         <div className={scss.overlay} onClick={handleBackDropClick}>
             <div className={scss.modal} >
+
                 {isDesktopOrLaptop &&
                     <button className={scss.closeButton} type='button' onClick={() => onClose(false)}>
                     <svg className={scss.closeIcon} width="20" height="20">
                         <use href={sprite + '#close'}></use>
                     </svg>
-                </button>}
+                    </button>
+                }
+                
                 <h2 className={scss.modalTitle}>Add transactions</h2>
-                <div className={scss.checkboxContainer}>
-                    <p className={checked !== true ? scss.textLeft : [scss["textLeft"], scss["isNotActive"] ].join(" ")}>Income</p>
-                    <input onChange={() => setChecked(!checked)} id='checkbox' type="checkbox" name='checkbox' defaultChecked={checked} className={scss.checkbox}/>
-                    <label htmlFor="checkbox" className={scss.checkboxLabel}>
-                        <span className={scss.checkboxSlider}>
-                            <svg className={scss.plus} width="20" height="20">
-                                <use id="plus" href={sprite + '#untitled'} />
-                            </svg>
-                            <svg className={scss.minus} width="20" height="20">
-                                <use id="minus" href={sprite + '#minus'} />
-                            </svg>
-                        </span>
-                    </label>
-                    <p className={checked === true ? scss.textRight : [scss["textRight"], scss["isNotActive"] ].join(" ")}>Expense</p>
-                </div>
-                <form className={scss.modalForm}>
-                    {checked === true && <div onClick={toggleClass}  className={scss.select} tabIndex="0" id="country">
 
-                        <div className={hiddenInputValue === "Select a category" ? scss.selectHeader : [scss["selectHeader"], scss["isChosen"] ].join(" ")}>{hiddenInputValue}</div>
+                <form className={scss.modalForm} onSubmit={handleSubmit}>
+
+                    <div className={scss.checkboxContainer}>
+                        <p className={checked !== true ? scss.textLeft : [scss["textLeft"], scss["isNotActive"] ].join(" ")}>Income</p>
+                        <input onChange={() => setChecked(!checked)} id='checkbox' type="checkbox" name='type' value={checked === true ? 'EXPENSE' : 'INCOME'} checked={checked} className={scss.checkbox}/>
+                        <label htmlFor="checkbox" className={scss.checkboxLabel}>
+                            <span className={scss.checkboxSlider}>
+                                <svg className={scss.plus} width="20" height="20">
+                                    <use id="plus" href={sprite + '#untitled'} />
+                                </svg>
+                                <svg className={scss.minus} width="20" height="20">
+                                    <use id="minus" href={sprite + '#minus'} />
+                                </svg>
+                            </span>
+                        </label>
+                        <p className={checked === true ? scss.textRight : [scss["textRight"], scss["isNotActive"] ].join(" ")}>Expense</p>
+                    </div>
+
+                    <div onClick={toggleClass}  className={scss.select} tabIndex="0" id="country">
+
+                        <div className={categoryId === "Select a category" ? scss.selectHeader : [scss["selectHeader"], scss["isChosen"] ].join(" ")}>{categoryId}</div>
 
                         <svg className={scss.selectIcon} width="40" height="19">
                             <use href={sprite + '#icon-select-arrow'}></use>
@@ -80,36 +107,43 @@ export default function ModalAddTransactions({onClose}) {
 
                         <ul className={selectActive ? [scss["selectBody"], scss["isActive"] ].join(" ") : scss.selectBody} >
 
-                            <li className={scss.selectItem} id='Main' onClick={handleHiddenInputValue} tabIndex="0">Main</li>
-                            <li className={scss.selectItem} id="Food" onClick={handleHiddenInputValue} tabIndex="0">Food</li>
-                            <li className={scss.selectItem} id="Auto" onClick={handleHiddenInputValue} tabIndex="0">Auto</li>
-                            <li className={scss.selectItem} id="Development" onClick={handleHiddenInputValue} tabIndex="0">Development</li>
-                            <li className={scss.selectItem} id="Children" onClick={handleHiddenInputValue} tabIndex="0">Children</li>
-                            <li className={scss.selectItem} id="House" onClick={handleHiddenInputValue} tabIndex="0">House</li>
-                            <li className={scss.selectItem} id="Education" onClick={handleHiddenInputValue} tabIndex="0">Education</li>
-                            <li className={scss.selectItem} id="Reset" onClick={handleHiddenInputValue} tabIndex="0">Reset</li>
-
+                            {checked === true ? (
+                                <>
+                                    <li className={scss.selectItem} id='Main' onClick={handleCategoryId} tabIndex="0">Main</li>
+                                    <li className={scss.selectItem} id="Food" onClick={handleCategoryId} tabIndex="0">Food</li>
+                                    <li className={scss.selectItem} id="Auto" onClick={handleCategoryId} tabIndex="0">Auto</li>
+                                    <li className={scss.selectItem} id="Development" onClick={handleCategoryId} tabIndex="0">Development</li>
+                                    <li className={scss.selectItem} id="Children" onClick={handleCategoryId} tabIndex="0">Children</li>
+                                    <li className={scss.selectItem} id="House" onClick={handleCategoryId} tabIndex="0">House</li>
+                                    <li className={scss.selectItem} id="Education" onClick={handleCategoryId} tabIndex="0">Education</li>
+                                    <li className={scss.selectItem} id="Reset" onClick={handleCategoryId} tabIndex="0">Reset</li>
+                                </>) : (
+                                    <>
+                                        <li className={scss.selectItem} id="Regular Income" onClick={handleCategoryId} tabIndex="0">Regular Income</li>
+                                        <li className={scss.selectItem} id="Iregular Income" onClick={handleCategoryId} tabIndex="0">Iregular Income</li>
+                                </>)
+                            }
                         </ul>
 
-                        <input className={scss.hiddenInput} name="category" id="category"
-                            placeholder="Select a category" value={hiddenInputValue} onChange={handleHiddenInputValue}  required/>
+                        <input className={scss.hiddenInput} name="categoryId" id="category"
+                            placeholder="Select a category" value={categoryId} onChange={handleCategoryId}  required/>
 
-                    </div>}
+                    </div>
+
                     <div className={scss.inputsContainer}>
-                        <input type="text" name="amount" placeholder='0.00' className={scss.inputField}  required/>
+                        <input onChange={(event) => setAmount(Number(event.target.value))} type="text" name="amount" placeholder='0.00' className={scss.inputField} value={amount} required/>
                         <label className={scss.inputLabel}></label>
 
                         <label htmlFor="date" className={scss.dateLabel}>
-                            <Datetime inputProps={{ className: scss.inputFieldDate, name: 'date' }} dateFormat="DD/MM/YYYY" timeFormat={false} closeOnSelect={true} initialValue={new Date()} />
+                            <Datetime inputProps={{ className: scss.inputFieldDate, name: 'transactionDate' }} dateFormat="DD/MM/YYYY" timeFormat={false} closeOnSelect={true}  initialValue={new Date()} />
                             <svg className={scss.dateIcon} width="24" height="24">
                                 <use href={sprite + '#calendar'}></use>
                             </svg>
-                        </label>
-                        
+                        </label>              
 
                     </div>
                     
-                    <textarea type="text" name="email" placeholder='Comment' className={scss.inputFieldComment}  required/>
+                    <textarea onChange={(event) => setComment(event.target.value)} type="text" name="comment" placeholder='Comment' className={scss.inputFieldComment} value={comment}  required/>
                     <label className={scss.inputLabel}></label>
                     
                     <div className={scss.buttonsThumb}>
