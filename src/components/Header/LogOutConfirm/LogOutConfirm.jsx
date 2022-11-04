@@ -39,7 +39,7 @@ const LogOutConfirm = () => {
       {isModalOpen && (
         <Modal handleToggle={onToggleModal} isOpenModal={isModalOpen}>
           <div className={s.LogOutConfirm}>
-            <p className={s.logoutMessage}>You realy want to log out?</p>
+            <p className={s.logoutMessage}>You really want to log out?</p>
 
             <div className={s.buttonWrapper}>
               <ButtonLink type="button" text="YES" onClick={onConfrimLogOut} />

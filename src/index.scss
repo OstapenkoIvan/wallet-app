@@ -5,25 +5,13 @@
 @import './sass/utils/container';
 @import './sass/utils/helpers';
 
-html {
-  box-sizing: border-box;
-  /* відміняє синій фон при дотику по обєктах на тачскірінах */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-}
-
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-}
-
 *,
 ::after,
 ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 img {
@@ -65,15 +53,7 @@ td {
   vertical-align: baseline;
 }
 table {
-  table-layout:fixed ;
+  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-section,
-ul,
-li,
-div {
-  // outline: 1px solid tomato;
-}
-
