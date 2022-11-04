@@ -1,15 +1,20 @@
-.LogOutConfirm{
+@import '../../../sass/utils/variables';
+@import '../../../sass/utils/mixins';
+@import '../../../stylesheet/fonts.css';
+
+.LogOutConfirm {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
 
-  padding: 40px 0;
-
+  padding: 40px;
+  border: transparent;
+  border-radius: 20px;
   width: 400px;
   height: 400px;
-  
-  background-color: azure;
+
+  background-color: white;
 }
 .exitBtn {
   display: flex;
@@ -33,17 +38,27 @@
   letter-spacing: 0.05em;
   color: grey;
 }
-.exitText{
-  @media screen and (max-width:768px) {
+.exitText {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
 .userName {
   border-right: 1px solid grey;
 }
-.exitBtn {
-}
+
 .svg {
   width: 24px;
   height: 24px;
+}
+.logoutMessage {
+  font-family: 'Circe-Regular';
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

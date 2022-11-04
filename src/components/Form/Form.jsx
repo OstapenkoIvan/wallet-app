@@ -151,14 +151,16 @@ const SignInForm = ({ userRegister }) => {
             </div>
           )}
 
-          <Button buttonType="submit" text="REGISTER" />
-          <ButtonLink text="LOG IN" navigateTo="/signin" />
+          <div className={css.buttonWrapper}>
+            <Button buttonType="submit" text="REGISTER" />
+            <ButtonLink text="LOG IN" navigateTo="/signin" />
+          </div>
         </>
       ) : (
-        <>
+        <div className={css.buttonWrapper}>
           <Button buttonType="submit" text="LOG IN" />
           <ButtonLink text="REGISTER" navigateTo="/signup" />
-        </>
+        </div>
       )}
     </form>
   );

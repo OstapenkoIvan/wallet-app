@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+
 import ButtonLink from 'components/ButtonLink/ButtonLink';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
@@ -10,7 +10,7 @@ import { authOperation } from 'redux/session';
 
 import s from './LogOutConfirm.module.scss';
 
-const LogOutConfirm = props => {
+const LogOutConfirm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
@@ -39,26 +39,18 @@ const LogOutConfirm = props => {
       {isModalOpen && (
         <Modal handleToggle={onToggleModal} isOpenModal={isModalOpen}>
           <div className={s.LogOutConfirm}>
-            <p>You realy wanna to log out?</p>
-            {/* <button type="button" onClick={onConfrimLogOut}>
-              YES
-            </button> */}
-            <ButtonLink type="button" onClick={onConfrimLogOut}>
-              YES
-            </ButtonLink>
-            {/* <button type="button" onClick={onDeclineLogOut}>
-              NO
-            </button> */}
-            <Button type="button" onClick={onDeclineLogOut}>
-              NO
-            </Button>
+            <p className={s.logoutMessage}>You realy want to log out?</p>
+
+            <div className={s.buttonWrapper}>
+              <ButtonLink type="button" text="YES" onClick={onConfrimLogOut} />
+
+              <Button type="button" text="NO" onClick={onDeclineLogOut} />
+            </div>
           </div>
         </Modal>
       )}
     </>
   );
 };
-
-// LogOutConfirm.propTypes = {};
 
 export default LogOutConfirm;
