@@ -138,10 +138,9 @@ export const App = () => {
           </Routes>
         </Suspense>
       </Layout>
-
+      // comment by Ivan
       {/* <ButtonAddTransactions onClick={toggleModal} />
       {isModalOpen && <ModalAddTransactions onClose={toggleModal} />} */}
-
       {/* <AppLoader isLoading={false} global={true} /> */}
     </div>
   );
