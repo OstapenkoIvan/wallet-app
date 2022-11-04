@@ -1,7 +1,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import scss from '../TableMobile.module.scss';
-// ?
+
+
+
 const RowComp = ({ tdTitle, value }) => {
   return (
     <tr className={scss.trow}>

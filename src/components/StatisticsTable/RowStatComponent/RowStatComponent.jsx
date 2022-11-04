@@ -1,4 +1,6 @@
+import chartColorsArr from 'assets/chartColorsArr';
 import React from 'react';
+
 import scss from '../StatisticsTable.module.scss';
 
 const RowStatComponent = ({ arr }) => {
@@ -9,9 +11,10 @@ const RowStatComponent = ({ arr }) => {
       <tr key={idx} className={scss.tbodyRow}>
         <td className={[scss.colName, scss[`col-${idx + 1}`]].join(' ')}>
           <div
+            style={{ backgroundColor: chartColorsArr[idx] }}
             className={[scss.colored, scss[`colored-${idx + 1}`]].join(' ')}
           ></div>
-          {name}
+          <div className={scss.divData}>{name}</div>
         </td>
         <td className={[scss.colData, scss[`col-${idx + 1}`]].join(' ')}>
           {total}
@@ -22,3 +25,5 @@ const RowStatComponent = ({ arr }) => {
 };
 
 export default RowStatComponent;
+
+// backgroundColor={chartColorsArr[idx]}
