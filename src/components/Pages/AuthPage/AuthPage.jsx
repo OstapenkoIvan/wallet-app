@@ -1,4 +1,8 @@
-import css from 'pages/AuthPage/AuthPage.module.scss';
+import { useState, useEffect } from 'react';
+import { Link, } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Form from 'components/Form/Form';
 import {
   logo,
   desktopImageSignUp,
@@ -10,14 +14,30 @@ import {
   tabletImage,
   tabletImage2x,
 } from 'assets/images';
-import Form from 'components/Form/Form';
 
-const AuthPage = () => {
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperation } from 'redux/session';
+import { financeOperation } from 'redux/finance';
+import { sessionSlice } from 'redux/session';
+import { sessionSelectors } from 'redux/session';
+
+import css from './AuthPage.module.scss';
+
+const AuthPage = ({ forRegister }) => {
+  const { getAuthToken ,getIsAuth} = sessionSelectors;
+  const isAuth = useSelector(getIsAuth);
+  const authToken = useSelector(getAuthToken);
+  console.log(isAuth,authToken);
+  
+
+  useEffect(() => {}, []);
+
+
   return (
     <div className={css.section}>
       <div className={`${css.pageContainer} container`}>
         <div className={css.titleWrapper}>
-          {true ? (
+          {!forRegister ? (
             <>
               <picture>
                 <source
@@ -57,15 +77,20 @@ const AuthPage = () => {
           <h1 className={css.title}>Finance App</h1>
         </div>
         <div className={css.formContainer}>
-          <div className={css.formTitleWrapper}>
-            <img src={logo} alt="Logo" className={css.logo} />
-            <h1 className={css.formTitle}>Wallet</h1>
-          </div>
-          {false ? <Form userRegister /> : <Form />}
+          <Link to="/">
+            <div className={css.formTitleWrapper}>
+              <img src={logo} alt="Logo" className={css.logo} />
+              <h1 className={css.formTitle}>Wallet</h1>
+            </div>
+          </Link>
+          {forRegister ? <Form userRegister /> : <Form />}
         </div>
       </div>
     </div>
   );
 };
 
+AuthPage.propTypes = {
+  forRegister: PropTypes.bool,
+};
 export default AuthPage;

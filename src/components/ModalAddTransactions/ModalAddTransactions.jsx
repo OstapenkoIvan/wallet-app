@@ -5,6 +5,7 @@ import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import scss from './ModalAddTransactions.module.scss';
 import sprite from '../../images/sprite.svg';
+
 const modalRoot = document.querySelector('#modal-root');
 
 export default function ModalAddTransactions({onClose}) {
