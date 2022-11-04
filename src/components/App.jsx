@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
@@ -7,7 +7,6 @@ import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
 import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
-import { Navigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
