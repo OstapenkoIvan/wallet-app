@@ -16,7 +16,7 @@ const NavBar = props => {
             className={({ isActive }) =>
               isActive ? scss.activeLink : scss.primaryLink
             }
-            to="/"
+            to="transactionsPage"
             end
           >
             <div className={scss.navIcon}>
@@ -30,7 +30,7 @@ const NavBar = props => {
             className={({ isActive }) =>
               isActive ? scss.activeLink : scss.primaryLink
             }
-            to="/statistics"
+            to="statistics"
           >
             <div className={scss.navIcon}>
             <svg className={scss.svg} ><use href={`${sprite}#icon-chart`}></use></svg>
@@ -44,7 +44,7 @@ const NavBar = props => {
               className={(obj) =>
                 obj.isActive ? scss.activeLink : scss.primaryLink
               }
-              to="/exchangeMobile"
+              to="exchangeMobile"
             >
               <div className={scss.navIcon}>
               <svg className={scss.svg} ><use href={`${sprite}#icon-dollar`}></use></svg>

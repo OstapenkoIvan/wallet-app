@@ -18,25 +18,25 @@ const Header = props => {
   return (
     <div className={scss.Header}>
       <div className={['container', scss.wrapper].join(' ')}>
-        <Link to="/">
+        <Link to="/dashboardPage">
           <div className={scss.logoBox}>
             <img className={scss.logoImg} src={logoImg} alt="logo" />
             <span className={scss.logoText}>Wallet</span>
           </div>
         </Link>
-        {(
-          <div className={scss.wrapper}>
-            <span className={scss.userName}>{username}</span>
+        {isAuth && (
+            <div className={scss.wrapper}>
+              <span className={scss.userName}>{username}</span>
 
-            <LogOutConfirm />
-          </div>
-        ) && (
-          <div className={scss.wrapper}>
-            <span className={scss.userName}>{username}</span>
+              <LogOutConfirm />
+            </div>
+          ) && (
+            <div className={scss.wrapper}>
+              <span className={scss.userName}>{username}</span>
 
-            <LogOutConfirm />
-          </div>
-        )}
+              <LogOutConfirm />
+            </div>
+          )}
       </div>
     </div>
   );

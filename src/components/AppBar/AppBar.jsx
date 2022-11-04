@@ -27,12 +27,12 @@ const AppBar = () => {
           </div>
         </NotMobile>
 
-        <MobileEndRoute path={'/'} end={true}>
+        {/* <MobileEndRoute path={'/'} end={true}>
           <div className={scss.balance}>
             <span className={scss.title}>your balance</span>
             <span className={scss.value}>₴ {userBalance}</span>
           </div>
-        </MobileEndRoute>
+        </MobileEndRoute> */}
       </div>
 
       <NotMobile>

@@ -7,10 +7,9 @@ import AppBar from 'components/AppBar/AppBar';
 import CreateTransaction from 'components/CreateTransaction/CreateTransaction';
 
 import scss from './DashboardPage.module.scss';
-const DashboardPage = ({children}) => {
+const DashboardPage = () => {
   return (
     <>
-
       <div className={scss.blur}>
         <Header />
         <div className="container">
@@ -20,13 +19,11 @@ const DashboardPage = ({children}) => {
             </div>
             <div className={scss.OutletBox}>
               <Outlet />
-              {children}
             </div>
           </div>
         </div>
       </div>
-      <CreateTransaction/>
-
+      <CreateTransaction />
     </>
   );
 };

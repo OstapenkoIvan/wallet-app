@@ -8,6 +8,7 @@ import PublicRoute from './Routes/PublicRoute';
 import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 import ModalAddTransactions from './ModalAddTransactions/ModalAddTransactions';
 import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
+import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
@@ -20,7 +21,9 @@ import Modal from './Modal/Modal';
 import scss from './App.module.scss';
 
 const AuthPage = lazy(() => import('./Pages/AuthPage/AuthPage'));
-const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
+const TransactionsPage = lazy(() =>
+  import('./Pages/TransactionsPage/TransactionsPage')
+);
 const StatisticsPage = lazy(() =>
   import('./Pages/StatisticsPage/StatisticsPage')
 );
@@ -123,25 +126,33 @@ export const App = () => {
       <Layout>
         <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
           <Routes>
-            <Route path="/" element={<PublicRoute redirectTo="/" end />}>
+            <Route
+              path="/"
+              element={
+                <PublicRoute redirectTo="/dashboardPage/transactionsPage" end />
+              }
+            >
               <Route path="signin" element={<AuthPage />} />
               <Route path="signup" element={<AuthPage forRegister />} />
             </Route>
-            <Route path="/" element={<PrivateRoute redirectTo="/signin" end />}>
-              <Route path="/" element={<DashboardPage />}>
-                <Route index element={<HomePage />} />
+            <Route path="/" element={<PrivateRoute redirectTo="/signin" />}>
+              <Route path="dashboardPage/*" element={<DashboardPage />}>
+                <Route path="transactionsPage" element={<TransactionsPage />} />
                 <Route path="statistics" element={<StatisticsPage />} />
-                <Route path="exchangeMobile" element={<ExchangeMobilePage />} />
+                <Route
+                  path="exchangeMobile"
+                  element={
+                    <MobileRoute redirectTo="/dashboardPage/transactionsPage" />
+                  }
+                >
+                  <Route index element={<ExchangeMobilePage />} />
+                </Route>
               </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </Layout>
-      // comment by Ivan
-      {/* <ButtonAddTransactions onClick={toggleModal} />
-      {isModalOpen && <ModalAddTransactions onClose={toggleModal} />} */}
-      {/* <AppLoader isLoading={false} global={true} /> */}
     </div>
   );
 };

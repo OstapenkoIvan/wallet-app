@@ -6,11 +6,11 @@ import {
   NotMobile,
   Mobile,
 } from 'components/DeviceTypeControl/DeviseTypeController';
-import scss from './HomePage.module.scss';
+import scss from './TransactionsPage.module.scss';
 
-const HomePage = props => {
+const TransactionsPage = props => {
   return (
-    <div className={scss.HomePage}>
+    <div className={scss.TransactionsPage}>
       <Mobile>
         <TableMobile />
       </Mobile>
@@ -29,6 +29,6 @@ const HomePage = props => {
   );
 };
 
-HomePage.propTypes = {};
+TransactionsPage.propTypes = {};
 
-export default HomePage;
+export default TransactionsPage;
