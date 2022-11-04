@@ -1,4 +1,9 @@
 .Statistics {
+  display: flex;
   height: 100%;
   width: 100%;
+}
+
+.chartWrapper {
+  width: 288px;
 }
