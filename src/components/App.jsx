@@ -1,5 +1,7 @@
+
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+
 
 import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
@@ -105,6 +107,7 @@ export const App = () => {
   // );
   //
 
+
   // import PrivateRoute from './Routes/PrivateRoute';
   // import PublicRoute from './Routes/PublicRoute';
 
@@ -143,5 +146,6 @@ export const App = () => {
         </Suspense>
       </Layout>
     </div>
+
   );
 };
