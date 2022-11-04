@@ -29,14 +29,14 @@ const AuthPage = ({ forRegister }) => {
               <picture>
                 <source
                   srcSet={`${desktopImageSignUp} 1x, ${desktopImageSignUp2x} 2x`}
-                  sizes="(min-width: 1280px)"
+                  media="(min-width: 1280px)"
                 />
                 <source
                   srcSet={`${tabletImageSignUp} 1x, ${tabletImageSignUp2x} 2x`}
-                  sizes="(min-width: 768px)"
+                  media="(min-width: 768px)"
                 />
                 <img
-                  src={tabletImageSignUp}
+                  src={`${tabletImageSignUp} 1x`}
                   alt="Background"
                   className={css.backgroundImage}
                 />
@@ -47,14 +47,14 @@ const AuthPage = ({ forRegister }) => {
               <picture>
                 <source
                   srcSet={`${desktopImage} 1x, ${desktopImage2x} 2x`}
-                  sizes="(min-width: 1280px)"
+                  media="(min-width: 1280px)"
                 />
                 <source
                   srcSet={`${tabletImage} 1x, ${tabletImage2x} 2x`}
-                  sizes="(min-width: 768px)"
+                  media="(min-width: 768px)"
                 />
                 <img
-                  src={tabletImage}
+                  src={`${tabletImage} 1x`}
                   alt="Background"
                   className={css.backgroundImage}
                 />
