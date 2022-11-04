@@ -1,9 +1,8 @@
-const getIsAuth = state => state.session.isAuth;
-const getUsername = state => state.session.user.username;
+export const getSessionInfo = state => state.session;
+export const getIsAuth = state => state.session.isAuth;
+export const getAuthToken = state => state.session.token;
+export const getIsLoading = state => state.session.isLoading;
+export const getUserInfo = state => state.session.user;
+export const getUserName = state => state.session.user.username;
+export const getUserBalance = state => state.session.user.balance;
 
-export const getCurrentUser = state => state.session.currentUser;
-export const getLoading = state => state.session.loading;
-
-const authSelectors = { getIsAuth, getUsername };
-
-export default authSelectors;

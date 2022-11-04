@@ -17,11 +17,11 @@ export const NotMobile = ({ children }) => {
   const isNotMobile = useMediaQuery({ minWidth: 768 });
   return isNotMobile ? children : null;
 };
-export const MobileEndRoute = ({ path, element, end = false }) => {
+export const MobileEndRoute = ({ path, children, end = false }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return isMobile ? (
     <Routes>
-      <Route path={path} element={element} end={end} />
+      <Route path={path} element={children} end={end} />
     </Routes>
   ) : null;
 };

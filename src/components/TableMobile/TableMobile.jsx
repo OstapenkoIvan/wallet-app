@@ -197,7 +197,7 @@ const TableMobile = () => {
       balance: el.balanceAfter,
     };
   });
-  console.log(filteredArr);
+  // console.log(filteredArr);
 
   return (
     <div className={scss.container}>

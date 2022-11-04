@@ -41,8 +41,8 @@ const NavBar = props => {
         <Mobile>
           <li className={scss.navItem}>
             <NavLink
-              className={({ isActive }) =>
-                isActive ? scss.activeLink : scss.primaryLink
+              className={(obj) =>
+                obj.isActive ? scss.activeLink : scss.primaryLink
               }
               to="/exchangeMobile"
             >

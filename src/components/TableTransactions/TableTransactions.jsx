@@ -1,7 +1,7 @@
 import React from 'react';
 
 import scss from './TableTransactions.module.scss';
-console.log(scss);
+
 const TableTransactions = () => {
   // const Cat = [
   //   {

@@ -4,19 +4,30 @@ import { Outlet } from 'react-router-dom';
 
 import Header from 'components/Header/Header';
 import AppBar from 'components/AppBar/AppBar';
+import CreateTransaction from 'components/CreateTransaction/CreateTransaction';
 
 import scss from './DashboardPage.module.scss';
-const DashboardPage = props => {
+const DashboardPage = ({children}) => {
   return (
-    <div className={scss.blur}>
-      <Header />
-      <div className="container">
-        <div className={scss.gridPage}> 
-          <div className={scss.AppBarBox}><AppBar /></div>
-          <div className={scss.OutletBox}><Outlet /></div>
+    <>
+
+      <div className={scss.blur}>
+        <Header />
+        <div className="container">
+          <div className={scss.gridPage}>
+            <div className={scss.AppBarBox}>
+              <AppBar />
+            </div>
+            <div className={scss.OutletBox}>
+              <Outlet />
+              {children}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <CreateTransaction/>
+
+    </>
   );
 };
 

@@ -21,7 +21,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 .logoBox {
   display: flex;
@@ -57,35 +56,17 @@
   display: flex;
   align-items: center;
 }
-.userName,
-.exitLink {
+.userName {
   display: flex;
   align-items: center;
   gap: 8px;
 
   padding: 12px;
   min-height: 30px;
-
-  fill: grey;
-}
-.userName,
-.exitText,
-.exitLink {
+  
   font-size: 16px;
   letter-spacing: 0.05em;
   color: grey;
-}
-.exitText{
-  @media screen and (max-width:768px) {
-    display: none;
-  }
-}
-.userName {
+
   border-right: 1px solid grey;
-}
-.exitLink {
-}
-.svg {
-  width: 24px;
-  height: 24px;
 }

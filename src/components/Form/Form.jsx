@@ -7,7 +7,9 @@ import ButtonLink from 'components/ButtonLink/ButtonLink';
 import sprite from 'assets/images/sprite.svg';
 
 import { useDispatch } from 'react-redux';
-import { register as registerAction } from 'redux/session/auth-operation';
+import { authOperation } from 'redux/session';
+// import { register as registerAction } from 'reduxOld/session/auth-operation';
+
 
 import css from 'components/Form/Form.module.scss';
 
@@ -26,12 +28,12 @@ const SignInForm = ({ userRegister }) => {
     const { username, email, password } = data;
     if (userRegister) {
       const userData = { username, email, password };
-      dispatch(registerAction(userData));
-      console.log(userData);
+      dispatch(authOperation.register(userData));
+      // console.log(userData);
       return userData;
     } else {
       const userData = { email, password };
-      dispatch(registerAction(userData));
+      dispatch(authOperation.logIn(userData));
       return userData;
     }
   };

@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { authOperation } from 'redux/session';
 
-export const allTransactions = createAsyncThunk(
+export const getTransactions = createAsyncThunk(
   'transactions',
   async (_, { rejectWithValue }) => {
     try {
-      const transactions = await axios.get('/api/transactions');
-      return transactions;
+      const { data } = await authOperation.userApi.get('transactions');
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -17,7 +17,37 @@ export const addTransaction = createAsyncThunk(
   'add',
   async (transaction, { rejectWithValue }) => {
     try {
-      const data = await axios.post('/api/transactions', transaction);
+      const { data } = await authOperation.userApi.post(
+        'transactions',
+        transaction
+      );
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteTransaction = createAsyncThunk(
+  'delete',
+  async (id, { rejectWithValue }) => {
+    try {
+      await authOperation.userApi.delete(`transactions/${id}`);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editTransaction = createAsyncThunk(
+  'edit',
+  async ({ id, transaction }, { rejectWithValue }) => {
+    try {
+      const data = await authOperation.userApi.patch(
+        `transactions/${id}`,
+        transaction
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -27,9 +57,11 @@ export const addTransaction = createAsyncThunk(
 
 export const getSummary = createAsyncThunk(
   'getSummary',
-  async ({ mounth, year } = '', { rejectWithValue }) => {
+  async ({ month = 1, year = 2021 }, { rejectWithValue }) => {
     try {
-      const data = await axios.get(`transactions-summary${mounth}&${year}`);
+      const { data } = await authOperation.userApi.get(
+        `transactions-summary?month=${month}&year=${year}`
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -41,7 +73,9 @@ export const getCategories = createAsyncThunk(
   'getCategories',
   async (_, { rejectWithValue }) => {
     try {
-      const data = await axios.get('transaction-categories');
+      const { data } = await authOperation.userApi.get(
+        'transaction-categories'
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
 
 import {
   persistStore,
@@ -14,7 +13,6 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { financeReducer } from './finance/finance-slice';
 import { sessionReducer } from './session/session-slice';
-import { globalReducer } from './global/global-slice';
 
 const persistSession = {
   key: 'session',
@@ -22,22 +20,17 @@ const persistSession = {
   whitelist: ['token'],
 };
 
-const rootReducer = combineReducers({
-  session: persistReducer(persistSession, sessionReducer),
-  finance: financeReducer,
-  global: globalReducer,
-});
-
 const store = configureStore({
-  reducer: rootReducer,
-  middleware: getDefaultMiddleware => [
-    ...getDefaultMiddleware({
+  reducer: {
+    session: persistReducer(persistSession, sessionReducer),
+    finance: financeReducer,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  ],
-  devTools: process.env.NODE_ENV === 'development',
 });
 
 const persistedStore = persistStore(store);

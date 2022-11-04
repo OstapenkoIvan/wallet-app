@@ -10,9 +10,8 @@ const initialState = {
     id: '',
     balance: '',
   },
-  currentUser: null,
   error: null,
-  loading: false,
+  isLoading: false,
 };
 
 const sessionSlice = createSlice({
@@ -20,55 +19,55 @@ const sessionSlice = createSlice({
   initialState,
   extraReducers: {
     [register.pending](state) {
-      state.loading = true;
+      state.isLoading = true;
     },
-    [register.fulfilled](state, action) {
-      console.log(action,'action reg full')
-      state.loading = false;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [register.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.user = payload.data.user;
+      state.token = payload.data.token;
       state.isAuth = true;
     },
-    [register.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
+    [register.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
     },
     [logIn.pending](state) {
-      state.loading = true;
+      state.isLoading = true;
     },
-    [logIn.fulfilled](state, action) {
-      state.loading = false;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [logIn.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.user = payload.user;
+      state.token = payload.token;
       state.isAuth = true;
     },
-    [logIn.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
+    [logIn.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
     },
     [logOut.pending](state) {
-      state.loading = true;
+      state.isLoading = true;
     },
     [logOut.fulfilled](state) {
-      state.loading = false;
+      state.isLoading = false;
       state.user = { username: '', email: '', id: '', balance: '' };
       state.token = null;
       state.isAuth = false;
     },
-    [logOut.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
+    [logOut.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
     },
     [refresh.pending](state) {
-      state.currentUser = true;
+      state.isLoading = true;
     },
-    [refresh.fulfilled](state, action) {
-      state.user = action.payload;
+    [refresh.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.user = payload;
       state.isAuth = true;
-      state.currentUser = false;
     },
-    [refresh.rejected](state) {
-      state.currentUser = false;
+    [refresh.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
     },
   },
 });

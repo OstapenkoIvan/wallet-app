@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import LogOutConfirm from './LogOutConfirm/LogOutConfirm';
+import { useSelector } from 'react-redux';
+import { getSessionInfo } from 'redux/session/session-selectors';
 
 import { sprite } from 'assets/images/sprite';
 import logoImg from '../../assets/images/logo.png';
@@ -8,6 +11,10 @@ import logoImg from '../../assets/images/logo.png';
 import scss from './Header.module.scss';
 
 const Header = props => {
+  const {
+    user: { username },
+    isAuth,
+  } = useSelector(getSessionInfo);
   return (
     <div className={scss.Header}>
       <div className={['container', scss.wrapper].join(' ')}>
@@ -17,17 +24,19 @@ const Header = props => {
             <span className={scss.logoText}>Wallet</span>
           </div>
         </Link>
-        <div className={scss.wrapper}>
-          <span className={scss.userName}>ІМЯ</span>
-          <Link to="signin" replace={true}>
-            <span className={scss.exitLink}>
-              <svg className={scss.svg}>
-                <use href={`${sprite}#icon-logout`}></use>
-              </svg>
-              <span className={scss.exitText}>Exit</span>
-            </span>
-          </Link>
-        </div>
+        {(
+          <div className={scss.wrapper}>
+            <span className={scss.userName}>{username}</span>
+
+            <LogOutConfirm />
+          </div>
+        ) && (
+          <div className={scss.wrapper}>
+            <span className={scss.userName}>{username}</span>
+
+            <LogOutConfirm />
+          </div>
+        )}
       </div>
     </div>
   );
