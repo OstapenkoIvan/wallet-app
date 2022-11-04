@@ -22,8 +22,8 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        <CreateTransaction />
       </div>
+        <CreateTransaction />
     </>
   );
 };

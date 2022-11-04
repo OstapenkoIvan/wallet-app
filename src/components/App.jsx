@@ -31,12 +31,12 @@ const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const { getAuthToken, getIsLoading } = sessionSelectors;
 
-  const isAuthLoading = useSelector(getIsLoading);
+  // const isAuthLoading = useSelector(getIsLoading);
   const authToken = useSelector(getAuthToken);
 
   const dispatch = useDispatch();
 
-  console.log(isAuthLoading);
+  // console.log(isAuthLoading);
 
   useEffect(() => {
     if (authToken) {
@@ -141,6 +141,7 @@ export const App = () => {
           </Routes>
         </Suspense>
       </Layout>
+      
     </div>
   );
 };

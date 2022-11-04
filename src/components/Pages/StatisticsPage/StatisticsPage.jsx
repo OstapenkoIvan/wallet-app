@@ -1,8 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
 import scss from './StatisticsPage.module.scss';
 
-const StatisticsPage = props => {
+const StatisticsPage = () => {
   return (
     <div className={scss.Statistics}>
       <span>STATISTICS </span>
@@ -15,7 +14,5 @@ const StatisticsPage = props => {
     </div>
   );
 };
-
-// StatisticsPage.propTypes = {}
 
 export default StatisticsPage;
