@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 import css from 'components/ButtonLink/ButtonLink.module.scss';
-const ButtonLink = ({ text, navigateTo }) => {
+const ButtonLink = ({ text, navigateTo, children, onClick = null }) => {
   return (
-    <a href={navigateTo} className={css.link}>
+    <Link to={navigateTo} className={css.link} onClick={onClick}>
       {text}
-    </a>
+      {children}
+    </Link>
   );
 };
 export default ButtonLink;

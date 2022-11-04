@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getTransactions,
-  getSummary,
-  getCategories,
-  addTransaction,
-  deleteTransaction,
-  editTransaction,
+  getTransactionsThunk,
+  getSummaryThunk,
+  getCategoriesThunk,
+  addTransactionThunk,
+  deleteTransactionThunk,
+  editTransactionThunk,
 } from './finance-operation';
 
 const initialState = {
@@ -20,80 +20,80 @@ const financeSlice = createSlice({
   name: 'finance',
   initialState,
   extraReducers: {
-    [getTransactions.pending]: state => {
+    [getTransactionsThunk.pending]: state => {
       state.isLoading = true;
     },
-    [getTransactions.fulfilled]: (state, { payload }) => {
+    [getTransactionsThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.transactions = payload;
       state.error = null;
     },
-    [getTransactions.rejected]: (state, { payload }) => {
+    [getTransactionsThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [addTransaction.pending]: state => {
+    [addTransactionThunk.pending]: state => {
       state.isLoading = true;
     },
-    [addTransaction.fulfilled]: (state, { payload }) => {
+    [addTransactionThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
 
       state.transactions = [...state.transactions, payload];
     },
-    [addTransaction.rejected]: (state, { payload }) => {
+    [addTransactionThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [deleteTransaction.pending]: state => {
+    [deleteTransactionThunk.pending]: state => {
       state.isLoading = true;
     },
-    [deleteTransaction.fulfilled]: (state, { payload }) => {
+    [deleteTransactionThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
 
       state.transactions = state.transactions.filter(
         item => item.id !== payload
       );
     },
-    [deleteTransaction.rejected]: (state, { payload }) => {
+    [deleteTransactionThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [editTransaction.pending]: state => {
+    [editTransactionThunk.pending]: state => {
       state.isLoading = true;
     },
-    [editTransaction.fulfilled]: (state, { payload }) => {
+    [editTransactionThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       const removedItemArr = state.transactions.filter(
         item => item.id !== payload.id
       );
       state.transactions = [payload, ...removedItemArr];
     },
-    [editTransaction.rejected]: (state, { payload }) => {
+    [editTransactionThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [getSummary.pending]: state => {
+    [getSummaryThunk.pending]: state => {
       state.isLoading = true;
     },
-    [getSummary.fulfilled]: (state, { payload }) => {
+    [getSummaryThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.summary = payload;
       state.error = null;
     },
-    [getSummary.rejected]: (state, { payload }) => {
+    [getSummaryThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
 
-    [getCategories.pending]: state => {
+    [getCategoriesThunk.pending]: state => {
       state.isLoading = true;
     },
-    [getCategories.fulfilled]: (state, { payload }) => {
+    [getCategoriesThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.categories = payload;
       state.error = null;
     },
-    [getCategories.rejected]: (state, { payload }) => {
+    [getCategoriesThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },

@@ -1,4 +1,8 @@
-import css from 'pages/AuthPage/AuthPage.module.scss';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Form from 'components/Form/Form';
 import {
   logo,
   desktopImageSignUp,
@@ -10,26 +14,29 @@ import {
   tabletImage,
   tabletImage2x,
 } from 'assets/images';
-import Form from 'components/Form/Form';
 
-const AuthPage = () => {
+import css from './AuthPage.module.scss';
+
+const AuthPage = ({ forRegister }) => {
+  useEffect(() => {}, []);
+
   return (
     <div className={css.section}>
       <div className={`${css.pageContainer} container`}>
         <div className={css.titleWrapper}>
-          {true ? (
+          {!forRegister ? (
             <>
               <picture>
                 <source
                   srcSet={`${desktopImageSignUp} 1x, ${desktopImageSignUp2x} 2x`}
-                  sizes="(min-width: 1280px)"
+                  media="(min-width: 1280px)"
                 />
                 <source
                   srcSet={`${tabletImageSignUp} 1x, ${tabletImageSignUp2x} 2x`}
-                  sizes="(min-width: 768px)"
+                  media="(min-width: 768px)"
                 />
                 <img
-                  src={tabletImageSignUp}
+                  src={`${tabletImageSignUp} 1x`}
                   alt="Background"
                   className={css.backgroundImage}
                 />
@@ -40,14 +47,14 @@ const AuthPage = () => {
               <picture>
                 <source
                   srcSet={`${desktopImage} 1x, ${desktopImage2x} 2x`}
-                  sizes="(min-width: 1280px)"
+                  media="(min-width: 1280px)"
                 />
                 <source
                   srcSet={`${tabletImage} 1x, ${tabletImage2x} 2x`}
-                  sizes="(min-width: 768px)"
+                  media="(min-width: 768px)"
                 />
                 <img
-                  src={tabletImage}
+                  src={`${tabletImage} 1x`}
                   alt="Background"
                   className={css.backgroundImage}
                 />
@@ -57,15 +64,20 @@ const AuthPage = () => {
           <h1 className={css.title}>Finance App</h1>
         </div>
         <div className={css.formContainer}>
-          <div className={css.formTitleWrapper}>
-            <img src={logo} alt="Logo" className={css.logo} />
-            <h1 className={css.formTitle}>Wallet</h1>
-          </div>
-          {false ? <Form userRegister /> : <Form />}
+          <Link to="/">
+            <div className={css.formTitleWrapper}>
+              <img src={logo} alt="Logo" className={css.logo} />
+              <h1 className={css.formTitle}>Wallet</h1>
+            </div>
+          </Link>
+          {forRegister ? <Form userRegister /> : <Form />}
         </div>
       </div>
     </div>
   );
 };
 
+AuthPage.propTypes = {
+  forRegister: PropTypes.bool,
+};
 export default AuthPage;

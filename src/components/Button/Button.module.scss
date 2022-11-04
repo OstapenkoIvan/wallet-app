@@ -8,6 +8,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
+  font-family: 'Circe-Regular';
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -16,6 +17,7 @@
   border-radius: 20px;
   border: transparent;
   margin: 0 auto 20px auto;
+  cursor: pointer;
   @include tablet {
     min-width: 300px;
     padding: 13px 104px;

@@ -1,15 +1,15 @@
-@import '../../sass/utils/variables';
-@import '../../sass/utils/mixins';
+@import '../../../sass/utils/variables';
+@import '../../../sass/utils/mixins';
 
 .section {
   min-height: 100vh;
   @include tablet {
-    background-image: url(../../assets/images/tablet-background.png);
+    background-image: url(../../../assets/images/tablet-background.png);
     background-position: center;
     background-size: cover;
   }
   @include desktop {
-    background-image: url(../../assets/images/desktop-background.png);
+    background-image: url(../../../assets/images/desktop-background.png);
   }
 }
 
@@ -59,6 +59,7 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 1.5;
+  font-family: 'Poppins-Regular';
 }
 
 .formContainer {
@@ -92,6 +93,7 @@
   font-size: 30px;
   line-height: 1.5;
   color: getColor('clr-black');
+  font-family: 'Poppins-Bold';
 }
 
 .logo {
