@@ -1,8 +1,13 @@
+// .container {
+//   width: 100vw;
+//   height: 80vh;
+//   padding-top: 46px;
+//   background-color: rgb(245, 245, 245);
+// }
+
 .tablesList {
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-
 }
 
 .listItem {
@@ -11,11 +16,12 @@
 
 .trow {
   margin: 0;
-  border-bottom: 1px solid #dcdcdf;
-}
-
-.trow:first-child {
-  display: none;
+  &:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
+  }
+  &:first-child {
+    display: none;
+  }
 }
 
 .th {
@@ -30,12 +36,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-bottom: 1px solid #dcdcdf;
+  // border-bottom: 1px solid #dcdcdf;
 }
 
 .td {
   width: 50%;
-  border-bottom: 1px solid #dcdcdf;
+  // border-bottom: 1px solid #dcdcdf;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -49,23 +55,17 @@
   text-overflow: ellipsis;
 }
 
-// .income {
-//   color: #24cca7;
-// }
-
-// .expense {
-//   color: #ff6596;
-// }
-
 .tableEXPENSE,
 .tableINCOME {
   background-color: #fff;
-  width: 100%;
+  width: 280px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
   overflow: hidden;
   table-layout: fixed;
+  border-spacing: 0px;
+  border-collapse: collapse;
 }
 .tableEXPENSE {
   & .th {
