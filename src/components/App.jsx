@@ -7,6 +7,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
 import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
+import { Navigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
@@ -120,6 +121,7 @@ export const App = () => {
                 <PublicRoute redirectTo="/dashboardPage/transactionsPage" end />
               }
             >
+              <Route index element={<Navigate to="signin" />} />
               <Route path="signin" element={<AuthPage />} />
               <Route path="signup" element={<AuthPage forRegister />} />
             </Route>
