@@ -6,7 +6,7 @@ import chartColorsArr from 'assets/chartColorsArr';
 
 ChartJS.register(ArcElement, Tooltip);
 
-export const chartData = {
+export const statChartData = {
   labels: [],
   datasets: [
     {
@@ -35,26 +35,47 @@ export const options = {
   cutout: '70%',
 };
 
-chartData.labels = exempleDataStat.categoriesSummary.map(el => {
+statChartData.labels = exempleDataStat.categoriesSummary.map(el => {
   if (el.type === 'EXPENSE') {
     return el.name;
   } else {
+    // eslint-disable-next-line
     return;
   }
 });
 
-chartData.datasets[0].data = exempleDataStat.categoriesSummary.map(el => {
+statChartData.datasets[0].data = exempleDataStat.categoriesSummary.map(el => {
   if (el.type === 'EXPENSE') {
     return el.total;
   } else {
+    // eslint-disable-next-line
     return;
   }
 });
 
-chartData.datasets[0].backgroundColor = chartColorsArr;
+statChartData.datasets[0].backgroundColor = chartColorsArr;
+
+const plugins = [
+  {
+    beforeDraw: function (chart) {
+      const width = chart.width,
+        height = chart.height,
+        ctx = chart.ctx;
+      ctx.restore();
+      const fontSize = (height / 160).toFixed(2);
+      ctx.font = fontSize + 'em sans-serif';
+      ctx.textBaseline = 'top';
+      const text = 'Foo-bar',
+        textX = Math.round((width - ctx.measureText(text).width) / 2),
+        textY = height / 2.2;
+      ctx.fillText(text, textX, textY);
+      ctx.save();
+    },
+  },
+];
 
 export default function StatisticsChart() {
-  return <Doughnut options={options} data={chartData} />;
+  return <Doughnut plugins={plugins} options={options} data={statChartData} />;
 }
 
 // import React from 'react';
