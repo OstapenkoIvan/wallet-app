@@ -1,6 +1,6 @@
-import exempleDataStat from 'assets/exempleDataStat';
 import React from 'react';
 import RowStatComponent from './RowStatComponent/RowStatComponent';
+import exempleDataStat from 'assets/exempleDataStat';
 
 import scss from './StatisticsTable.module.scss';
 

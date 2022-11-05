@@ -1,6 +1,6 @@
 import chartColorsArr from 'assets/chartColorsArr';
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import scss from '../StatisticsTable.module.scss';
 
 const RowStatComponent = ({ arr }) => {
@@ -23,7 +23,5 @@ const RowStatComponent = ({ arr }) => {
     ) : null;
   });
 };
-
+RowStatComponent.propTypes = { arr: PropTypes.arrayOf(PropTypes.object) };
 export default RowStatComponent;
-
-// backgroundColor={chartColorsArr[idx]}

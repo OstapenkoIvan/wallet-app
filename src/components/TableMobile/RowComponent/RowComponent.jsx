@@ -1,8 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import scss from '../TableMobile.module.scss';
-
-
 
 const RowComp = ({ tdTitle, value }) => {
   return (
@@ -18,5 +16,8 @@ const RowComp = ({ tdTitle, value }) => {
   );
 };
 
-// RowComp.propTypes = {};
+RowComp.propTypes = {
+  tdTitle: PropTypes.string,
+  value: PropTypes.string,
+};
 export default RowComp;

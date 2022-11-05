@@ -23,7 +23,7 @@ const exempleDataStat = {
     {
       name: 'Self care',
       type: 'EXPENSE',
-      total: 30000,
+      total: 5000,
     },
     {
       name: 'Child care',
