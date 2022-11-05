@@ -8,9 +8,11 @@ const StatisticsPage = props => {
   return (
     <div className={scss.Statistics}>
       <div className={scss.chartWrapper}>
+        <h2 className={scss.statisticsTitle}>Statistics</h2>
         <StatisticsChart />
       </div>
       <div className={scss.tableWrapper}>
+        <div className={scss.selectWrapper}></div>
         <StatisticsTable />
       </div>
     </div>
