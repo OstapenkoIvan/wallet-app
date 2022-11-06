@@ -4,7 +4,7 @@ import exempleDataStat from 'assets/exempleDataStat';
 
 import scss from './StatisticsTable.module.scss';
 
-const StatisticsTable = () => {
+const StatisticsTable = ({ statData }) => {
   return (
     <div className={scss.container}>
       <div className={scss.wrapper}>

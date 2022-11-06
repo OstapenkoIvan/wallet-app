@@ -1,11 +1,5 @@
 @import '../../sass/utils/variables';
 @import '../../sass/utils/mixins';
-// .container {
-//   width: 100vw;
-//   height: 80vh;
-//   padding-top: 46px;
-//   background-color: rgb(245, 245, 245);
-// }
 
 .table {
   width: 704px;
@@ -30,19 +24,9 @@
   overflow: hidden;
 }
 
-// .theadRow {
-//   font-family: 'Circe';
-//   font-style: normal;
-//   font-weight: 700;
-//   font-size: 18px;
-//   line-height: 27px;
-// }
-
 .colHead {
   background-color: getColor('clr-white');
   padding: 16px 20px;
-  // font-family: 'Circe';
-  // font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
@@ -57,8 +41,6 @@
 }
 
 .tbody {
-  // font-family: 'Circe';
-  // font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
