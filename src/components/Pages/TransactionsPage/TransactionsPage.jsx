@@ -2,6 +2,8 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import TableMobile from 'components/TableMobile/TableMobile';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
+
+import Table from '../NotFoundPage/Table/Table';
 import {
   NotMobile,
   Mobile,
@@ -22,7 +24,8 @@ const TransactionsPage = props => {
             excepturi suscipit dignissimos temporibus pariatur accusantium
             illum. Maiores enim asperiores dolore saepe aut!
           </span> */}
-          <TableTransactions />
+          {/* <TableTransactions /> */}
+          <Table />
         </div>
       </NotMobile>
     </div>

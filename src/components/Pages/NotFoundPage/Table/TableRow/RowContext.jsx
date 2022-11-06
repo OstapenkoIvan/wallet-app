@@ -13,8 +13,7 @@ const RowContext = ({ children, rowData, rowIdx, titles }) => {
   const currentTargetRef = useRef();
 
   function handleRowBottomOpen(ev) {
-    const { target, currentTarget } = ev;
-    // console.log(rowData);
+    const { currentTarget } = ev;
     if (rowOpenControl === true) {
       setIsBottomOpen(true);
       afterShown();
@@ -22,14 +21,9 @@ const RowContext = ({ children, rowData, rowIdx, titles }) => {
       currentTargetRef.current = currentTarget;
       return;
     }
-    // if (rowOpenControl === false) {
-    //   setIsBottomOpen(false);
-    //   afterHidden();
-    //   currentTargetRef.current.classList.remove(s.isRowOpen);
-    // }
   }
 
-  function handleRowBottomClose() {
+  function handleRowBottomClose(ev) {
     currentTargetRef.current.classList.remove(s.isRowOpen);
     setIsBottomOpen(false);
     afterHidden();
