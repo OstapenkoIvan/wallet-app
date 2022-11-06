@@ -9,51 +9,6 @@ import { useSelector } from 'react-redux';
 
 ChartJS.register(ArcElement, Tooltip);
 
-// const statChartData = {
-//   labels: [],
-//   datasets: [
-//     {
-//       label: '# of Votes',
-//       data: [],
-//       backgroundColor: [
-//         '#FED057',
-//         '#FFD8D0',
-//         '#FD9498',
-//         '#C5BAFF',
-//         '#6E78E8',
-//         '#4A56E2',
-//         '#81E1FF',
-//         '#24CCA7',
-//         '#00AD84',
-//         '#00AD34',
-//         '#60AD20',
-//       ],
-
-//       borderWidth: 0,
-//     },
-//   ],
-// };
-
-// statChartData.labels = exempleDataStat.categoriesSummary.map(el => {
-//   if (el.type === 'EXPENSE') {
-//     return el.name;
-//   } else {
-//     // eslint-disable-next-line
-//     return;
-//   }
-// });
-
-// statChartData.datasets[0].data = exempleDataStat.categoriesSummary.map(el => {
-//   if (el.type === 'EXPENSE') {
-//     return el.total;
-//   } else {
-//     // eslint-disable-next-line
-//     return;
-//   }
-// });
-
-// statChartData.datasets[0].backgroundColor = chartColorsArr;
-
 const options = {
   cutout: '70%',
 };

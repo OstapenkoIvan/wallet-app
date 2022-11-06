@@ -21,8 +21,8 @@ const RowStatComponent = ({ labels, backgroundColor, data }) => {
   });
 };
 RowStatComponent.propTypes = {
-  labels: PropTypes.arrayOf(PropTypes.array),
-  backgroundColor: PropTypes.arrayOf(PropTypes.array),
-  data: PropTypes.arrayOf(PropTypes.array),
+  labels: PropTypes.arrayOf(PropTypes.string),
+  backgroundColor: PropTypes.arrayOf(PropTypes.string),
+  data: PropTypes.arrayOf(PropTypes.number),
 };
 export default RowStatComponent;
