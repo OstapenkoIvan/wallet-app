@@ -28,18 +28,7 @@ const TransactionsPage = props => {
         <TableMobile />
       </Mobile>
       <NotMobile>
-        <div className={scss.HomeTableBox}>
-          {/* <span>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur nobis inventore tempore odio eius. Hic dolorem commodi
-            excepturi suscipit dignissimos temporibus pariatur accusantium
-            illum. Maiores enim asperiores dolore saepe aut!
-          </span> */}
-          {/* <TableTransactions /> */}
-          <TableContext>
-            <Table tableData></Table>
-          </TableContext>
-        </div>
+        <Table></Table>
       </NotMobile>
     </div>
   );

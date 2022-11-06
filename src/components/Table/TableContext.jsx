@@ -11,7 +11,6 @@ export const TableContextProvider = createContext();
 export const useTableContext = () => useContext(TableContextProvider);
 
 const TableContext = ({ children, titles }) => {
-  const allTransactions = useSelector(getTransactions);
   const [rowOpenControl, setRowOpenControl] = useState(true);
 
   function afterShown() {

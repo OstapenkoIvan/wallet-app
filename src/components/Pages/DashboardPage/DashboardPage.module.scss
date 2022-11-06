@@ -1,15 +1,17 @@
 .blur {
   min-height: 100vh;
   width: 100%;
-
-  // backdrop-filter: blur(25px);
+  // padding-bottom: 20px;
+  backdrop-filter: blur(25px);
 }
+
 .gridPage {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content;
   min-height: (calc(100vh - 80px));
   width: 100%;
+
 }
 @media screen and (max-width: 767px) {
   .gridPage {

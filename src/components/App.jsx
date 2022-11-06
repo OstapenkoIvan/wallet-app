@@ -117,7 +117,7 @@ export const App = () => {
             <Route
               path="/"
               element={
-                <PublicRoute redirectTo="/dashboardPage/transactionsPage" end />
+                <PublicRoute redirectTo="/dashboardPage/transactions" end />
               }
             >
               <Route path="signin" element={<AuthPage />} />
@@ -125,12 +125,12 @@ export const App = () => {
             </Route>
             <Route path="/" element={<PrivateRoute redirectTo="/signin" />}>
               <Route path="dashboardPage/*" element={<DashboardPage />}>
-                <Route path="transactionsPage" element={<TransactionsPage />} />
+                <Route path="transactions" element={<TransactionsPage />} />
                 <Route path="statistics" element={<StatisticsPage />} />
                 <Route
                   path="exchangeMobile"
                   element={
-                    <MobileRoute redirectTo="/dashboardPage/transactionsPage" />
+                    <MobileRoute redirectTo="/dashboardPage/transactions" />
                   }
                 >
                   <Route index element={<ExchangeMobilePage />} />

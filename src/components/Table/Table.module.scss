@@ -1,14 +1,5 @@
 .table {
   font-size: 12px;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  // @media screen and (min-width: 1280px) {
-  //   position: absolute;
-  //   top: 46px;
-  //   left: calc(50% + 35px);
-  //   width: calc(100% - 69px);
-  //   transform: translateX(-50%);
-  // }
 }
 .trHead {
   display: grid;
@@ -36,7 +27,9 @@
   letter-spacing: 0.07em;
 
   width: 100%;
-  min-height: 450px;
+  min-height: 100px;
+  max-height: 650px;
+  overflow: auto;
 }
 .col {
   display: flex;
@@ -65,29 +58,6 @@
   border-radius: 30px 30px 0 0;
   // backdrop-filter: blur(15px);
 }
-.isRowOpen {
-  transform: scale(1.05);
-  z-index: 500;
-
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 5px rgba(86, 86, 86, 0.5);
-
-  & .rowTop {
-    z-index: 500;
-    border-radius: 30px 30px 0 0;
-    backdrop-filter: blur(15px);
-    &:hover {
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-  }
-  & .rowBottom {
-    z-index: 500;
-    max-height: fit-content;
-    border-radius: 0 0 30px 30px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 1px 5px rgba(86, 86, 86, 0.5);
-  }
-}
 .rowTop {
   display: grid;
 
@@ -108,15 +78,42 @@
   }
 }
 .rowBottom {
-  position: absolute;
-  top: 100%;
-  left: 0;
-
   width: 100%;
 
   max-height: 0px;
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.rowModal {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+
+  width: 400px;
+  transform: translateX(-50%);
+
+  z-index: 500;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 5px rgba(86, 86, 86, 0.5);
+
+  & .rowTop {
+    z-index: 500;
+    border-radius: 30px 30px 0 0;
+
+    &:hover {
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+  }
+  & .rowBottom {
+    z-index: 500;
+    max-height: fit-content;
+    border-radius: 0 0 30px 30px;
+
+    box-shadow: 0 1px 5px rgba(86, 86, 86, 0.5);
+  }
 }
 // * ============= FORM
 .rowBottomForm {
@@ -127,6 +124,67 @@
   gap: 16px;
 
   padding: 16px;
+}
+// * ============== CUSTOM SELECT
+.customSelect {
+  position: relative;
+  // overflow: hidden;
+
+  padding: 4px;
+  min-height: 30px;
+  max-height: 30px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-bottom: 2px solid rgb(180, 180, 180);
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid rgb(125, 255, 70);
+  }
+  &.isOpen {
+    .selectList {
+      max-height: 170px;
+      padding: 4px;
+    }
+  }
+}
+.celectField {
+  width: 100%;
+  height: 100%;
+  border-style: none;
+  outline-style: none;
+}
+.selectList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  min-width: 100%;
+  max-height: 0;
+
+
+  width: fit-content;
+  max-height: 0;
+  overflow: auto;
+
+  // background-color: #fff;
+
+  backdrop-filter: blur(25px);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.selectItem {
+  padding: 4px;
+
+  white-space: nowrap;
+
+  cursor: default;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: rgb(255, 72, 222);
+  }
 }
 // * ============== INPUTS
 .inputs {
@@ -140,8 +198,10 @@
   min-height: 30px;
   border-style: none;
   outline-style: none;
-  background-color: rgba(255, 255, 255, 0.5);
+
+  background-color: rgba(255, 255, 255, 0.75);
   border-bottom: 2px solid rgb(180, 180, 180);
+
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
@@ -155,7 +215,7 @@
   min-height: 50px;
 
   resize: none;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   border-bottom: 2px solid rgb(180, 180, 180);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
@@ -176,8 +236,7 @@
   border-style: none;
 
   border-radius: 30px;
-  // background-color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }

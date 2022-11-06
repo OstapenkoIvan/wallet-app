@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, useRef } from 'react';
-import { useEffect } from 'react';
-import { useTableContext } from '../TableContext';
 
+import { useTableContext } from '../TableContext';
+import { typesArr } from '../Constants';
 export const RowContextProvider = createContext();
 export const useRowContext = () => useContext(RowContextProvider);
 
@@ -52,6 +52,7 @@ const RowContext = ({ children, rowInfo, rowIdx, titles }) => {
         rowIdx,
         tableContext,
         valueToString,
+        typesArr
       }}
     >
       {children}

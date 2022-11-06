@@ -16,7 +16,7 @@ const NavBar = props => {
             className={({ isActive }) =>
               isActive ? scss.activeLink : scss.primaryLink
             }
-            to="transactionsPage"
+            to="transactions"
             end
           >
             <div className={scss.navIcon}>

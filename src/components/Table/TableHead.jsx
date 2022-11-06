@@ -7,7 +7,7 @@ import { useTableContext } from './TableContext';
 import { TableStyles as s } from './TableStyleSheet';
 const TableHead = ({ className, children }) => {
   const { tableData, tableTitles } = useTableContext();
-  console.log(tableTitles);
+
   const Coll = Coll_Title;
   return (
     <div className={s.tHead}>
