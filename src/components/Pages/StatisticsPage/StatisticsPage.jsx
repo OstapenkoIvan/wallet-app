@@ -1,14 +1,10 @@
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
-import { useEffect } from 'react';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
-import { useSelector } from 'react-redux';
-import { getUserBalance } from 'redux/session/session-selectors';
 
-// import PropTypes from 'prop-types'
 import { preparedData } from './preparedData';
 import scss from './StatisticsPage.module.scss';
 
-const StatisticsPage = props => {
+const StatisticsPage = () => {
   return (
     <div className={scss.Statistics}>
       <div className={scss.chartWrapper}>
@@ -16,13 +12,11 @@ const StatisticsPage = props => {
         <StatisticsChart statChartData={preparedData} />
       </div>
       <div className={scss.tableWrapper}>
-        <div className={scss.selectWrapper}>Selectors</div>
+        <div className={scss.selectWrapper}>Selectors від Софії</div>
         <StatisticsTable statData={preparedData} />
       </div>
     </div>
   );
 };
-
-// StatisticsPage.propTypes = {}
 
 export default StatisticsPage;

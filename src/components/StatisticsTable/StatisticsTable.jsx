@@ -30,12 +30,14 @@ const StatisticsTable = ({ statData }) => {
           <li className={scss.tblItem}>
             <p className={scss.botomName}>Expenses:</p>
             <p className={[scss.botomSum, scss.botomExpense].join(' ')}>
+              {/* expenseSummary витягти зі стейту */}
               {exempleDataStat.expenseSummary}
             </p>
           </li>
           <li className={scss.tblItem}>
             <p className={scss.botomName}>Income:</p>
             <p className={[scss.botomSum, scss.botomIncome].join(' ')}>
+              {/* incomeSummary витягти зі стейту */}
               {exempleDataStat.incomeSummary}
             </p>
           </li>
