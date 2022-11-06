@@ -14,7 +14,7 @@ const TableBody = ({ className, children }) => {
       {tableData.map((row, idx) => {
         row.selected = false;
         return (
-          <RowContext key={row.id} rowData={row} rowIdx={idx} titles={titles}>
+          <RowContext key={row.id} rowInfo={row} rowIdx={idx} titles={titles}>
             <TableRow />
           </RowContext>
         );

@@ -8,12 +8,12 @@ const Coll_Category = ({ title, colIdx, calssName = '' }) => {
   const classNames = [s.col, ...calssName].join(' ');
   const { titles, rowData, rowIdx } = useRowContext();
   const { tableName, categoriesList } = useTableContext();
-
-  const category = categoriesList.find(item => item.id === rowData?.categoryId);
-
+  const { categoryInfo } = rowData;
   return (
     <div className={classNames}>
-      <div className={s.commentWrap}>{category ? category?.name : 'empty'}</div>
+      <div className={s.commentWrap}>
+        {categoryInfo ? categoryInfo?.name : 'empty'}
+      </div>
     </div>
   );
 };

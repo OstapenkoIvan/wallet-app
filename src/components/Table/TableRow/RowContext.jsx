@@ -5,12 +5,24 @@ import { useTableContext } from '../TableContext';
 export const RowContextProvider = createContext();
 export const useRowContext = () => useContext(RowContextProvider);
 
-const RowContext = ({ children, rowData, rowIdx, titles }) => {
+const RowContext = ({ children, rowInfo, rowIdx, titles }) => {
   const [isBottomOpen, setIsBottomOpen] = useState(false);
   const tableContext = useTableContext();
   const { s, afterShown, afterHidden, rowOpenControl } = tableContext;
-
   const currentTargetRef = useRef();
+  let rowData = {
+    ...rowInfo,
+    categoryInfo: tableContext.categoriesList.find(
+      item => item.id === rowInfo?.categoryId
+    ),
+  };
+  // console.log(rowData);
+  function valueToString(element) {
+    if (typeof rowData.amount === 'number') {
+      return element.toString().replaceAll('-', ' ').trim();
+    }
+    return element.replaceAll('-', ' ').trim();
+  }
 
   function handleRowBottomOpen(ev) {
     const { currentTarget } = ev;
@@ -39,6 +51,7 @@ const RowContext = ({ children, rowData, rowIdx, titles }) => {
         rowData,
         rowIdx,
         tableContext,
+        valueToString,
       }}
     >
       {children}

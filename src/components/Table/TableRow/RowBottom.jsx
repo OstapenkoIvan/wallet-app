@@ -18,7 +18,7 @@ const RowBottom = () => {
     comment: rowData.comment,
     amount: rowData.amount,
   });
-  const category = categoriesList.find(item => item.id === rowData?.categoryId);
+
 
   function handleFormSubmit(ev) {
     console.log('submit');
@@ -53,7 +53,7 @@ const RowBottom = () => {
             type="text"
             name="category"
             id="category"
-            value={category?.name}
+            value={rowData.categoryInfo?.name}
             placeholder="category"
           />
           <label htmlFor="transactionDate">Date</label>
