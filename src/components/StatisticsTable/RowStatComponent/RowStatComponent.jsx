@@ -1,4 +1,3 @@
-import chartColorsArr from 'assets/chartColorsArr';
 import React from 'react';
 import PropTypes from 'prop-types';
 import scss from '../StatisticsTable.module.scss';
