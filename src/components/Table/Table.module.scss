@@ -49,13 +49,15 @@
   z-index: 500;
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover {
-    box-shadow: 0 0 5px rgba(126, 126, 126, 0.5);
-  }
+  box-shadow: 0 0 5px rgba(86, 86, 86, 0.5);
+
   & .rowTop {
     z-index: 500;
     border-radius: 30px 30px 0 0;
     backdrop-filter: blur(15px);
+    &:hover{
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
 
   }
   & .rowBottom {
@@ -63,6 +65,7 @@
     max-height: fit-content;
     border-radius: 0 0 30px 30px;
     backdrop-filter: blur(15px);
+    box-shadow: 0 1px 5px rgba(86, 86, 86, 0.5);
   }
 }
 .rowTop {
@@ -101,7 +104,7 @@
   grid-template-columns: 1fr;
   align-items: end;
 
-  gap: 8px;
+  gap: 16px;
 
   padding: 16px;
 }
@@ -144,8 +147,6 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 8px;
-
-  padding: 8px;
 }
 .button {
   padding: 16px 24px;
