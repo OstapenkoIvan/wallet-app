@@ -3,25 +3,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import scss from '../StatisticsTable.module.scss';
 
-const RowStatComponent = ({ arr }) => {
-  return arr.map((el, idx) => {
-    const { name, type, total } = el;
-
-    return type === 'EXPENSE' ? (
+const RowStatComponent = ({ labels, backgroundColor, data }) => {
+  return labels.map((el, idx) => {
+    return (
       <tr key={idx} className={scss.tbodyRow}>
         <td className={[scss.colName, scss[`col-${idx + 1}`]].join(' ')}>
           <div
-            style={{ backgroundColor: chartColorsArr[idx] }}
+            style={{ backgroundColor: backgroundColor[idx] }}
             className={[scss.colored, scss[`colored-${idx + 1}`]].join(' ')}
           ></div>
-          <div className={scss.divData}>{name}</div>
+          <div className={scss.divData}>{el}</div>
         </td>
         <td className={[scss.colData, scss[`col-${idx + 1}`]].join(' ')}>
-          {total}
+          {data[idx]}
         </td>
       </tr>
-    ) : null;
+    );
   });
 };
-RowStatComponent.propTypes = { arr: PropTypes.arrayOf(PropTypes.object) };
+RowStatComponent.propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.array),
+  backgroundColor: PropTypes.arrayOf(PropTypes.array),
+  data: PropTypes.arrayOf(PropTypes.array),
+};
 export default RowStatComponent;

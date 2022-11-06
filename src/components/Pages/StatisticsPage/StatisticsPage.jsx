@@ -9,8 +9,6 @@ import { preparedData } from './preparedData';
 import scss from './StatisticsPage.module.scss';
 
 const StatisticsPage = props => {
-  console.log(preparedData);
-
   return (
     <div className={scss.Statistics}>
       <div className={scss.chartWrapper}>

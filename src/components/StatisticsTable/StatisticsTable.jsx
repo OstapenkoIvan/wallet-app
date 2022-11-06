@@ -5,6 +5,9 @@ import exempleDataStat from 'assets/exempleDataStat';
 import scss from './StatisticsTable.module.scss';
 
 const StatisticsTable = ({ statData }) => {
+  const { labels, datasets } = statData;
+  const { backgroundColor, data } = datasets[0];
+
   return (
     <div className={scss.container}>
       <div className={scss.wrapper}>
@@ -17,7 +20,9 @@ const StatisticsTable = ({ statData }) => {
           </thead>
           <tbody className={scss.tbody}>
             <RowStatComponent
-              arr={exempleDataStat.categoriesSummary}
+              labels={labels}
+              backgroundColor={backgroundColor}
+              data={data}
             ></RowStatComponent>
           </tbody>
         </table>
