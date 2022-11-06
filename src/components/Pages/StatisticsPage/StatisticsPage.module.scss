@@ -1,4 +1,38 @@
 .Statistics {
+  display: flex;
   height: 100%;
   width: 100%;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.statisticsTitle {
+  font-family: 'Poppins-Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.chartWrapper {
+  max-width: 288px;
+  margin-right: 32px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-width: 336px;
+  }
+  @media screen and (max-width: 767px) {
+    max-width: 440px;
+  }
+}
+
+// .tableWrapper {
+// }
+
+.selectWrapper {
+  height: 115px;
+  margin-bottom: 20px;
 }

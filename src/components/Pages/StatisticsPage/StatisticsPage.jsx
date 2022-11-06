@@ -1,21 +1,22 @@
-import React from 'react';
-// import PropTypes from 'prop-types'
+import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
+import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
+
+import { preparedData } from './preparedData';
 import scss from './StatisticsPage.module.scss';
 
-const StatisticsPage = props => {
+const StatisticsPage = () => {
   return (
     <div className={scss.Statistics}>
-      <span>STATISTICS </span>
-      <span>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-        nobis inventore tempore odio eius. Hic dolorem commodi excepturi
-        suscipit dignissimos temporibus pariatur accusantium illum. Maiores enim
-        asperiores dolore saepe aut!
-      </span>
+      <div className={scss.chartWrapper}>
+        <h2 className={scss.statisticsTitle}>Statistics</h2>
+        <StatisticsChart statChartData={preparedData} />
+      </div>
+      <div className={scss.tableWrapper}>
+        <div className={scss.selectWrapper}>Selectors від Софії</div>
+        <StatisticsTable statData={preparedData} />
+      </div>
     </div>
   );
 };
-
-// StatisticsPage.propTypes = {}
 
 export default StatisticsPage;
