@@ -2,14 +2,13 @@
   font-size: 12px;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and (min-width: 1280px) {
-    position: absolute;
-    top: 46px;
-    left: calc(50% + 35px);
-    width: calc(100% - 69px);
-
-    transform: translateX(-50%);
-  }
+  // @media screen and (min-width: 1280px) {
+  //   position: absolute;
+  //   top: 46px;
+  //   left: calc(50% + 35px);
+  //   width: calc(100% - 69px);
+  //   transform: translateX(-50%);
+  // }
 }
 .trHead {
   display: grid;
