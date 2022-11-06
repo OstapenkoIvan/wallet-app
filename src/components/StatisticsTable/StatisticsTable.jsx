@@ -4,7 +4,6 @@ import RowStatComponent from './RowStatComponent/RowStatComponent';
 import scss from './StatisticsTable.module.scss';
 
 const StatisticsTable = ({ statData }) => {
-  console.log(statData);
   const { expenseSummary, incomeSummary, categoriesSummary } = statData;
 
   return (
