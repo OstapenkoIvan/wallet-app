@@ -1,6 +1,6 @@
 import React from 'react';
-import TableRow from './TbaleRow/TableRow';
-import RowContext from './TbaleRow/RowContext';
+import TableRow from './TableRow/TableRow';
+import RowContext from './TableRow/RowContext';
 import { useTableContext } from './TableContext';
 import { titles, rows, testData } from './Constants';
 
@@ -11,7 +11,7 @@ const TableBody = ({ className, children }) => {
 
   return (
     <div className={s.tBody}>
-      {testData.map((row, idx) => {
+      {tableData.map((row, idx) => {
         row.selected = false;
         return (
           <RowContext key={row.id} rowData={row} rowIdx={idx} titles={titles}>

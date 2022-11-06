@@ -1,13 +1,13 @@
 import React from 'react';
-import Row from './TbaleRow/TableRow';
-import RowContext from './TbaleRow/RowContext';
+import Row from './TableRow/TableRow';
+import RowContext from './TableRow/RowContext';
 import { titles, rows } from './Constants';
 import { useTableContext } from './TableContext';
 
 import { TableStyles as s } from './TableStyleSheet';
-const TableBody = ({ className, children }) => {
-  const { tableData } = useTableContext();
-console.log(tableData);
+const TableHead = ({ className, children }) => {
+  const { tableData, tabletitles } = useTableContext();
+
   return (
     <div className={s.tBody}>
       {rows.map((row, idx) => (
@@ -19,4 +19,4 @@ console.log(tableData);
   );
 };
 
-export default TableBody;
+export default TableHead;

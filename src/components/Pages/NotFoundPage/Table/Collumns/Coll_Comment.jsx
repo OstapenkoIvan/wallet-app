@@ -1,13 +1,14 @@
 import React from 'react';
-import { useRowContext } from '../TbaleRow/RowContext';
+import { useRowContext } from '../TableRow/RowContext';
 
 import { TableStyles as s } from '../TableStyleSheet';
 
-const Coll_Comment = ({ title, colIdx }) => {
+const Coll_Comment = ({ title, colIdx, calssName = '' }) => {
+  const classNames = [s.col, ...calssName].join(' ');
   const { titles, rowData, rowIdx } = useRowContext();
 
   return (
-    <div className={s.col}>
+    <div className={classNames}>
       <div className={s.commentWrap}>{rowData.comment}</div>
     </div>
   );

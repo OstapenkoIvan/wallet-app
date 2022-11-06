@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRowContext } from '../TbaleRow/RowContext';
+import { useRowContext } from '../TableRow/RowContext';
 
 const CollDate = ({ title, colIdx }) => {
   const { titles, rowData, rowIdx, tableContext } = useRowContext();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRowContext } from '../TbaleRow/RowContext';
+import { useRowContext } from '../TableRow/RowContext';
 import { TableStyles as s } from '../TableStyleSheet';
 
 const CollAdds = ({ title, colIdx, text }) => {

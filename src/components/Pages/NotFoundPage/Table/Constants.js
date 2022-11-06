@@ -62,8 +62,14 @@ export const testData = [
     categoryId: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402',
     userId: '25bd0249-20d5-42e0-8a23-55256739b6a3',
   },
+  // {
+  //   transactionDate: '2022-11-05',
+  //   type: 'INCOME',
+  //   categoryId: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402',
+  //   comment: 'test-1',
+  //   amount: 1520,
+  // },
 ];
-
 // const tableDataKeys = [
 //   'transactionDate',
 //   'type',

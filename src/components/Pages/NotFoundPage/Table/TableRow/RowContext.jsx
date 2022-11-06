@@ -30,19 +30,10 @@ const RowContext = ({ children, rowData, rowIdx, titles }) => {
   }
 
   function handleRowBottomClose() {
+    currentTargetRef.current.classList.remove(s.isRowOpen);
     setIsBottomOpen(false);
     afterHidden();
-    currentTargetRef.current.classList.remove(s.isRowOpen);
   }
-
-  // useEffect(() => {
-  //   if (!currentTargetref.current) {
-  //     return;
-  //   }
-  //   if (!isBodyShow) {
-  //     currentTargetref.current.classList.remove(s.isRowOpen);
-  //   }
-  // }, [isBodyShow, s.isRowOpen]);
 
   return (
     <RowContextProvider.Provider
