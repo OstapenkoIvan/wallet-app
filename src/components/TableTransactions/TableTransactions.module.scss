@@ -1,3 +1,5 @@
+@import '../../sass/utils/variables';
+@import '../../sass/utils/mixins';
 // .container {
 //   width: 100vw;
 //   height: 80vh;
@@ -13,7 +15,7 @@
   border-collapse: collapse;
   table-layout: fixed;
   text-align: center;
-  font-family: 'Circe';
+  font-family: 'Circe-Regular';
   font-style: normal;
   color: #000000;
 
@@ -37,7 +39,7 @@
 // }
 
 .colHead {
-  background-color: #ffffff;
+  background-color: getColor('clr-white');
   padding: 16px 20px;
   // font-family: 'Circe';
   // font-style: normal;
@@ -115,9 +117,9 @@
 }
 
 .income {
-  color: #24cca7;
+  color: getColor('clr-active');
 }
 
 .expense {
-  color: #ff6596;
+  color: getColor('clr-expense');
 }

@@ -1,9 +1,5 @@
-// .container {
-//   width: 100vw;
-//   height: 80vh;
-//   padding-top: 46px;
-//   background-color: rgb(245, 245, 245);
-// }
+@import '../../sass/utils/variables';
+@import '../../sass/utils/mixins';
 
 .tablesList {
   margin-left: auto;
@@ -12,6 +8,8 @@
 
 .listItem {
   margin-bottom: 8px;
+  font-family: 'Circe-Regular';
+  font-style: normal;
 }
 
 .trow {
@@ -27,8 +25,6 @@
 .th {
   width: 50%;
   text-transform: capitalize;
-  font-family: 'Circe';
-  font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
@@ -36,14 +32,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  // border-bottom: 1px solid #dcdcdf;
 }
 
 .td {
   width: 50%;
-  // border-bottom: 1px solid #dcdcdf;
-  font-family: 'Circe';
-  font-style: normal;
+
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
