@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAction } from '@reduxjs/toolkit';
 import {
   registerThunk,
   logInThunk,
@@ -18,6 +18,8 @@ const initialState = {
   error: null,
   isLoading: false,
 };
+
+const logOut = createAction('USER_LOGOUT');
 
 const sessionSlice = createSlice({
   name: 'session',
@@ -73,6 +75,9 @@ const sessionSlice = createSlice({
     [refreshThunk.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
+    },
+    [logOut]: state => {
+      Object.assign(state, initialState);
     },
   },
 });

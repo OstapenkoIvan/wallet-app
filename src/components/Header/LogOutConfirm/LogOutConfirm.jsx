@@ -21,7 +21,8 @@ const LogOutConfirm = () => {
 
   function onConfrimLogOut() {
     onToggleModal();
-    dispatch(authOperation.logOutThunk());
+    // dispatch(authOperation.logOutThunk());
+    dispatch({ type: 'USER_LOGOUT' });
     console.log('ACCEPTED LOG OT');
   }
   function onDeclineLogOut() {

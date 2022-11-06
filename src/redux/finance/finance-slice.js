@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAction } from '@reduxjs/toolkit';
+
 import {
   getTransactionsThunk,
   getSummaryThunk,
@@ -8,10 +9,12 @@ import {
   editTransactionThunk,
 } from './finance-operation';
 
+const logOut = createAction('USER_LOGOUT');
+
 const initialState = {
   transactions: [],
   categories: [],
-  summary: {},
+  summary: null,
   isLoading: null,
   error: null,
 };
@@ -96,6 +99,9 @@ const financeSlice = createSlice({
     [getCategoriesThunk.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+    },
+    [logOut]: state => {
+      Object.assign(state, initialState);
     },
   },
 });

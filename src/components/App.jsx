@@ -1,7 +1,5 @@
-
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-
 
 import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
@@ -12,6 +10,7 @@ import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
+import { financeOperation } from 'redux/finance';
 
 import { sessionSelectors } from 'redux/session';
 
@@ -33,12 +32,10 @@ const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const { getAuthToken, getIsLoading } = sessionSelectors;
 
-  const isAuthLoading = useSelector(getIsLoading);
+  // const isAuthLoading = useSelector(getIsLoading);
   const authToken = useSelector(getAuthToken);
 
   const dispatch = useDispatch();
-
-  console.log(isAuthLoading);
 
   useEffect(() => {
     if (authToken) {
@@ -75,21 +72,22 @@ export const App = () => {
   // dispatch(authOperation.refresh());
 
   //!GET getTransactions
-  // dispatch(financeOperation.getTransactions());
+  // dispatch(financeOperation.getTransactionsThunk());
   //!Get  getSummary
-  // dispatch(financeOperation.getSummary({ month: 1, year: 2022 }));
+  // dispatch(financeOperation.getSummaryThunk({ month: 1, year: 2022 }));
   //!Get getCategories
   // dispatch(financeOperation.getCategories());
   //!GET addTransaction
   // dispatch(
-  // financeOperation.addTransaction({
-  //   transactionDate: '2022-11-01T16:59:40+0000',
-  //   type: 'INCOME',
-  //   comment: 'aplles',
-  //   amount: 100000,
-  //   categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
-  // })
+  //   financeOperation.addTransactionThunk({
+  //     transactionDate: '2022-11-01T16:59:40+0000',
+  //     type: 'INCOME',
+  //     comment: 'aplles',
+  //     amount: 1000,
+  //     categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+  //   })
   // );
+
   //!Get deleteTransaction
   // dispatch(financeOperation.deleteTransaction('d429dd9c-21be-4186-8974-56c192494640'));
   //!Get  editTransaction
@@ -106,7 +104,6 @@ export const App = () => {
   //   })
   // );
   //
-
 
   // import PrivateRoute from './Routes/PrivateRoute';
   // import PublicRoute from './Routes/PublicRoute';
@@ -146,6 +143,5 @@ export const App = () => {
         </Suspense>
       </Layout>
     </div>
-
   );
 };

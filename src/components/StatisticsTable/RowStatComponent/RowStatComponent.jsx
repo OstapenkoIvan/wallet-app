@@ -1,28 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { BASE_COLORS } from '../../../constans/constans';
 import scss from '../StatisticsTable.module.scss';
 
-const RowStatComponent = ({ labels, backgroundColor, data }) => {
-  return labels.map((el, idx) => {
+const RowStatComponent = ({ data }) => {
+  return data.map(({ name, total, type }, idx) => {
     return (
       <tr key={idx} className={scss.tbodyRow}>
         <td className={[scss.colName, scss[`col-${idx + 1}`]].join(' ')}>
           <div
-            style={{ backgroundColor: backgroundColor[idx] }}
+            style={{ backgroundColor: BASE_COLORS[idx] }}
             className={[scss.colored, scss[`colored-${idx + 1}`]].join(' ')}
           ></div>
-          <div className={scss.divData}>{el}</div>
+          <div className={scss.divData}>{name}</div>
         </td>
         <td className={[scss.colData, scss[`col-${idx + 1}`]].join(' ')}>
-          {data[idx]}
+          {total}
         </td>
       </tr>
     );
   });
 };
-RowStatComponent.propTypes = {
-  labels: PropTypes.arrayOf(PropTypes.string),
-  backgroundColor: PropTypes.arrayOf(PropTypes.string),
-  data: PropTypes.arrayOf(PropTypes.number),
-};
+// RowStatComponent.propTypes = {
+//   labels: PropTypes.arrayOf(PropTypes.string),
+//   backgroundColor: PropTypes.arrayOf(PropTypes.string),
+//   data: PropTypes.arrayOf(PropTypes.number),
+// };
 export default RowStatComponent;

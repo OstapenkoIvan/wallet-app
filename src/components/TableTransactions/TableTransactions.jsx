@@ -1,10 +1,9 @@
-import categoryIdArr from 'assets/categoryIdArr';
-import exempleDataTransactions from 'assets/exempleDataTransactions';
 import React from 'react';
+import categoryIdArr from 'assets/categoryIdArr';
 
 import scss from './TableTransactions.module.scss';
 
-const TableTransactions = () => {
+const TableTransactions = ({ data }) => {
   const tableHeaders = [
     'Date',
     'Type',
@@ -12,15 +11,6 @@ const TableTransactions = () => {
     'Comment',
     'Sum',
     'Balance',
-  ];
-
-  const tableDataKeys = [
-    'transactionDate',
-    'type',
-    'categoryId',
-    'comment',
-    'amount',
-    'balanceAfter',
   ];
 
   const getTransactionDate = elDate => {
@@ -36,7 +26,7 @@ const TableTransactions = () => {
     <div className={scss.container}>
       <table className={scss.table}>
         <thead className={scss.thead}>
-          <tr c>
+          <tr>
             {tableHeaders.map((el, idx) => (
               <th
                 key={idx}
@@ -52,7 +42,7 @@ const TableTransactions = () => {
           </tr>
         </thead>
         <tbody className={scss.tbody}>
-          {exempleDataTransactions.map(item => {
+          {data.map(item => {
             const findedCategObj = categoryIdArr.find(
               el => el.id === item.categoryId
             );

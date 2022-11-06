@@ -57,7 +57,7 @@ export const editTransactionThunk = createAsyncThunk(
 
 export const getSummaryThunk = createAsyncThunk(
   'getSummary',
-  async ({ month = 1, year = 2021 }, { rejectWithValue }) => {
+  async ({ month = 11, year = 2022 }, { rejectWithValue }) => {
     try {
       const { data } = await authOperation.userApi.get(
         `transactions-summary?month=${month}&year=${year}`

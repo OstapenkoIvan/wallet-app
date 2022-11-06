@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import css from 'components/CustomSelect/CustomSelect.module.scss';
+import css from 'components/DateSelect/DateSelect.module.scss';
 import { sprite } from 'assets/images';
 import { MONTH } from 'constans/constans';
 import { YEARS } from 'constans/constans';
@@ -7,11 +7,11 @@ import { useDispatch } from 'react-redux';
 import { financeOperation } from 'redux/finance';
 import { useEffect } from 'react';
 
-const CustomSelect = () => {
+const DateSelect = () => {
   const [selectMonthActive, setSelectMonthActive] = useState(false);
   const [selectYearActive, setSelectYearActive] = useState(false);
-  const [hiddenMonthValue, setHiddenMonthValue] = useState('Month');
-  const [hiddenYearValue, setHiddenYearValue] = useState('Year');
+  const [hiddenMonthValue, setHiddenMonthValue] = useState('');
+  const [hiddenYearValue, setHiddenYearValue] = useState('');
   const dispatch = useDispatch();
 
   const toggleMonthClass = () => {
@@ -27,14 +27,22 @@ const CustomSelect = () => {
   };
   const handleHiddenYearValue = event => {
     const value = event.target.textContent;
-    setHiddenYearValue(value);
+    setHiddenYearValue(Number(value));
   };
 
   useEffect(() => {
-    if (hiddenMonthValue && hiddenYearValue)
+    const selectedMonth = MONTH.filter(
+      month => month.monthName === hiddenMonthValue
+    )[0]?.monthNumber;
+
+    if (hiddenMonthValue && hiddenYearValue) {
       dispatch(
-        financeOperation.getSummary({ hiddenMonthValue, hiddenYearValue })
+        financeOperation.getSummaryThunk({
+          month: selectedMonth,
+          year: hiddenYearValue,
+        })
       );
+    }
   }, [dispatch, hiddenMonthValue, hiddenYearValue]);
 
   return (
@@ -53,7 +61,7 @@ const CustomSelect = () => {
                 : [css['selectHeader'], css['isChosen']].join(' ')
             }
           >
-            {hiddenMonthValue}
+            {hiddenMonthValue || 'Month'}
           </div>
 
           <svg className={css.selectIcon} width="40" height="19">
@@ -103,7 +111,7 @@ const CustomSelect = () => {
                 : [css['selectHeader'], css['isChosen']].join(' ')
             }
           >
-            {hiddenYearValue}
+            {hiddenYearValue || 'Year'}
           </div>
 
           <svg className={css.selectIcon} width="40" height="19">
@@ -141,9 +149,8 @@ const CustomSelect = () => {
           />
         </div>
       </div>
-      jvhbljkfnvs;djknvmc;dskmv;ijvhbljkfnvs;djknvmc;dskmv;ijvhbljkfnvs;djknvmc;dskmv;ijvhbljkfnvs;djknvmc;dskmv;ijvhbljkfnvs;djknvmc;dskmv;ijvhbljkfnvs;djknvmc;dskmv;i
     </>
   );
 };
 
-export default CustomSelect;
+export default DateSelect;

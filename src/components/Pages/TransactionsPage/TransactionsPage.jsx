@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import TableMobile from 'components/TableMobile/TableMobile';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
@@ -8,21 +8,26 @@ import {
 } from 'components/DeviceTypeControl/DeviseTypeController';
 import scss from './TransactionsPage.module.scss';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { financeOperation, financeSelectors } from 'redux/finance';
+
 const TransactionsPage = props => {
+  const dispatch = useDispatch();
+  const transactions = useSelector(financeSelectors.getTransactions);
+
+  useEffect(() => {
+    if (transactions.length > 0) return;
+    dispatch(financeOperation.getTransactionsThunk());
+  }, [dispatch, transactions.length]);
+
   return (
     <div className={scss.TransactionsPage}>
       <Mobile>
-        <TableMobile />
+        <TableMobile data={transactions} />
       </Mobile>
       <NotMobile>
         <div className={scss.HomeTableBox}>
-          {/* <span>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur nobis inventore tempore odio eius. Hic dolorem commodi
-            excepturi suscipit dignissimos temporibus pariatur accusantium
-            illum. Maiores enim asperiores dolore saepe aut!
-          </span> */}
-          <TableTransactions />
+          <TableTransactions data={transactions} />
         </div>
       </NotMobile>
     </div>

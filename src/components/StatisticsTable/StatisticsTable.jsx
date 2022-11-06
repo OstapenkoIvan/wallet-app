@@ -1,12 +1,11 @@
 import React from 'react';
 import RowStatComponent from './RowStatComponent/RowStatComponent';
-import exempleDataStat from 'assets/exempleDataStat';
 
 import scss from './StatisticsTable.module.scss';
 
 const StatisticsTable = ({ statData }) => {
-  const { labels, datasets } = statData;
-  const { backgroundColor, data } = datasets[0];
+  console.log(statData);
+  const { expenseSummary, incomeSummary, categoriesSummary } = statData;
 
   return (
     <div className={scss.container}>
@@ -19,26 +18,20 @@ const StatisticsTable = ({ statData }) => {
             </tr>
           </thead>
           <tbody className={scss.tbody}>
-            <RowStatComponent
-              labels={labels}
-              backgroundColor={backgroundColor}
-              data={data}
-            ></RowStatComponent>
+            <RowStatComponent data={categoriesSummary} />
           </tbody>
         </table>
         <ul className={scss.tblList}>
           <li className={scss.tblItem}>
             <p className={scss.botomName}>Expenses:</p>
             <p className={[scss.botomSum, scss.botomExpense].join(' ')}>
-              {/* expenseSummary витягти зі стейту */}
-              {exempleDataStat.expenseSummary}
+              {expenseSummary}
             </p>
           </li>
           <li className={scss.tblItem}>
             <p className={scss.botomName}>Income:</p>
             <p className={[scss.botomSum, scss.botomIncome].join(' ')}>
-              {/* incomeSummary витягти зі стейту */}
-              {exempleDataStat.incomeSummary}
+              {incomeSummary}
             </p>
           </li>
         </ul>

@@ -1,11 +1,9 @@
-import { type } from '@testing-library/user-event/dist/type';
-import categoryIdArr from 'assets/categoryIdArr';
-import exempleDataTransactions from 'assets/exempleDataTransactions';
 import React from 'react';
+import categoryIdArr from 'assets/categoryIdArr';
 import RowComp from './RowComponent/RowComponent';
 import scss from './TableMobile.module.scss';
 
-const TableMobile = () => {
+const TableMobile = ({ data }) => {
   const tableHeaders = [
     'Date',
     'Type',
@@ -37,7 +35,7 @@ const TableMobile = () => {
     return `${day}.${month}.${year} `;
   };
 
-  const filteredArr = exempleDataTransactions.map(el => {
+  const filteredArr = data.map(el => {
     return {
       id: el.id,
       date: getTransactionDate(el.transactionDate),
