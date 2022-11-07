@@ -29,7 +29,6 @@ const DateSelect = () => {
 
   const handleHiddenMonthValue = event => {
     const value = event.target.id;
-
     setHiddenMonthValue(value);
   };
   const handleHiddenYearValue = event => {
