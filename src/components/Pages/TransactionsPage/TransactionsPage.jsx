@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react';
-// import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { getTransactionsThunk } from 'redux/finance/finance-operation';
+
 import TableMobile from 'components/TableMobile/TableMobile';
+import Balance from 'components/AppBar/Balance';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
-import TableContext from 'components/Table/TableContext';
-import Table from 'components/Table/Table';
+
 import {
   NotMobile,
   Mobile,
 } from 'components/DeviceTypeControl/DeviseTypeController';
 
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getTransactionsThunk,
-  addTransactionThunk,
-} from 'redux/finance/finance-operation';
 import scss from './TransactionsPage.module.scss';
 
-const TransactionsPage = props => {
+const TransactionsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,15 +22,16 @@ const TransactionsPage = props => {
   return (
     <div className={scss.TransactionsPage}>
       <Mobile>
-        <TableMobile />
+        <div className={scss.wrapper}>
+          <Balance />
+          <TableMobile />
+        </div>
       </Mobile>
       <NotMobile>
-        <Table></Table>
+        <TableTransactions />
       </NotMobile>
     </div>
   );
 };
-
-// TransactionsPage.propTypes = {};
 
 export default TransactionsPage;

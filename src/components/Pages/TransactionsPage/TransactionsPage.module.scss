@@ -3,6 +3,8 @@
   width: 100%;
   position: relative;
 }
-.HomeTableBox{
-
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

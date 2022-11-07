@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
-import { useTableContext } from '../TableContext';
-import { useRowContext } from './RowContext';
-import { useDispatch, useSelector } from 'react-redux';
+import { useRowContext } from '../TableRow/RowContext';
+import { useDispatch } from 'react-redux';
 import { addTransactionThunk } from 'redux/finance/finance-operation';
-import { categoryIdArr } from '../Constants';
-import { getTransactions } from 'redux/finance/finance-selectors';
-import { TableStyles as s } from '../TableStyleSheet';
 
-const RowBottom = () => {
-  const transactions = useSelector(getTransactions);
-  console.log(transactions);
-  const { valueToString, rowData, handleRowBottomClose, typesArr } =
+import { categoryIdArr } from '../Constants';
+
+import s from './RowForm.module.scss';
+
+const RowBottomForm = () => {
+  const { valueToString, rowData, handleRowBottomFormClose, typesArr } =
     useRowContext();
   const [type, setType] = useState({ name: '' });
   const [category, setCategory] = useState({ name: '' });
-  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     transactionDate: rowData.transactionDate,
-    type: type.name ? type.name : rowData.type,
-    categoryId: category.id ? category.id : rowData.categoryId,
+    type: type.name || rowData.type,
+    categoryId: category.id || rowData.categoryId,
     comment: rowData.comment,
     amount: rowData.amount,
   });
 
   function handleFormSubmit(ev) {
     ev.preventDefault();
-    handleRowBottomClose(ev);
+    handleRowBottomFormClose(ev);
     dispatch(addTransactionThunk(formData));
   }
 
@@ -44,12 +41,12 @@ const RowBottom = () => {
     setType(item);
   }
   function handleSelectOpen(ev) {
-    let { target, currentTarget } = ev;
+    let { currentTarget } = ev;
     currentTarget.classList.toggle(s.isOpen);
   }
   return (
-    <div className={s.rowBottom} onSubmit={handleFormSubmit}>
-      <form className={s.rowBottomForm}>
+    <div className={s.formContainer} >
+      <form className={s.form} onSubmit={handleFormSubmit}>
         <div className={s.inputs}>
           <label htmlFor="type">Type</label>
           <div className={s.customSelect} onClick={handleSelectOpen}>
@@ -127,14 +124,14 @@ const RowBottom = () => {
           </button>
           <button
             className={[s.button, s.cancel].join(' ')}
-            onClick={handleRowBottomClose}
+            onClick={handleRowBottomFormClose}
             type="button"
           >
             Cancel
           </button>
           <button
             className={[s.button, s.delete].join(' ')}
-            onClick={handleRowBottomClose}
+            onClick={handleRowBottomFormClose}
             type="button"
           >
             Delete
@@ -145,4 +142,4 @@ const RowBottom = () => {
   );
 };
 
-export default RowBottom;
+export default RowBottomForm;

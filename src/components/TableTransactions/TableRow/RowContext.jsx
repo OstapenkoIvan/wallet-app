@@ -5,7 +5,7 @@ import { typesArr } from '../Constants';
 export const RowContextProvider = createContext();
 export const useRowContext = () => useContext(RowContextProvider);
 
-const RowContext = ({ children, rowInfo, rowIdx, titles }) => {
+const RowContext = ({ children, rowInfo, }) => {
   const [isBottomOpen, setIsBottomOpen] = useState(false);
   const tableContext = useTableContext();
   const { s, afterShown, afterHidden, rowOpenControl } = tableContext;
@@ -24,7 +24,7 @@ const RowContext = ({ children, rowInfo, rowIdx, titles }) => {
     return element.replaceAll('-', ' ').trim();
   }
 
-  function handleRowBottomOpen(ev) {
+  function handleRowBottomFormOpen(ev) {
     const { currentTarget } = ev;
     if (rowOpenControl === true) {
       setIsBottomOpen(true);
@@ -35,7 +35,7 @@ const RowContext = ({ children, rowInfo, rowIdx, titles }) => {
     }
   }
 
-  function handleRowBottomClose(ev) {
+  function handleRowBottomFormClose(ev) {
     currentTargetRef.current.classList.remove(s.isRowOpen);
     setIsBottomOpen(false);
     afterHidden();
@@ -45,11 +45,9 @@ const RowContext = ({ children, rowInfo, rowIdx, titles }) => {
     <RowContextProvider.Provider
       value={{
         isBottomOpen,
-        handleRowBottomOpen,
-        handleRowBottomClose,
-        titles,
+        handleRowBottomFormOpen,
+        handleRowBottomFormClose,
         rowData,
-        rowIdx,
         tableContext,
         valueToString,
         typesArr

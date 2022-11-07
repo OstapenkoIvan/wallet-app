@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import sprite from '../../../assets/images/sprite.svg'
+import sprite from '../../../assets/images/sprite.svg';
 
 import { NavLink } from 'react-router-dom';
 
@@ -20,7 +20,9 @@ const NavBar = props => {
             end
           >
             <div className={scss.navIcon}>
-              <svg className={scss.svg} ><use href={`${sprite}#icon-home`}></use></svg>
+              <svg className={scss.svg}>
+                <use href={`${sprite}#icon-home`}></use>
+              </svg>
             </div>
             <span className={scss.navText}>Home</span>
           </NavLink>
@@ -33,7 +35,9 @@ const NavBar = props => {
             to="statistics"
           >
             <div className={scss.navIcon}>
-            <svg className={scss.svg} ><use href={`${sprite}#icon-chart`}></use></svg>
+              <svg className={scss.svg}>
+                <use href={`${sprite}#icon-chart`}></use>
+              </svg>
             </div>
             <span className={scss.navText}>Statistics</span>
           </NavLink>
@@ -41,13 +45,15 @@ const NavBar = props => {
         <Mobile>
           <li className={scss.navItem}>
             <NavLink
-              className={(obj) =>
+              className={obj =>
                 obj.isActive ? scss.activeLink : scss.primaryLink
               }
               to="exchangeMobile"
             >
               <div className={scss.navIcon}>
-              <svg className={scss.svg} ><use href={`${sprite}#icon-dollar`}></use></svg>
+                <svg className={scss.svg}>
+                  <use href={`${sprite}#icon-dollar`}></use>
+                </svg>
               </div>
               <span className={scss.navText}>Exchange</span>
             </NavLink>

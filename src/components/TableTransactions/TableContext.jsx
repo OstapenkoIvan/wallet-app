@@ -2,8 +2,7 @@ import React, { useState, createContext, useContext } from 'react';
 import { testData as tableData } from './Constants';
 import { categoryIdArr as categoriesList } from './Constants';
 import { tableTitles } from './Constants';
-import { useSelector } from 'react-redux';
-import { getTransactions } from 'redux/finance/finance-selectors';
+
 
 import s from './Table.module.scss';
 
