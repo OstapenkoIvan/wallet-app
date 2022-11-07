@@ -25,6 +25,7 @@
 
 .chartWrapper {
   @media screen and (min-width: 1280px) {
+    margin-top: -14px;
     width: 288px;
     margin-bottom: 32px;
     // margin-left: auto;
@@ -42,7 +43,7 @@
 }
 
 .tableWrapper {
-  padding-top: 65px;
+  padding-top: 51px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding-top: 20px;
     max-width: 336px;
