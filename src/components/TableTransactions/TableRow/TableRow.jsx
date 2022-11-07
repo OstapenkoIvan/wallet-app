@@ -2,8 +2,9 @@ import React from 'react';
 import RowTop from './RowTop';
 import RowForm from '../RowForm/RowForm';
 import TablePortal from '../TablePortal';
-import s from './TableRow.module.scss'
 import { useRowContext } from './RowContext';
+
+import s from './TableRow.module.scss'
 
 const TableRow = () => {
   const { isBottomOpen, handleRowBottomFormOpen } = useRowContext();

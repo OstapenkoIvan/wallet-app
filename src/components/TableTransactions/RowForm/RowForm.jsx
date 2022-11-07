@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useRowContext } from '../TableRow/RowContext';
 import { useDispatch } from 'react-redux';
-import { addTransactionThunk } from 'redux/finance/finance-operation';
+import {
+  editTransactionThunk,
+  deleteTransactionThunk,
+} from 'redux/finance/finance-operation';
 
 import { categoryIdArr } from '../Constants';
 
@@ -24,7 +27,12 @@ const RowBottomForm = () => {
   function handleFormSubmit(ev) {
     ev.preventDefault();
     handleRowBottomFormClose(ev);
-    dispatch(addTransactionThunk(formData));
+    dispatch(editTransactionThunk(formData));
+  }
+  function handleDeletBtnClick(ev) {
+    ev.preventDefault();
+    handleRowBottomFormClose(ev);
+    dispatch(deleteTransactionThunk(rowData.id));
   }
 
   function handleChangeinput(ev) {
@@ -45,7 +53,7 @@ const RowBottomForm = () => {
     currentTarget.classList.toggle(s.isOpen);
   }
   return (
-    <div className={s.formContainer} >
+    <div className={s.formContainer}>
       <form className={s.form} onSubmit={handleFormSubmit}>
         <div className={s.inputs}>
           <label htmlFor="type">Type</label>
@@ -131,7 +139,7 @@ const RowBottomForm = () => {
           </button>
           <button
             className={[s.button, s.delete].join(' ')}
-            onClick={handleRowBottomFormClose}
+            onClick={handleDeletBtnClick}
             type="button"
           >
             Delete
