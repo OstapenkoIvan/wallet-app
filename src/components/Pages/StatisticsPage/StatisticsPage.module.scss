@@ -56,6 +56,10 @@
   height: 300px;
   border: transparent;
   border-radius: 20px;
+  @include phone {
+    padding: 10px;
+    height: 200px;
+  }
 }
 
 .modalOpenSpan {
@@ -67,4 +71,7 @@
   display: block;
   font-family: 'Poppins-Regular';
   font-size: 30px;
+  @include phone {
+    font-size: 18px;
+  }
 }
