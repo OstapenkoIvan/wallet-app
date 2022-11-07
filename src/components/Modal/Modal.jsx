@@ -9,12 +9,7 @@ export const useModal = () => useContext(ModalContext);
 //* ""handleToggle"" функція яка тоглить стейт модалки
 //* ""defaultBtn"" BOOLEAN чи потрібна дефолтна кнопка закриття
 //* ""children"" вміст модалки
-const Modal = ({
-  isOpenModal,
-  handleToggle,
-  defaultBtn,
-  children,
-}) => {
+const Modal = ({ isOpenModal, handleToggle, defaultBtn, children }) => {
   window.addEventListener('keydown', handleToggleModalByEsc);
 
   function handleToggleModalBackdrop(evt) {
