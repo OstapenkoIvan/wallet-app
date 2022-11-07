@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPortal } from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
 import { addTransactionThunk } from 'redux/finance/finance-operation';
 import { getCategoriesThunk } from 'redux/finance/finance-operation';
@@ -11,8 +10,6 @@ import moment from 'moment';
 import scss from './ModalAddTransactions.module.scss';
 import sprite from '../../images/sprite.svg';
 import Header from 'components/Header/Header';
-
-const modalRoot = document.querySelector('#modal-root');
 
 export default function FormAddTransaction({ onClose }) {
   const [checked, setChecked] = useState(true);
@@ -50,12 +47,6 @@ export default function FormAddTransaction({ onClose }) {
       window.removeEventListener('keydown', handleCloseKey);
     };
   }, [dispatch, onClose]);
-
-  const handleBackDropClick = event => {
-    if (event.target === event.currentTarget) {
-      onClose();
-    }
-  };
 
   const toggleClass = () => {
     setSelectActive(!selectActive);

@@ -4,24 +4,6 @@ import RowComp from './RowComponent/RowComponent';
 import scss from './TableMobile.module.scss';
 
 const TableMobile = ({ data }) => {
-  const tableHeaders = [
-    'Date',
-    'Type',
-    'Category',
-    'Comment',
-    'Sum',
-    'Balance',
-  ];
-
-  const tableDataKeys = [
-    'transactionDate',
-    'type',
-    'categoryId',
-    'comment',
-    'amount',
-    'balanceAfter',
-  ];
-
   const categoryName = categId => {
     return categoryIdArr.find(el => el.id === categId);
   };
