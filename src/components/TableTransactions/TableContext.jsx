@@ -3,7 +3,6 @@ import React, { useState, createContext, useContext } from 'react';
 import { categoryIdArr as categoriesList } from './Constants';
 import { tableTitles } from './Constants';
 
-
 import s from './Table.module.scss';
 
 export const TableContextProvider = createContext();
@@ -18,6 +17,7 @@ const TableContext = ({ children, titles }) => {
   function afterHidden() {
     setRowOpenControl(true);
   }
+  
 
   return (
     <TableContextProvider.Provider

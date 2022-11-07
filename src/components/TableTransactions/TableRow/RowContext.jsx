@@ -5,7 +5,7 @@ import { typesArr } from '../Constants';
 export const RowContextProvider = createContext();
 export const useRowContext = () => useContext(RowContextProvider);
 
-const RowContext = ({ children, rowInfo, }) => {
+const RowContext = ({ children, rowInfo }) => {
   const [isBottomOpen, setIsBottomOpen] = useState(false);
   const tableContext = useTableContext();
   const { s, afterShown, afterHidden, rowOpenControl } = tableContext;
@@ -16,13 +16,6 @@ const RowContext = ({ children, rowInfo, }) => {
       item => item.id === rowInfo?.categoryId
     ),
   };
-  // console.log(rowData);
-  function valueToString(element) {
-    if (typeof rowData.amount === 'number') {
-      return element.toString().replaceAll('-', ' ').trim();
-    }
-    return element.replaceAll('-', ' ').trim();
-  }
 
   function handleRowBottomFormOpen(ev) {
     const { currentTarget } = ev;
@@ -40,6 +33,20 @@ const RowContext = ({ children, rowInfo, }) => {
     setIsBottomOpen(false);
     afterHidden();
   }
+  function valueToString(element) {
+    if (typeof element === 'number') {
+      return element
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+        .replaceAll('-', '')
+        .trim();
+    }
+    return element
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+      .replaceAll('-', '')
+      .trim();
+  }
+
 
   return (
     <RowContextProvider.Provider
@@ -49,8 +56,8 @@ const RowContext = ({ children, rowInfo, }) => {
         handleRowBottomFormClose,
         rowData,
         tableContext,
+        typesArr,
         valueToString,
-        typesArr
       }}
     >
       {children}

@@ -108,7 +108,6 @@ export const App = () => {
 
   return (
     <div className={scss.App}>
-      <DeviceTypeInformer />
       <Layout>
         <Routes>
           <Route

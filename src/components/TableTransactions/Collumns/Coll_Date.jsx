@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRowContext } from '../TableRow/RowContext';
 
-import { TableStyles as s } from '../TableStyleSheet';
+import s from './Coll.module.scss';
 
 const Coll_Date = ({ title, colIdx }) => {
-  const { titles, rowData, rowIdx } = useRowContext();
+  const { rowData } = useRowContext();
 
   return <div className={s.col}>{rowData.transactionDate}</div>;
 };

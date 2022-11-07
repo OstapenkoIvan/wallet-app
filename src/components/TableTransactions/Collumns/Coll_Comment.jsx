@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRowContext } from '../TableRow/RowContext';
 
-import { TableStyles as s } from '../TableStyleSheet';
+import s from './Coll.module.scss';
 
-const Coll_Comment = ({ title, colIdx, calssName = '' }) => {
-  const classNames = [s.col, ...calssName].join(' ');
-  const { titles, rowData, rowIdx } = useRowContext();
+const Coll_Comment = ({ title, colIdx, className = '' }) => {
+  const classNames = [s.col, ...className].join(' ');
+  const { rowData } = useRowContext();
 
   return (
     <div className={classNames}>

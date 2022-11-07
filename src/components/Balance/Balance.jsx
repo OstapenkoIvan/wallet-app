@@ -8,15 +8,15 @@ const Balance = props => {
   const userBalance = useSelector(getUserBalance);
 
   function numberWithSpaces(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return x.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
   return (
     <div className={scss.balance}>
       <span className={scss.title}>your balance</span>
       <span className={scss.currency}>
-        ₴
+        {'₴ '}
         <span className={scss.value}>
-          {numberWithSpaces(userBalance.toFixed(2))}
+          {numberWithSpaces(userBalance)}
         </span>
       </span>
     </div>
