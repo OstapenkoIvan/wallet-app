@@ -1,5 +1,3 @@
-import React from 'react';
-
 const chartColorsArr = [
   '#FED057',
   '#FFD8D0',
