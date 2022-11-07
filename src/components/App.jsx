@@ -60,6 +60,7 @@ export const App = () => {
               <Route path="dashboardPage/*" element={<DashboardPage />}>
                 <Route path="transactionsPage" element={<TransactionsPage />} />
                 <Route path="statistics" element={<StatisticsPage />} />
+
                 <Route
                   path="exchangeMobile"
                   element={
