@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation} from 'react-router-dom';
 
 import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
@@ -29,7 +29,9 @@ const ExchangeMobilePage = lazy(() =>
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  const { getAuthToken, getIsLoading } = sessionSelectors;
+  const { getAuthToken } = sessionSelectors;
+  let location = useLocation();
+
 
   const authToken = useSelector(getAuthToken);
 
@@ -112,7 +114,7 @@ export const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<PublicRoute redirectTo="/dashboard/transactions" end />}
+            element={<PublicRoute redirectTo="/dashboard/transactions"/>}
           >
             <Route
               path="signin"
@@ -135,7 +137,7 @@ export const App = () => {
               }
             />
           </Route>
-          <Route path="/" element={<PrivateRoute redirectTo="/signin" />}>
+          <Route path="/" element={<PrivateRoute redirectTo={location.pathname||"/signin"} />}>
             <Route
               path="dashboard/*"
               element={
