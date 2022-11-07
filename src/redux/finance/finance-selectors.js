@@ -7,4 +7,3 @@ export const getUserBalanceFromTransaction = ({ transactions }) => {
   const length = transactions.length - 1;
   return transactions[length].balanceAfter;
 };
-export const getFinance = state => state.finance;

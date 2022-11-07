@@ -5,18 +5,6 @@
 @import './sass/utils/container';
 @import './sass/utils/helpers';
 
-html {
-  box-sizing: border-box;
-  /* відміняє синій фон при дотику по обєктах на тачскірінах */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-}
-
 *,
 ::after,
 ::before {

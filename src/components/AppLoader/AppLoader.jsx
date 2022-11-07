@@ -7,7 +7,6 @@ const AppLoader = ({
   isLoading = false,
   global = true,
   black = true,
-  //* габарити спінера
   spinerHeight = 80,
   spinerWidth = 80,
   blur = 0,
@@ -15,9 +14,7 @@ const AppLoader = ({
   styles,
   ...others
 }) => {
-  //* параметр який дає можливість вмістити лоадер у якийсь обект і позиціонувати відносно батькісвського
   const typeClass = global ? s.BackdropGlobal : s.BackdropLocal;
-  //* базовий колір бекдропу
   const colorClass = black ? s.BackdropBlack : s.BackdropWhite;
  
   useEffect(() => {
@@ -36,11 +33,11 @@ const AppLoader = ({
           <Oval
             height={spinerHeight}
             width={spinerWidth}
+            color="#4fa94d"
             wrapperStyle={{}}
             wrapperClass=""
             visible={true}
             ariaLabel="oval-loading"
-            color="#4fa94d"
             secondaryColor="#4fa94d"
             strokeWidth={2}
             strokeWidthSecondary={2}

@@ -18,7 +18,7 @@ const Header = props => {
   return (
     <div className={scss.Header}>
       <div className={['container', scss.wrapper].join(' ')}>
-        <Link to="/dashboardPage/transactions">
+        <Link to="/dashboardPage/TransactionsPage">
           <div className={scss.logoBox}>
             <img className={scss.logoImg} src={logoImg} alt="logo" />
             <span className={scss.logoText}>Wallet</span>

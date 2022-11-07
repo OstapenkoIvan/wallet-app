@@ -1,37 +1,38 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getTransactionsThunk } from 'redux/finance/finance-operation';
-
+import { useEffect } from 'react';
+// import PropTypes from 'prop-types';
 import TableMobile from 'components/TableMobile/TableMobile';
-import Balance from 'components/Balance/Balance';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
-
 import {
   NotMobile,
   Mobile,
 } from 'components/DeviceTypeControl/DeviseTypeController';
-
 import scss from './TransactionsPage.module.scss';
 
-const TransactionsPage = () => {
+import { useDispatch, useSelector } from 'react-redux';
+import { financeOperation, financeSelectors } from 'redux/finance';
+
+const TransactionsPage = props => {
   const dispatch = useDispatch();
+  const transactions = useSelector(financeSelectors.getTransactions);
 
   useEffect(() => {
-    dispatch(getTransactionsThunk());
+    dispatch(financeOperation.getTransactionsThunk());
   }, [dispatch]);
+
   return (
     <div className={scss.TransactionsPage}>
       <Mobile>
-        <div className={scss.wrapper}>
-          <Balance />
-          <TableMobile />
-        </div>
+        <TableMobile data={transactions} />
       </Mobile>
       <NotMobile>
-        <TableTransactions />
+        <div className={scss.HomeTableBox}>
+          <TableTransactions data={transactions} />
+        </div>
       </NotMobile>
     </div>
   );
 };
+
+// TransactionsPage.propTypes = {};
 
 export default TransactionsPage;

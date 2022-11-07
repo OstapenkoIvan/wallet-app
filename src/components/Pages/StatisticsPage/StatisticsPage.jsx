@@ -13,12 +13,9 @@ const StatisticsPage = () => {
   const stasticsSummary = useSelector(financeSelectors.getSummary);
   const { categoriesSummary, expenseSummary, incomeSummary } =
     stasticsSummary || {};
-  console.log(stasticsSummary);
   const preparedArray = categoriesSummary?.filter(
     item => item.type === 'EXPENSE'
   );
-
-  console.log(preparedArray);
 
   useEffect(() => {
     dispatch(

@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import AppLoader from 'components/AppLoader/AppLoader';
-import { useSelector } from 'react-redux';
+
 import Form from 'components/Form/Form';
 import {
   logo,
@@ -15,20 +14,13 @@ import {
   tabletImage,
   tabletImage2x,
 } from 'assets/images';
-import { sessionSelectors } from 'redux/session';
-
 
 import css from './AuthPage.module.scss';
 
 const AuthPage = ({ forRegister }) => {
-  const { getAuthToken, getIsLoading } = sessionSelectors;
-  const isLoading = useSelector(getIsLoading)
-
   useEffect(() => {}, []);
 
   return (
-    <>
-    <AppLoader isLoading={isLoading} global={true} />
     <div className={css.section}>
       <div className={`${css.pageContainer} container`}>
         <div className={css.titleWrapper}>
@@ -82,7 +74,6 @@ const AuthPage = ({ forRegister }) => {
         </div>
       </div>
     </div>
-    </>
   );
 };
 
