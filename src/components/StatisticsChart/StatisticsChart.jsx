@@ -16,7 +16,6 @@ export default function StatisticsChart({ statChartData = {} }) {
   const [data, setData] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('');
   const [labels, setLabels] = useState('');
-  console.log(statChartData);
 
   const donut = {
     labels: labels,

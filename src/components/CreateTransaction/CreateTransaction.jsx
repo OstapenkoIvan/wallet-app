@@ -27,7 +27,7 @@ const CreateTransaction = props => {
         <ButtonAddTransactions onClick={toggleModal} />
       )}
       {isModalOpen && (
-        <Modal defaultButton={false}>
+        <Modal defaultButton={false} handleToggle={toggleModal}>
           <FormAddTransaction onClose={toggleModal} />
         </Modal>
       )}
