@@ -30,8 +30,8 @@ const sessionSlice = createSlice({
     },
     [registerThunk.fulfilled](state, { payload }) {
       state.isLoading = false;
-      state.user = payload.data.user;
-      state.token = payload.data.token;
+      state.user = payload.user;
+      state.token = payload.token;
       state.isAuth = true;
     },
     [registerThunk.rejected]: (state, { payload }) => {

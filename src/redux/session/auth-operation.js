@@ -19,7 +19,7 @@ export const registerThunk = createAsyncThunk(
   'auth/register',
   async (user, { rejectWithValue }) => {
     try {
-      const data = await userApi.post('auth/sign-up', user);
+      const { data } = await userApi.post('auth/sign-up', user);
       if (data.token) token.set(data.token);
       return data;
     } catch (error) {

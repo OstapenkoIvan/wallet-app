@@ -26,7 +26,6 @@ const StatisticsPage = () => {
     <div className={scss.Statistics}>
       <div className={scss.chartWrapper}>
         <h2 className={scss.statisticsTitle}>Statistics</h2>
-        {/* <StatisticsChart statChartData={preparedData} /> */}
         {stasticsSummary && <StatisticsChart statChartData={stasticsSummary} />}
       </div>
       <div className={scss.tableWrapper}>
