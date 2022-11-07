@@ -1,4 +1,9 @@
+import axios from 'axios';
 export const BASE_URL = 'https://wallet.goit.ua/api/';
+
+export const userApi = axios.create({
+  baseURL: BASE_URL,
+});
 
 export const PRIVATE_URL =
   'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11';

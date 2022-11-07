@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { authOperation } from 'redux/session';
+import { userApi } from 'constans/constans';
 import { toast } from 'react-toastify';
 const toastOpions = {
   position: 'top-right',
@@ -13,10 +13,10 @@ const toastOpions = {
 };
 
 export const getTransactionsThunk = createAsyncThunk(
-  'transactions',
+  'finance/allTransactions',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await authOperation.userApi.get('transactions');
+      const { data } = await userApi.get('transactions');
       return data;
     } catch (error) {
       return toast(rejectWithValue(error.message), {
@@ -27,13 +27,10 @@ export const getTransactionsThunk = createAsyncThunk(
 );
 
 export const addTransactionThunk = createAsyncThunk(
-  'add',
+  'finance/addTransaction',
   async (transaction, { rejectWithValue }) => {
     try {
-      const { data } = await authOperation.userApi.post(
-        'transactions',
-        transaction
-      );
+      const { data } = await userApi.post('transactions', transaction);
       return data;
     } catch (error) {
       return toast(rejectWithValue(error.message), {
@@ -44,10 +41,10 @@ export const addTransactionThunk = createAsyncThunk(
 );
 
 export const deleteTransactionThunk = createAsyncThunk(
-  'delete',
+  'finance/deleteTransaction',
   async (id, { rejectWithValue }) => {
     try {
-      await authOperation.userApi.delete(`transactions/${id}`);
+      await userApi.delete(`transactions/${id}`);
       return id;
     } catch (error) {
       return toast(rejectWithValue(error.message), {
@@ -58,13 +55,10 @@ export const deleteTransactionThunk = createAsyncThunk(
 );
 
 export const editTransactionThunk = createAsyncThunk(
-  'edit',
+  'finance/editTransaction',
   async ({ id, transaction }, { rejectWithValue }) => {
     try {
-      const { data } = await authOperation.userApi.patch(
-        `transactions/${id}`,
-        transaction
-      );
+      const { data } = await userApi.patch(`transactions/${id}`, transaction);
       return data;
     } catch (error) {
       return toast(rejectWithValue(error.message), {
@@ -75,10 +69,10 @@ export const editTransactionThunk = createAsyncThunk(
 );
 
 export const getSummaryThunk = createAsyncThunk(
-  'getSummary',
-  async ({ month = 11, year = 2022 }, { rejectWithValue }) => {
+  'finance/getSummary',
+  async ({ month, year }, { rejectWithValue }) => {
     try {
-      const { data } = await authOperation.userApi.get(
+      const { data } = await userApi.get(
         `transactions-summary?month=${month}&year=${year}`
       );
       return data;
@@ -91,12 +85,10 @@ export const getSummaryThunk = createAsyncThunk(
 );
 
 export const getCategoriesThunk = createAsyncThunk(
-  'getCategories',
+  'finance/getCategories',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await authOperation.userApi.get(
-        'transaction-categories'
-      );
+      const { data } = await userApi.get('transaction-categories');
       return data;
     } catch (error) {
       return toast(rejectWithValue(error.message), {

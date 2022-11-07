@@ -19,7 +19,7 @@ const initialState = {
   isLoading: false,
 };
 
-const logOut = createAction('USER_LOGOUT');
+// const logOut = createAction('USER_LOGOUT');
 
 const sessionSlice = createSlice({
   name: 'session',
@@ -73,12 +73,13 @@ const sessionSlice = createSlice({
       state.isAuth = true;
     },
     [refreshThunk.rejected](state, { payload }) {
+      state.user = { username: '', email: '', id: '', balance: '' };
       state.isLoading = false;
       state.error = payload;
     },
-    [logOut]: state => {
-      Object.assign(state, initialState);
-    },
+    // [logOut]: state => {
+    //   Object.assign(state, initialState);
+    // },
   },
 });
 
