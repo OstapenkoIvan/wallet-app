@@ -1,4 +1,5 @@
 .Statistics {
+  // max-width: 480px;
   display: flex;
   height: 100%;
   width: 100%;
@@ -16,16 +17,24 @@
   line-height: 45px;
   padding-left: 15px;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 1279px) {
+    padding-left: 0;
+  }
 }
 
 .chartWrapper {
-  max-width: 288px;
-  margin-right: 32px;
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+    margin-bottom: 32px;
+    // margin-left: auto;
+    margin-right: auto;
+  }
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    max-width: 336px;
+    width: 336px;
   }
   @media screen and (max-width: 767px) {
-    max-width: 440px;
+    width: 280px;
     margin-bottom: 32px;
     margin-left: auto;
     margin-right: auto;
@@ -33,13 +42,16 @@
 }
 
 .tableWrapper {
+  padding-top: 65px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    width: 336px;
+    padding-top: 20px;
+    max-width: 336px;
     margin-left: auto;
   }
 }
 
 .selectWrapper {
   height: 115px;
+
   margin-bottom: 20px;
 }
