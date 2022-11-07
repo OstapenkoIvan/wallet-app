@@ -21,16 +21,18 @@
     box-shadow: 0 0 5px rgba(126, 126, 126, 0.5);
   }
 }
+//* MODAL ROW
 .rowModal {
-  position: absolute;
+  // position: absolute;
   top: 70px;
   left: 50%;
 
-  width: 80%;
-  transform: translateX(-50%);
+  width: 400px;
+  height: fit-content;
+  // transform: translateX(-50%);
 
   z-index: 500;
-  border-radius: 30px;
+  // border-radius: 30px;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.8);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);

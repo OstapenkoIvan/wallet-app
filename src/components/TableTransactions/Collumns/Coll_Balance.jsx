@@ -4,7 +4,7 @@ import { useRowContext } from '../TableRow/RowContext';
 import s from './Coll.module.scss';
 
 const Coll_Balance = ({ title, colIdx, className = '' }) => {
-  const classNames = [s.col, ...className].join(' ');
+  const classNames = [s.col,s[title?.action], ...className].join(' ');
   const { rowData, valueToString } = useRowContext();
 
   return (

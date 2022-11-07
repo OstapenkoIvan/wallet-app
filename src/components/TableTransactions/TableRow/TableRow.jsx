@@ -2,23 +2,26 @@ import React from 'react';
 import RowTop from './RowTop';
 import RowForm from '../RowForm/RowForm';
 import TablePortal from '../TablePortal';
+import Modal from 'components/Modal/Modal';
 import { useRowContext } from './RowContext';
 
-import s from './TableRow.module.scss'
+import s from './TableRow.module.scss';
 
 const TableRow = () => {
-  const { isBottomOpen, handleRowBottomFormOpen } = useRowContext();
+  const { isBottomOpen, handleRowBottomFormOpen,handleRowBottomFormClose } = useRowContext();
 
   return (
     <div className={s.tRow} onDoubleClick={handleRowBottomFormOpen}>
       <RowTop />
       {isBottomOpen && (
-        <TablePortal>
+        // <TablePortal>
+        <Modal defaultBtn={false} handleToggle={handleRowBottomFormClose}>
           <div className={s.rowModal}>
-            <RowTop />
+            {/* <RowTop /> */}
             <RowForm />
           </div>
-        </TablePortal>
+        </Modal>
+        // </TablePortal>
       )}
     </div>
   );

@@ -1,6 +1,8 @@
 .table {
   position: relative;
   font-size: 12px;
+
+  font-family: 'Poppins-Bold';
 }
 .trHead {
   display: grid;
@@ -30,7 +32,6 @@
   width: 100%;
   min-height: 100px;
   max-height: 650px;
-  overflow: auto;
 }
 
 

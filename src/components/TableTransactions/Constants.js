@@ -1,10 +1,10 @@
 export const tableTitles = [
-  { id: '10', name: 'Date', type: '', action: 'date' },
-  { id: '1', name: 'Type', type: '', action: 'type' },
-  { id: '2', name: 'Category', type: '', action: 'category' },
-  { id: '3', name: 'Comment', type: '', action: 'comment' },
-  { id: '4', name: 'Sum', type: '', action: 'sum' },
-  { id: '5', name: 'Balance', type: '', action: 'balance' },
+  { id: '10', name: 'Date', action: 'date' },
+  { id: '1', name: 'Type', action: 'type' },
+  { id: '2', name: 'Category', action: 'category' },
+  { id: '3', name: 'Comment', action: 'comment' },
+  { id: '4', name: 'Sum', action: 'sum' },
+  { id: '5', name: 'Balance', action: 'balance' },
 ];
 export const categoryIdArr = [
   {
