@@ -4,6 +4,7 @@ import AppLoader from 'components/AppLoader/AppLoader';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { financeOperation, financeSelectors } from 'redux/finance';
+import { sessionSelectors } from 'redux/session';
 
 import Header from 'components/Header/Header';
 import AppBar from 'components/AppBar/AppBar';
@@ -13,15 +14,16 @@ import scss from './DashboardPage.module.scss';
 const DashboardPage = () => {
   const dispatch = useDispatch();
   const categories = useSelector(financeSelectors.getCategories);
+  const isAuth = useSelector(sessionSelectors.getIsAuth);
 
   useEffect(() => {
     dispatch(financeOperation.getTransactionsThunk());
   }, [dispatch]);
 
   useEffect(() => {
-    if (categories.length > 0) return;
+    if (categories.length > 0 && !isAuth) return;
     dispatch(financeOperation.getCategoriesThunk());
-  }, [categories.length, dispatch]);
+  }, [categories.length, isAuth, dispatch]);
 
   return (
     <>

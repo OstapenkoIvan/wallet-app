@@ -20,11 +20,9 @@ const AppLoader = ({
   useEffect(() => {
     if (isLoading) {
       document.querySelector('body').classList.add(s.NotScroll);
-      console.log('first');
     }
     return () => {
       document.querySelector('body').classList.remove(s.NotScroll);
-      console.log('first');
     };
   }, [isLoading]);
 
