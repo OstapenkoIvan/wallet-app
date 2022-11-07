@@ -4,7 +4,11 @@ import RowStatComponent from './RowStatComponent/RowStatComponent';
 import scss from './StatisticsTable.module.scss';
 
 const StatisticsTable = ({ statData }) => {
-  const { expenseSummary, incomeSummary, categoriesSummary } = statData;
+  const {
+    expenseSummary,
+    incomeSummary,
+    preparedArray: categoriesSummary,
+  } = statData;
 
   return (
     <div className={scss.container}>

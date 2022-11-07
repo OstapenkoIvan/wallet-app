@@ -6,7 +6,9 @@
     left: 0;
     display: flex;
     gap: 40px;
-    // z-index: 101;
+    z-index: 101;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     min-width: 320px;
@@ -53,7 +55,7 @@
 
 .modalTitle {
     margin-top: 0;
-    font-family: 'Poppins-Bold';
+    font-family: Poppins-Bold;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -65,6 +67,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
     gap: 20px;
     width: 257px;
     height: 44px;
@@ -128,6 +132,8 @@
         }
     }        
 }
+
+
 
 .checkbox:checked + .checkboxLabel {
     .checkboxSlider {
@@ -251,7 +257,16 @@
 }
 
 .hiddenInput {
-    display: none;
+    position: absolute;
+    
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+    
+        clip: rect(0 0 0 0);
+        overflow: hidden;
 }
 
 .inputLabel {
@@ -259,12 +274,14 @@
 }
 
 .inputsContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
 .inputField {
+    position: relative;
     box-sizing: border-box;
     max-height: 32px;
     height: 100%;
@@ -275,6 +292,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 1.5;
+    overflow-y: hidden;
     
     color: #000000;
     
@@ -286,6 +304,102 @@
     transition-property: border;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; // Yeah, yeah everybody write about it
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+.empty {
+    color: #BDBDBD;
+}
+
+.errorMessageWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 7px;
+    left: 0;
+    border: 1px solid #FF6596;
+    border-radius: 0 0 5px 5px;
+}
+
+.errorIcon {
+    margin-left: 20px;
+    fill: #FF6596;
+    width: 15px;
+    height: 15px;
+}
+
+.errorMessage {
+    font-family: Circe-Regular;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    padding-left: 20px;
+    color: #FF6596;
+}
+
+.errorMessageWrapperAmount {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 182px;
+    top: 31px;
+    left: 0;
+    border: 1px solid #FF6596;
+    border-radius: 0 0 5px 5px;
+}
+
+.errorIconAmount {
+    margin-left: 10px;
+    fill: #FF6596;
+    width: 15px;
+    height: 15px;
+}
+
+.errorMessageAmount {
+    font-family: Circe-Regular;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 10px;
+    color: #FF6596;
+}
+
+.errorMessageWrapperDate {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 182px;
+    top: 31px;
+    left: 0;
+    border: 1px solid #FF6596;
+    border-radius: 0 0 5px 5px;
+}
+
+.errorIconDate {
+    margin-left: 10px;
+    fill: #FF6596;
+    width: 15px;
+    height: 15px;
+}
+
+.errorMessageDate {
+    font-family: Circe-Regular;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 10px;
+    color: #FF6596;
 }
 
 .inputFieldDate {
@@ -435,22 +549,23 @@ input[name='amount'].inputField::-webkit-input-placeholder {
     }
 }
 
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.25);
-    z-index: 1300;
-}
 @include tablet {
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.25);;
+        z-index: 1200;
+    }
 
     .modal {
         max-width: 540px;
+        height: auto;
         border-radius: 20px;
         padding: 40px 73px 60px 73px;
     }

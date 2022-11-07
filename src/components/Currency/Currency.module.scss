@@ -10,7 +10,7 @@
   overflow: hidden;
   background-image: url(../../assets/images/wave_mobile.svg);
   background-position: bottom;
-  background-size: initial;
+  background-size: contain;
   background-repeat: no-repeat;
   @include tablet {
     width: 336px;

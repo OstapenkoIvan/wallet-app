@@ -13,7 +13,6 @@ const options = {
 };
 
 export default function StatisticsChart({ statChartData = {} }) {
-  const { categoriesSummary } = statChartData;
   const [data, setData] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('');
   const [labels, setLabels] = useState('');
@@ -32,9 +31,9 @@ export default function StatisticsChart({ statChartData = {} }) {
   };
 
   useState(() => {
-    const nameArr = categoriesSummary.map(item => item.total);
-    const colorsArr = categoriesSummary.map((_, index) => BASE_COLORS[index]);
-    const labelsArr = categoriesSummary.map(item => item.name);
+    const nameArr = statChartData.map(item => item.total);
+    const colorsArr = statChartData.map((_, index) => BASE_COLORS[index]);
+    const labelsArr = statChartData.map(item => item.name);
     setData(nameArr);
     setBackgroundColor(colorsArr);
     setLabels(labelsArr);

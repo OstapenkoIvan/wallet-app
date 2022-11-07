@@ -11,6 +11,14 @@ import scss from './StatisticsPage.module.scss';
 const StatisticsPage = () => {
   const dispatch = useDispatch();
   const stasticsSummary = useSelector(financeSelectors.getSummary);
+  const { categoriesSummary, expenseSummary, incomeSummary } =
+    stasticsSummary || {};
+  console.log(stasticsSummary);
+  const preparedArray = categoriesSummary?.filter(
+    item => item.type === 'EXPENSE'
+  );
+
+  console.log(preparedArray);
 
   useEffect(() => {
     dispatch(
@@ -25,11 +33,15 @@ const StatisticsPage = () => {
     <div className={scss.Statistics}>
       <div className={scss.chartWrapper}>
         <h2 className={scss.statisticsTitle}>Statistics</h2>
-        {stasticsSummary && <StatisticsChart statChartData={stasticsSummary} />}
+        {stasticsSummary && <StatisticsChart statChartData={preparedArray} />}
       </div>
       <div className={scss.tableWrapper}>
         <DateSelect />
-        {stasticsSummary && <StatisticsTable statData={stasticsSummary} />}
+        {stasticsSummary && (
+          <StatisticsTable
+            statData={{ preparedArray, expenseSummary, incomeSummary }}
+          />
+        )}
       </div>
     </div>
   );

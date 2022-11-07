@@ -5,6 +5,8 @@ import scss from '../StatisticsTable.module.scss';
 
 const RowStatComponent = ({ data }) => {
   return data.map(({ name, total, type }, idx) => {
+    const value = total.toString().slice(1);
+
     return (
       <tr key={idx} className={scss.tbodyRow}>
         <td className={[scss.colName, scss[`col-${idx + 1}`]].join(' ')}>
@@ -15,7 +17,7 @@ const RowStatComponent = ({ data }) => {
           <div className={scss.divData}>{name}</div>
         </td>
         <td className={[scss.colData, scss[`col-${idx + 1}`]].join(' ')}>
-          {total}
+          {value}
         </td>
       </tr>
     );
