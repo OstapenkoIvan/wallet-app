@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { getUserBalance } from 'redux/session/session-selectors';
@@ -16,6 +16,7 @@ export default function StatisticsChart({ statChartData = {} }) {
   const [data, setData] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('');
   const [labels, setLabels] = useState('');
+  console.log(statChartData);
 
   const donut = {
     labels: labels,
@@ -24,22 +25,21 @@ export default function StatisticsChart({ statChartData = {} }) {
         label: '# of Votes',
         data: data,
         backgroundColor: backgroundColor,
-
         borderWidth: 0,
       },
     ],
   };
 
-  useState(() => {
+  let userBalance = useSelector(getUserBalance);
+
+  useEffect(() => {
     const nameArr = statChartData.map(item => item.total);
     const colorsArr = statChartData.map((_, index) => BASE_COLORS[index]);
     const labelsArr = statChartData.map(item => item.name);
     setData(nameArr);
     setBackgroundColor(colorsArr);
     setLabels(labelsArr);
-  });
-
-  const userBalance = useSelector(getUserBalance);
+  }, [statChartData, userBalance]);
 
   const plugins = [
     {

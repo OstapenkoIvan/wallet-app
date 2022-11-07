@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
-import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
+// import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
+import Modal from 'components/Modal/Modal';
+import FormAddTransaction from 'components/ModalAddTransactions/ModalAddTransactions';
 
 const CreateTransaction = props => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-    console.log('MODAL TRANSACTION');
   };
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.querySelector('body').classList.add('NotScroll');
+    }
+    return () => {
+      document.querySelector('body').classList.remove('NotScroll');
+    };
+  }, [isModalOpen]);
+
   return (
     <>
-      <ButtonAddTransactions onClick={toggleModal} />
-      {isModalOpen && <ModalAddTransactions onClose={toggleModal} />}
+      {pathname === '/dashboardPage/transactionsPage' && (
+        <ButtonAddTransactions onClick={toggleModal} />
+      )}
+      {isModalOpen && (
+        <Modal defaultButton={false}>
+          <FormAddTransaction onClose={toggleModal} />
+        </Modal>
+      )}
     </>
   );
 };
-
-// CreateTransaction.propTypes = {};
 
 export default CreateTransaction;

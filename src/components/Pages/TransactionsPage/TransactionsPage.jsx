@@ -7,6 +7,7 @@ import {
   Mobile,
 } from 'components/DeviceTypeControl/DeviseTypeController';
 import scss from './TransactionsPage.module.scss';
+// import CreateTransaction from 'components/CreateTransaction/CreateTransaction';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { financeOperation, financeSelectors } from 'redux/finance';
@@ -29,6 +30,7 @@ const TransactionsPage = props => {
           <TableTransactions data={transactions} />
         </div>
       </NotMobile>
+      {/* <CreateTransaction /> */}
     </div>
   );
 };
