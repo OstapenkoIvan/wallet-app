@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import TableRow from './TableRow/TableRow';
 import RowContext from './TableRow/RowContext';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { TableStyles as s } from './TableStyleSheet';
 
 const TableBody = () => {
   const tableData = useSelector(getTransactions);
-  const SortByDate = (userTransactions) => {
+  const SortByDate = userTransactions => {
     const transactions = [...userTransactions].sort(
       (prevTransactions, transaction) => {
         const prev = new Date(prevTransactions.transactionDate);

@@ -7,7 +7,7 @@ import { sprite } from 'assets/images/sprite';
 
 import { useDispatch } from 'react-redux';
 import { authOperation } from 'redux/session';
-import { financeOperation, financeSlice } from 'redux/finance';
+import { financeSlice } from 'redux/finance';
 
 import s from './LogOutConfirm.module.scss';
 
