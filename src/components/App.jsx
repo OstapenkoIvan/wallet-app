@@ -78,15 +78,15 @@ export const App = () => {
   //!Get getCategories
   // dispatch(financeOperation.getCategories());
   //!GET addTransaction
-  dispatch(
-    financeOperation.addTransactionThunk({
-      transactionDate: '2022-11-01T16:59:40+0000',
-      type: 'INCOME',
-      comment: 'aplles',
-      amount: 1000,
-      categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
-    })
-  );
+  // dispatch(
+  //   financeOperation.addTransactionThunk({
+  //     transactionDate: '2022-11-01T16:59:40+0000',
+  //     type: 'INCOME',
+  //     comment: 'aplles',
+  //     amount: 1000,
+  //     categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+  //   })
+  // );
 
   //!Get deleteTransaction
   // dispatch(financeOperation.deleteTransaction('d429dd9c-21be-4186-8974-56c192494640'));
