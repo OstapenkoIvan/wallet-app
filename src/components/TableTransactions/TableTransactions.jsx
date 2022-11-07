@@ -2,26 +2,10 @@ import React from 'react';
 import categoryIdArr from 'assets/categoryIdArr';
 
 import scss from './TableTransactions.module.scss';
+import getTransactionDate from 'utils/getTransactionDate';
+import tableHeaders from 'utils/TableTransactions';
 
 const TableTransactions = ({ data }) => {
-  const tableHeaders = [
-    'Date',
-    'Type',
-    'Category',
-    'Comment',
-    'Sum',
-    'Balance',
-  ];
-
-  const getTransactionDate = elDate => {
-    const date = new Date(elDate);
-    const day = date.getDate().toString().padStart(2, 0);
-    const month = (date.getMonth() + 1).toString().padStart(2, 0);
-    const year = date.getFullYear().toString().slice(2);
-
-    return `${day}.${month}.${year} `;
-  };
-
   return (
     <div className={scss.container}>
       <table className={scss.table}>

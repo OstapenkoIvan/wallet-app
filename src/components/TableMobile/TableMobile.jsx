@@ -2,19 +2,11 @@ import React from 'react';
 import categoryIdArr from 'assets/categoryIdArr';
 import RowComp from './RowComponent/RowComponent';
 import scss from './TableMobile.module.scss';
+import getTransactionDate from 'utils/getTransactionDate';
 
 const TableMobile = ({ data }) => {
   const categoryName = categId => {
     return categoryIdArr.find(el => el.id === categId);
-  };
-
-  const getTransactionDate = elDate => {
-    const date = new Date(elDate);
-    const day = date.getDate().toString().padStart(2, 0);
-    const month = (date.getMonth() + 1).toString().padStart(2, 0);
-    const year = date.getFullYear().toString().slice(2);
-
-    return `${day}.${month}.${year} `;
   };
 
   const filteredArr = data.map(el => {
