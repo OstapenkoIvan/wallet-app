@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
 
 import { sessionSelectors } from 'redux/session';
+import { getIsAuth } from 'redux/session/session-selectors';
 
 import scss from './App.module.scss';
 
@@ -29,18 +30,22 @@ const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   const { getAuthToken } = sessionSelectors;
+  const dispatch = useDispatch();
   let location = useLocation();
 
   const authToken = useSelector(getAuthToken);
-
-  const dispatch = useDispatch();
-
+  
+  const auth = useSelector(getIsAuth);
+  
   useEffect(() => {
+    if(!auth){
+      return
+    }
     if (authToken) {
       dispatch(authOperation.refreshThunk());
       return;
     }
-  }, [dispatch, authToken]);
+  }, [dispatch, authToken, auth]);
 
   //!STORE TEST CODE ABOVE
   //*CREATE NEW USER {username: 'biba',email: 'biba@mail.com',password: '1234asdf',}
