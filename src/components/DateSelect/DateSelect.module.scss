@@ -32,7 +32,7 @@
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   @include tablet {
-    min-width: 160px;
+    min-width: 150px;
   }
   @include desktop {
     min-width: 181px;

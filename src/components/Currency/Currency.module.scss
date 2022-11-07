@@ -13,10 +13,12 @@
   background-size: initial;
   background-repeat: no-repeat;
   @include tablet {
+    width: 336px;
     height: 182px;
     background-image: url(../../assets/images/wave_tablet.svg);
   }
   @include desktop {
+    width: 393px;
     height: 347px;
     background-image: url(../../assets/images/wave_desktop.svg);
   }
@@ -89,14 +91,12 @@
     padding-left: 20px;
     text-align: left;
   }
-
 }
 .td_3 {
   @include toDesktop {
     padding-right: 20px;
     text-align: right;
   }
-
 }
 .icon {
   position: absolute;

@@ -82,8 +82,8 @@ export const App = () => {
   //   financeOperation.addTransactionThunk({
   //     transactionDate: '2022-11-01T16:59:40+0000',
   //     type: 'INCOME',
-  //     comment: 'aplles',
-  //     amount: 1000,
+  //     comment: 'oranges',
+  //     amount: 300,
   //     categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
   //   })
   // );

@@ -13,14 +13,13 @@ const StatisticsPage = () => {
   const stasticsSummary = useSelector(financeSelectors.getSummary);
 
   useEffect(() => {
-    if (stasticsSummary) return;
     dispatch(
       financeOperation.getSummaryThunk({
         month: 11,
         year: 2022,
       })
     );
-  }, [dispatch, stasticsSummary]);
+  }, [dispatch]);
 
   return (
     <div className={scss.Statistics}>

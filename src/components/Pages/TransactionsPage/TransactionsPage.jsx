@@ -16,9 +16,8 @@ const TransactionsPage = props => {
   const transactions = useSelector(financeSelectors.getTransactions);
 
   useEffect(() => {
-    if (transactions.length > 0) return;
     dispatch(financeOperation.getTransactionsThunk());
-  }, [dispatch, transactions.length]);
+  }, [dispatch]);
 
   return (
     <div className={scss.TransactionsPage}>
