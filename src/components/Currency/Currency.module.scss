@@ -28,6 +28,7 @@
   padding-right: 20px;
   padding-left: 20px;
   color: getColor('clr-white');
+  font-family: 'Circe-Regular';
 }
 .thead {
   background-color: getColor('clr-accent');
@@ -76,7 +77,6 @@
 .td_1,
 .td_2,
 .td_3 {
-  //   font-family: Circe-Regular;
   font-size: 16px;
   line-height: calc(19 / 16);
   text-align: center;
