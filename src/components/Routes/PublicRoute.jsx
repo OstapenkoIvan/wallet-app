@@ -8,7 +8,7 @@ export default function PublicRoute({ redirectTo, end, ...routeProps }) {
   const isLoggedIn = useSelector(getIsAuth);
 
   return isLoggedIn ? (
-    <Navigate to={redirectTo} end />
+    <Navigate to={redirectTo} />
   ) : (
     <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
       <Outlet />

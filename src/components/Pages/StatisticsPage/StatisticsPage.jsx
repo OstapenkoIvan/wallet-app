@@ -21,8 +21,6 @@ const StatisticsPage = () => {
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(stasticsSummary);
-
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
   const getCurrentMonth = MONTH.getKeyByValue(currentMonth);
@@ -30,6 +28,7 @@ const StatisticsPage = () => {
 
   useEffect(() => {
     const monthNumber = MONTH[getCurrentMonth];
+
     dispatch(
       financeOperation.getSummaryThunk({
         month: monthNumber,

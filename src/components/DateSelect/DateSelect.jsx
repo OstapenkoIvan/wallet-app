@@ -38,7 +38,8 @@ const DateSelect = () => {
 
   useEffect(() => {
     const monthNumber = MONTH[hiddenMonthValue];
-    if (hiddenMonthValue && hiddenYearValue) {
+
+    if (monthNumber && hiddenYearValue) {
       dispatch(
         financeOperation.getSummaryThunk({
           month: monthNumber,

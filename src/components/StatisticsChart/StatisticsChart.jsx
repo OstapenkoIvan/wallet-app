@@ -19,8 +19,6 @@ export default function StatisticsChart({
   const [backgroundColor, setBackgroundColor] = useState('');
   const [labels, setLabels] = useState('');
 
-  console.log(periodTotal);
-
   const donut = {
     labels: labels,
     datasets: [

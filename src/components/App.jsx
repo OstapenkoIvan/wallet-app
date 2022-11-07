@@ -1,8 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
-// import PrivateRoute from './Routes/PrivateRoute';
-// import PublicRoute from './Routes/PublicRoute';
+import AppLoader from './AppLoader/AppLoader';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
@@ -49,7 +47,7 @@ export const App = () => {
         <Route
           path="/"
           element={
-            <Suspense>
+            <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
               <PublicRoute redirectTo="/dashboard/transactions" />
             </Suspense>
           }
@@ -60,7 +58,7 @@ export const App = () => {
         <Route
           path="/"
           element={
-            <Suspense>
+            <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
               <PrivateRoute
                 redirectTo={authToken ? location.pathname : '/signin'}
               />
