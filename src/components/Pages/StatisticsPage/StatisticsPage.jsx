@@ -1,5 +1,6 @@
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
 import StatisticsChart from 'components/StatisticsChart/StatisticsChart';
+import { MONTH } from 'constans/constans';
 
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,21 +14,28 @@ const StatisticsPage = () => {
   const dispatch = useDispatch();
   const stasticsSummary = useSelector(financeSelectors.getSummary);
   const transactions = useSelector(financeSelectors.getTransactions);
-  const { categoriesSummary, expenseSummary, incomeSummary } =
+  const { categoriesSummary, expenseSummary, incomeSummary, periodTotal } =
     stasticsSummary || {};
   const preparedArray = categoriesSummary?.filter(
     item => item.type === 'EXPENSE'
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const getCurrentMonth = MONTH.getKeyByValue(currentMonth);
+  const currentYear = currentDate.getFullYear();
+
   useEffect(() => {
+    const monthNumber = MONTH[getCurrentMonth];
+
     dispatch(
       financeOperation.getSummaryThunk({
-        month: 11,
-        year: 2022,
+        month: monthNumber,
+        year: currentYear,
       })
     );
-  }, [dispatch]);
+  }, [currentYear, dispatch, getCurrentMonth]);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -40,7 +48,10 @@ const StatisticsPage = () => {
           <div className={scss.chartWrapper}>
             <h2 className={scss.statisticsTitle}>Statistics</h2>
             {stasticsSummary && (
-              <StatisticsChart statChartData={preparedArray} />
+              <StatisticsChart
+                statChartData={preparedArray}
+                periodTotal={periodTotal}
+              />
             )}
           </div>
           <div className={scss.tableWrapper}>

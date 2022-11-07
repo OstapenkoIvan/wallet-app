@@ -1,19 +1,17 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
-import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
-import PrivateRoute from './Routes/PrivateRoute';
-import PublicRoute from './Routes/PublicRoute';
-import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
-
 import { sessionSelectors } from 'redux/session';
-
 import scss from './App.module.scss';
 
+const PrivateRoute = lazy(() => import('./Routes/PrivateRoute'));
+const PublicRoute = lazy(() => import('./Routes/PublicRoute'));
+const MobileRoute = lazy(() =>
+  import('./DeviceTypeControl/DeviseTypeController')
+);
 const AuthPage = lazy(() => import('./Pages/AuthPage/AuthPage'));
 const TransactionsPage = lazy(() =>
   import('./Pages/TransactionsPage/TransactionsPage')
@@ -37,9 +35,6 @@ export const App = () => {
   const auth = useSelector(getIsAuth);
 
   useEffect(() => {
-    // if (!auth) {
-    //   return;
-    // }
     if (authToken) {
       dispatch(authOperation.refreshThunk());
       return;
@@ -48,83 +43,42 @@ export const App = () => {
 
   return (
     <div className={scss.App}>
-      <Layout>
-        <Routes>
-          <Route
-            path="/"
-            element={<PublicRoute redirectTo="/dashboard/transactions" />}
-          >
-            <Route
-              path="signin"
-              element={
-                <Suspense
-                  fallback={<AppLoader isLoading={true} global={true} />}
-                >
-                  <AuthPage />
-                </Suspense>
-              }
-            />
-            <Route
-              path="signup"
-              element={
-                <Suspense
-                  fallback={<AppLoader isLoading={true} global={true} />}
-                >
-                  <AuthPage forRegister />
-                </Suspense>
-              }
-            />
-          </Route>
-          <Route
-            path="/"
-            element={
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
+              <PublicRoute redirectTo="/dashboard/transactions" />
+            </Suspense>
+          }
+        >
+          <Route path="signin" element={<AuthPage />} />
+          <Route path="signup" element={<AuthPage forRegister />} />
+        </Route>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
               <PrivateRoute
                 redirectTo={authToken ? location.pathname : '/signin'}
               />
-            }
-          >
+            </Suspense>
+          }
+        >
+          <Route path="dashboard/*" element={<DashboardPage />}>
+            <Route path="transactions" element={<TransactionsPage />} />
+            <Route path="statistics" element={<StatisticsPage />} />
             <Route
-              path="dashboard/*"
-              element={
-                <Suspense
-                  fallback={<AppLoader isLoading={true} global={true} />}
-                >
-                  <DashboardPage />
-                </Suspense>
-              }
+              path="exchangeMobile"
+              element={<MobileRoute redirectTo="/dashboard/transactions" />}
             >
-              <Route
-                path="transactions"
-                element={
-                  <Suspense
-                    fallback={<AppLoader isLoading={true} global={true} />}
-                  >
-                    <TransactionsPage />
-                  </Suspense>
-                }
-              />
-              <Route path="statistics" element={<StatisticsPage />} />
-              <Route
-                path="exchangeMobile"
-                element={<MobileRoute redirectTo="/dashboard/transactions" />}
-              >
-                <Route
-                  index
-                  element={
-                    <Suspense
-                      fallback={<AppLoader isLoading={true} global={true} />}
-                    >
-                      <ExchangeMobilePage />
-                    </Suspense>
-                  }
-                />
-              </Route>
+              <Route index element={<ExchangeMobilePage />} />
             </Route>
           </Route>
+        </Route>
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Layout>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 };

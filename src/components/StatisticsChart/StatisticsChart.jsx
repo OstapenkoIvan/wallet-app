@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { getUserBalance } from 'redux/session/session-selectors';
-import { BASE_COLORS } from '../../constans/constans';
+import scss from 'components/StatisticsChart/StatisticChart.module.scss';
 
-import { useSelector } from 'react-redux';
+import { BASE_COLORS } from '../../constans/constans';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -12,7 +11,10 @@ const options = {
   cutout: '70%',
 };
 
-export default function StatisticsChart({ statChartData = {} }) {
+export default function StatisticsChart({
+  statChartData = {},
+  periodTotal = 0,
+}) {
   const [data, setData] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('');
   const [labels, setLabels] = useState('');
@@ -29,8 +31,6 @@ export default function StatisticsChart({ statChartData = {} }) {
     ],
   };
 
-  let userBalance = useSelector(getUserBalance);
-
   useEffect(() => {
     const nameArr = statChartData.map(item => item.total);
     const colorsArr = statChartData.map((_, index) => BASE_COLORS[index]);
@@ -38,7 +38,7 @@ export default function StatisticsChart({ statChartData = {} }) {
     setData(nameArr);
     setBackgroundColor(colorsArr);
     setLabels(labelsArr);
-  }, [statChartData, userBalance]);
+  }, [statChartData, periodTotal]);
 
   const plugins = [
     {
@@ -50,7 +50,7 @@ export default function StatisticsChart({ statChartData = {} }) {
         const fontSize = (height / 160).toFixed(2);
         ctx.font = fontSize + 'em sans-serif';
         ctx.textBaseline = 'top';
-        const text = `₴ ${userBalance}`,
+        const text = `₴ ${periodTotal} `,
           textX = Math.round((width - ctx.measureText(text).width) / 2),
           textY = height / 2.2;
         ctx.fillText(text, textX, textY);
@@ -58,6 +58,11 @@ export default function StatisticsChart({ statChartData = {} }) {
       },
     },
   ];
+  if (periodTotal === 0) {
+    return <h2 className={scss.noStatMessage}>No statistic information</h2>;
+  }
 
-  return <Doughnut plugins={plugins} options={options} data={donut} />;
+  return (
+    <Doughnut plugins={plugins} options={options} data={donut} redraw={true} />
+  );
 }

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import css from 'components/DateSelect/DateSelect.module.scss';
 import { sprite } from 'assets/images';
-import { MONTH } from 'constans/constans';
+import { MONTH, MONTH_NAMES } from 'constans/constans';
+
 import { YEARS } from 'constans/constans';
 import { useDispatch } from 'react-redux';
 import { financeOperation } from 'redux/finance';
@@ -13,6 +14,11 @@ const DateSelect = () => {
   const [hiddenMonthValue, setHiddenMonthValue] = useState('');
   const [hiddenYearValue, setHiddenYearValue] = useState('');
   const dispatch = useDispatch();
+
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const getCurrentMonth = MONTH.getKeyByValue(currentMonth);
+  const currentYear = currentDate.getFullYear();
 
   const toggleMonthClass = () => {
     setSelectMonthActive(!selectMonthActive);
@@ -31,14 +37,12 @@ const DateSelect = () => {
   };
 
   useEffect(() => {
-    const selectedMonth = MONTH.filter(
-      month => month.monthName === hiddenMonthValue
-    )[0]?.monthNumber;
+    const monthNumber = MONTH[hiddenMonthValue];
 
-    if (hiddenMonthValue && hiddenYearValue) {
+    if (monthNumber && hiddenYearValue) {
       dispatch(
         financeOperation.getSummaryThunk({
-          month: selectedMonth,
+          month: monthNumber,
           year: hiddenYearValue,
         })
       );
@@ -61,7 +65,7 @@ const DateSelect = () => {
                 : [css['selectHeader'], css['isChosen']].join(' ')
             }
           >
-            {hiddenMonthValue || 'Month'}
+            {hiddenMonthValue || getCurrentMonth}
           </div>
 
           <svg className={css.selectIcon} width="40" height="19">
@@ -75,15 +79,15 @@ const DateSelect = () => {
                 : css.selectBody
             }
           >
-            {MONTH.map(month => (
+            {MONTH_NAMES.map(month => (
               <li
                 onClick={handleHiddenMonthValue}
                 className={css.selectItem}
                 tabIndex="0"
-                id={month.monthName}
-                key={month.monthNumber}
+                id={month}
+                key={month}
               >
-                {month.monthName}
+                {month}
               </li>
             ))}
           </ul>
@@ -111,7 +115,7 @@ const DateSelect = () => {
                 : [css['selectHeader'], css['isChosen']].join(' ')
             }
           >
-            {hiddenYearValue || 'Year'}
+            {hiddenYearValue || currentYear}
           </div>
 
           <svg className={css.selectIcon} width="40" height="19">

@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+
 import sprite from '../../../assets/images/sprite.svg';
 
 import { NavLink } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { Mobile } from 'components/DeviceTypeControl/DeviseTypeController';
 
 import scss from './NavBar.module.scss';
-const NavBar = props => {
+const NavBar = () => {
   return (
     <nav className={scss.navBar}>
       <ul className={scss.navList}>
@@ -63,7 +63,5 @@ const NavBar = props => {
     </nav>
   );
 };
-
-NavBar.propTypes = {};
 
 export default NavBar;
