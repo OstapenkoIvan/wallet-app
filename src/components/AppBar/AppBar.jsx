@@ -1,7 +1,7 @@
 import React from 'react';
-import Balance from './Balance';
+import Balance from '../Balance/Balance';
 
-import NavBar from 'components/AppBar/NavBar/NavBar';
+import NavBar from './NavBar/NavBar';
 import Currency from 'components/Currency';
 import { NotMobile } from 'components/DeviceTypeControl/DeviseTypeController';
 

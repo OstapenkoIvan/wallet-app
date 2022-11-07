@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getTransactionsThunk } from 'redux/finance/finance-operation';
 
 import TableMobile from 'components/TableMobile/TableMobile';
-import Balance from 'components/AppBar/Balance';
+import Balance from 'components/Balance/Balance';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
 
 import {

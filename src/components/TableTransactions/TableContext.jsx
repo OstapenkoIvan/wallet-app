@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react';
-import { testData as tableData } from './Constants';
+
 import { categoryIdArr as categoriesList } from './Constants';
 import { tableTitles } from './Constants';
 
@@ -24,7 +24,6 @@ const TableContext = ({ children, titles }) => {
       value={{
         s,
         tableTitles,
-        tableData: tableData,
         categoriesList,
         rowOpenControl,
         afterHidden,
