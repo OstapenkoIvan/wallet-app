@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
@@ -30,9 +30,9 @@ const ExchangeMobilePage = lazy(() =>
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  const { getAuthToken, getIsLoading } = sessionSelectors;
+  const { getAuthToken } = sessionSelectors;
+  let location = useLocation();
 
-  // const isAuthLoading = useSelector(getIsLoading);
   const authToken = useSelector(getAuthToken);
 
   const dispatch = useDispatch();
@@ -110,37 +110,80 @@ export const App = () => {
 
   return (
     <div className={scss.App}>
-      <DeviceTypeInformer />
       <Layout>
-        <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
-          <Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={<PublicRoute redirectTo="/dashboard/transactions" />}
+          >
             <Route
-              path="/"
+              path="signin"
               element={
-                <PublicRoute redirectTo="/dashboardPage/transactionsPage" end />
+                <Suspense
+                  fallback={<AppLoader isLoading={true} global={true} />}
+                >
+                  <AuthPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="signup"
+              element={
+                <Suspense
+                  fallback={<AppLoader isLoading={true} global={true} />}
+                >
+                  <AuthPage forRegister />
+                </Suspense>
+              }
+            />
+          </Route>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute redirectTo={location.pathname || '/signin'} />
+            }
+          >
+            <Route
+              path="dashboard/*"
+              element={
+                <Suspense
+                  fallback={<AppLoader isLoading={true} global={true} />}
+                >
+                  <DashboardPage />
+                </Suspense>
               }
             >
-              <Route index element={<Navigate to="signin" />} />
-              <Route path="signin" element={<AuthPage />} />
-              <Route path="signup" element={<AuthPage forRegister />} />
-            </Route>
-            <Route path="/" element={<PrivateRoute redirectTo="/signin" />}>
-              <Route path="dashboardPage/*" element={<DashboardPage />}>
-                <Route path="transactionsPage" element={<TransactionsPage />} />
-                <Route path="statistics" element={<StatisticsPage />} />
+              <Route
+                path="transactions"
+                element={
+                  <Suspense
+                    fallback={<AppLoader isLoading={true} global={true} />}
+                  >
+                    <TransactionsPage />
+                  </Suspense>
+                }
+              />
+              <Route path="statistics" element={<StatisticsPage />} />
+              <Route
+                path="exchangeMobile"
+                element={<MobileRoute redirectTo="/dashboard/transactions" />}
+              >
                 <Route
-                  path="exchangeMobile"
+                  index
                   element={
-                    <MobileRoute redirectTo="/dashboardPage/transactionsPage" />
+                    <Suspense
+                      fallback={<AppLoader isLoading={true} global={true} />}
+                    >
+                      <ExchangeMobilePage />
+                    </Suspense>
                   }
-                >
-                  <Route index element={<ExchangeMobilePage />} />
-                </Route>
+                />
               </Route>
             </Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
+          </Route>
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </Layout>
     </div>
   );
