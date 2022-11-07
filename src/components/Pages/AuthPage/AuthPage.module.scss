@@ -3,6 +3,7 @@
 
 .section {
   min-height: 100vh;
+  background-color: getColor('clr-white');
   @include tablet {
     background-image: url(../../../assets/images/tablet-background.png);
     background-position: center;
