@@ -23,7 +23,7 @@ const CreateTransaction = props => {
 
   return (
     <>
-      {pathname === '/dashboardPage/transactionsPage' && (
+      {pathname === '/dashboard/transactions' && (
         <ButtonAddTransactions onClick={toggleModal} />
       )}
       {isModalOpen && (

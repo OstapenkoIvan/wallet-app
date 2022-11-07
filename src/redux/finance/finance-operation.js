@@ -1,5 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authOperation } from 'redux/session';
+import { toast } from 'react-toastify';
+const toastOpions = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'light',
+};
 
 export const getTransactionsThunk = createAsyncThunk(
   'transactions',
@@ -8,7 +19,9 @@ export const getTransactionsThunk = createAsyncThunk(
       const { data } = await authOperation.userApi.get('transactions');
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -23,7 +36,9 @@ export const addTransactionThunk = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -35,7 +50,9 @@ export const deleteTransactionThunk = createAsyncThunk(
       await authOperation.userApi.delete(`transactions/${id}`);
       return id;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -44,13 +61,15 @@ export const editTransactionThunk = createAsyncThunk(
   'edit',
   async ({ id, transaction }, { rejectWithValue }) => {
     try {
-      const data = await authOperation.userApi.patch(
+      const { data } = await authOperation.userApi.patch(
         `transactions/${id}`,
         transaction
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -64,7 +83,9 @@ export const getSummaryThunk = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -78,7 +99,9 @@ export const getCategoriesThunk = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );

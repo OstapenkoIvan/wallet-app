@@ -1,6 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from 'constans/constans';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+const toastOpions = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'light',
+};
 
 export const userApi = axios.create({
   baseURL: BASE_URL,
@@ -23,7 +34,9 @@ export const registerThunk = createAsyncThunk(
       if (data.token) token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.status);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -36,7 +49,9 @@ export const logInThunk = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -48,7 +63,9 @@ export const logOutThunk = createAsyncThunk(
       const data = await userApi.delete('auth/sign-out');
       token.unset(data.token);
     } catch (error) {
-      rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );
@@ -67,7 +84,9 @@ export const refreshThunk = createAsyncThunk(
       const { data } = await userApi.get('users/current');
       return data;
     } catch (error) {
-      rejectWithValue(error.message);
+      return toast(rejectWithValue(error.message), {
+        toastOpions,
+      });
     }
   }
 );

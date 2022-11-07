@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -18,8 +18,6 @@ import {
 import css from './AuthPage.module.scss';
 
 const AuthPage = ({ forRegister }) => {
-  useEffect(() => {}, []);
-
   return (
     <div className={css.section}>
       <div className={`${css.pageContainer} container`}>

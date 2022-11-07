@@ -1,7 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { getTransactions } from 'redux/finance/finance-selectors';
+// import { useSelector } from 'react-redux';
+// import { getTransactions } from 'redux/finance/finance-selectors';
+import Balance from 'components/Balance/Balance';
 
 import NavBar from 'components/AppBar/NavBar/NavBar';
 import Currency from 'components/Currency';
@@ -10,9 +11,9 @@ import { NotMobile } from 'components/DeviceTypeControl/DeviseTypeController';
 import scss from './AppBar.module.scss';
 
 const AppBar = () => {
-  const userBalance = useSelector(getTransactions);
+  // const userBalance = useSelector(getTransactions);
 
-  const totalBalance = userBalance[userBalance.length - 1]?.balanceAfter;
+  // const totalBalance = userBalance[userBalance.length - 1]?.balanceAfter;
 
   return (
     <div className={scss.appBarWrapper}>
@@ -20,10 +21,7 @@ const AppBar = () => {
         <NavBar />
 
         <NotMobile>
-          <div className={scss.balance}>
-            <span className={scss.title}>your balance</span>
-            <span className={scss.value}>₴ {totalBalance}</span>
-          </div>
+          <Balance />
         </NotMobile>
       </div>
 
