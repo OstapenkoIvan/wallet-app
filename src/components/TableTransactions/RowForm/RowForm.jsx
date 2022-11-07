@@ -6,11 +6,15 @@ import {
   deleteTransactionThunk,
 } from 'redux/finance/finance-operation';
 
+import { useSelector } from 'react-redux';
+import { getCategories } from 'redux/finance/finance-selectors';
+
 import { categoryIdArr } from '../Constants';
 
 import s from './RowForm.module.scss';
 
 const RowBottomForm = () => {
+  const categoriesList = useSelector(getCategories)
   const { valueToString, rowData, handleRowBottomFormClose, typesArr } =
     useRowContext();
   const [type, setType] = useState({ name: '' });
@@ -58,7 +62,7 @@ const RowBottomForm = () => {
         <div className={s.inputs}>
           <label htmlFor="type">Type</label>
           <div className={s.customSelect} onClick={handleSelectOpen}>
-            <span className={s.celectField}>{type.name ? type.name : ''}</span>
+            <span className={s.celectField}>{type.name || rowData.type}</span>
             <ul className={s.selectList}>
               {typesArr.map(item => (
                 <li
@@ -78,10 +82,10 @@ const RowBottomForm = () => {
           <label htmlFor="category">Category</label>
           <div className={s.customSelect} onClick={handleSelectOpen}>
             <span className={s.celectField}>
-              {category.name ? category.name : ''}
+              {category.name || rowData.categoryInfo.name}
             </span>
             <ul className={s.selectList}>
-              {categoryIdArr.map(item => (
+              {categoriesList.map(item => (
                 <li
                   key={item.id}
                   className={s.selectItem}

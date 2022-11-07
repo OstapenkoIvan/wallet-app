@@ -5,7 +5,6 @@ import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
-import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
 import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -138,7 +137,7 @@ export const App = () => {
           <Route
             path="/"
             element={
-              <PrivateRoute redirectTo={location.pathname || '/signin'} />
+              <PrivateRoute redirectTo={authToken? location.pathname : '/signin'} />
             }
           >
             <Route

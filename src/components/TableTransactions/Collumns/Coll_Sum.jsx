@@ -6,7 +6,7 @@ import s from './Coll.module.scss';
 const Coll_Sum = ({ title, colIdx, className = '' }) => {
   const classNames = [s.col, s[title?.action], ...className].join(' ');
   const { rowData, valueToString } = useRowContext();
-  const colorType = rowData.type === 'INCOME' ? 'green' : 'red';
+  const colorType = rowData.type === 'INCOME' ? ' #24cca7' : ' #ff6596';
   let styles = {
     color: colorType,
   };
