@@ -6,7 +6,6 @@ import Modal from 'components/Modal/Modal';
 import { sprite } from 'assets/images/sprite';
 
 import { useDispatch } from 'react-redux';
-import { authOperation } from 'redux/session';
 
 import s from './LogOutConfirm.module.scss';
 
@@ -21,13 +20,10 @@ const LogOutConfirm = () => {
 
   function onConfrimLogOut() {
     onToggleModal();
-    // dispatch(authOperation.logOutThunk());
     dispatch({ type: 'USER_LOGOUT' });
-    console.log('ACCEPTED LOG OT');
   }
   function onDeclineLogOut() {
     onToggleModal();
-    console.log('DECLINED LOG OUT');
   }
   return (
     <>

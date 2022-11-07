@@ -5,12 +5,10 @@ import Layout from './Layout/Layout';
 import AppLoader from './AppLoader/AppLoader';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
-import DeviceTypeInformer from './DeviceTypeControl/DeviceTypeInformer';
 import { MobileRoute } from './DeviceTypeControl/DeviseTypeController';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
-import { financeOperation } from 'redux/finance';
 
 import { sessionSelectors } from 'redux/session';
 
@@ -30,9 +28,8 @@ const ExchangeMobilePage = lazy(() =>
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  const { getAuthToken, getIsLoading } = sessionSelectors;
+  const { getAuthToken } = sessionSelectors;
 
-  // const isAuthLoading = useSelector(getIsLoading);
   const authToken = useSelector(getAuthToken);
 
   const dispatch = useDispatch();
