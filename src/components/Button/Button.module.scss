@@ -3,7 +3,7 @@
 
 .button {
   display: block;
-  min-width: 280px;
+  width: 280px;
   padding: 13px 98px;
   font-weight: 400;
   font-size: 18px;
@@ -19,7 +19,7 @@
   margin: 0 auto;
   cursor: pointer;
   @include tablet {
-    min-width: 300px;
+    width: 300px;
     padding: 13px 104px;
   }
 }
