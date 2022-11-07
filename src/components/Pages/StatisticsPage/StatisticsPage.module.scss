@@ -21,6 +21,10 @@
   @media screen and (max-width: 1279px) {
     padding-left: 0;
   }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 8px;
+  }
 }
 
 .chartWrapper {
@@ -32,11 +36,12 @@
     margin-right: auto;
   }
   @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-top: -12px;
     width: 336px;
   }
   @media screen and (max-width: 767px) {
     width: 280px;
-    margin-bottom: 32px;
+    padding-top: 11px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -45,9 +50,12 @@
 .tableWrapper {
   padding-top: 51px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    padding-top: 20px;
+    padding-top: 8px;
     max-width: 336px;
     margin-left: auto;
+  }
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
   }
 }
 
