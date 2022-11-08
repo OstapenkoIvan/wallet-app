@@ -59,5 +59,7 @@ export default function StatisticsChart({ statChartData = {} }) {
     },
   ];
 
-  return <Doughnut plugins={plugins} options={options} data={donut} />;
+  return (
+    <Doughnut plugins={plugins} options={options} redraw={true} data={donut} />
+  );
 }
