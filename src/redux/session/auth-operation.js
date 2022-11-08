@@ -1,16 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userApi } from 'constans/constans';
 import { toast } from 'react-toastify';
-const toastOpions = {
-  position: 'top-right',
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: 'light',
-};
+import { toastOptions } from 'constans/constans';
+// import { selectToken } from 'redux/session/session-selectors';
 
 export const token = {
   set(token) {
@@ -29,9 +21,10 @@ export const registerThunk = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -44,9 +37,17 @@ export const logInThunk = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -59,9 +60,10 @@ export const logOutThunk = createAsyncThunk(
       console.log('logout');
       token.unset();
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -72,6 +74,8 @@ export const refreshThunk = createAsyncThunk(
     const {
       session: { token: persistedToken },
     } = getState();
+    // const token = selectToken(getState());
+    // console.log(token);
 
     if (persistedToken === null) return rejectWithValue();
 
@@ -80,9 +84,13 @@ export const refreshThunk = createAsyncThunk(
       const { data } = await userApi.get('users/current');
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      token.unset();
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
+
+// const token = getSelectToken(getState());

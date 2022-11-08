@@ -51,15 +51,15 @@ const StatisticsPage = () => {
               <StatisticsChart
                 statChartData={preparedArray}
                 periodTotal={periodTotal}
+                expenseSummary={expenseSummary}
+                incomeSummary={incomeSummary}
               />
             )}
           </div>
           <div className={scss.tableWrapper}>
             <DateSelect />
             {stasticsSummary && (
-              <StatisticsTable
-                statData={{ preparedArray, expenseSummary, incomeSummary }}
-              />
+              <StatisticsTable statData={{ preparedArray, expenseSummary }} />
             )}
           </div>
         </>

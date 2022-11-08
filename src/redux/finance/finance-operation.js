@@ -1,16 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userApi } from 'constans/constans';
 import { toast } from 'react-toastify';
-const toastOpions = {
-  position: 'top-right',
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: 'light',
-};
+import { toastOptions } from 'constans/constans';
 
 export const getTransactionsThunk = createAsyncThunk(
   'finance/allTransactions',
@@ -19,9 +10,10 @@ export const getTransactionsThunk = createAsyncThunk(
       const { data } = await userApi.get('transactions');
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -33,9 +25,10 @@ export const addTransactionThunk = createAsyncThunk(
       const { data } = await userApi.post('transactions', transaction);
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -47,9 +40,10 @@ export const deleteTransactionThunk = createAsyncThunk(
       await userApi.delete(`transactions/${id}`);
       return id;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -61,9 +55,10 @@ export const editTransactionThunk = createAsyncThunk(
       const { data } = await userApi.patch(`transactions/${id}`, transaction);
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -77,9 +72,10 @@ export const getSummaryThunk = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );
@@ -91,9 +87,10 @@ export const getCategoriesThunk = createAsyncThunk(
       const { data } = await userApi.get('transaction-categories');
       return data;
     } catch (error) {
-      return toast(rejectWithValue(error.message), {
-        toastOpions,
+      toast(error.message, {
+        toastOptions,
       });
+      rejectWithValue(error.message);
     }
   }
 );

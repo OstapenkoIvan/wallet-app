@@ -22,9 +22,9 @@ const LogOutConfirm = () => {
 
   function onConfrimLogOut() {
     onToggleModal();
-    console.log('modal');
-    dispatch(authOperation.logOutThunk());
+
     dispatch(financeSlice.resetFinance());
+    dispatch(authOperation.logOutThunk());
   }
   function onDeclineLogOut() {
     onToggleModal();

@@ -26,20 +26,19 @@ const ExchangeMobilePage = lazy(() =>
 const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  const { getAuthToken, getIsAuth } = sessionSelectors;
+  const { getAuthToken } = sessionSelectors;
   let location = useLocation();
 
   const authToken = useSelector(getAuthToken);
 
   const dispatch = useDispatch();
-  const auth = useSelector(getIsAuth);
 
   useEffect(() => {
     if (authToken) {
       dispatch(authOperation.refreshThunk());
       return;
     }
-  }, [dispatch, authToken, auth]);
+  }, [dispatch, authToken]);
 
   return (
     <div className={scss.App}>

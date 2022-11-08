@@ -49,3 +49,14 @@ export const BASE_COLORS = [
   '#24CCA7',
   '#00AD84',
 ];
+
+export const toastOptions = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'light',
+};

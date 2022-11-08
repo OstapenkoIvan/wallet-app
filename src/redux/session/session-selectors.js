@@ -6,3 +6,4 @@ export const getUserInfo = state => state.session.user;
 export const getUserName = state => state.session.user.username;
 export const getUserBalance = state => state.session.user.balance;
 export const getUserTransactions = state => state.transactions;
+export const getSelectToken = state => state.session.token;
