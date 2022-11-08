@@ -6,6 +6,8 @@ import Modal from 'components/Modal/Modal';
 import { sprite } from 'assets/images/sprite';
 
 import { useDispatch } from 'react-redux';
+import { authOperation } from 'redux/session';
+import { financeSlice } from 'redux/finance';
 
 import s from './LogOutConfirm.module.scss';
 
@@ -20,7 +22,9 @@ const LogOutConfirm = () => {
 
   function onConfrimLogOut() {
     onToggleModal();
-    dispatch({ type: 'USER_LOGOUT' });
+    console.log('modal');
+    dispatch(authOperation.logOutThunk());
+    dispatch(financeSlice.resetFinance());
   }
   function onDeclineLogOut() {
     onToggleModal();

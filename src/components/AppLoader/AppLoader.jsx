@@ -5,7 +5,7 @@ import { Oval } from 'react-loader-spinner';
 import s from './AppLoader.module.scss';
 const AppLoader = ({
   isLoading = false,
-  global = true,
+
   black = true,
   spinerHeight = 80,
   spinerWidth = 80,
@@ -16,15 +16,15 @@ const AppLoader = ({
 }) => {
   const typeClass = global ? s.BackdropGlobal : s.BackdropLocal;
   const colorClass = black ? s.BackdropBlack : s.BackdropWhite;
- 
+
   useEffect(() => {
-    if (isLoading && global) {
+    if (isLoading) {
       document.querySelector('body').classList.add(s.NotScroll);
     }
     return () => {
       document.querySelector('body').classList.remove(s.NotScroll);
     };
-  }, [global, isLoading]);
+  }, [isLoading]);
 
   return (
     <>

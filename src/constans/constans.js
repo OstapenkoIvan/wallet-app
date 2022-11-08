@@ -1,22 +1,13 @@
+import axios from 'axios';
 export const BASE_URL = 'https://wallet.goit.ua/api/';
+
+export const userApi = axios.create({
+  baseURL: BASE_URL,
+});
 
 export const PRIVATE_URL =
   'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11';
 
-// export const MONTH = [
-//   { monthName: 'January', monthNumber: 1 },
-//   { monthName: 'February', monthNumber: 2 },
-//   { monthName: 'March', monthNumber: 3 },
-//   { monthName: 'April', monthNumber: 4 },
-//   { monthName: 'May', monthNumber: 5 },
-//   { monthName: 'June', monthNumber: 6 },
-//   { monthName: 'July', monthNumber: 7 },
-//   { monthName: 'August', monthNumber: 8 },
-//   { monthName: 'September', monthNumber: 9 },
-//   { monthName: 'October', monthNumber: 10 },
-//   { monthName: 'November', monthNumber: 11 },
-//   { monthName: 'December', monthNumber: 12 },
-// ];
 export const MONTH = {
   January: 1,
   February: 2,
@@ -39,7 +30,7 @@ export const MONTH = {
   },
 };
 
-export const MONTH_NAMES = Object.keys(MONTH);
+export const MONTH_NAMES = Object.keys(MONTH).slice(0, 12);
 
 export const YEARS = [];
 

@@ -1,5 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { Navigate, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import AppLoader from 'components/AppLoader/AppLoader';
 
 export const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -17,7 +19,15 @@ export const NotMobile = ({ children }) => {
   const isNotMobile = useMediaQuery({ minWidth: 768 });
   return isNotMobile ? children : null;
 };
-export const MobileRoute = ({ redirectTo }) => {
+const MobileRoute = ({ redirectTo }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  return isMobile ? <Outlet /> : <Navigate to={redirectTo} />;
+  return isMobile ? (
+    <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
+      <Outlet />
+    </Suspense>
+  ) : (
+    <Navigate to={redirectTo} />
+  );
 };
+
+export default MobileRoute;

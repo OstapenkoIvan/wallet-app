@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BASE_URL } from 'constans/constans';
-import axios from 'axios';
+import { userApi } from 'constans/constans';
 import { toast } from 'react-toastify';
 const toastOpions = {
   position: 'top-right',
@@ -12,10 +11,6 @@ const toastOpions = {
   progress: undefined,
   theme: 'light',
 };
-
-export const userApi = axios.create({
-  baseURL: BASE_URL,
-});
 
 export const token = {
   set(token) {
@@ -31,7 +26,7 @@ export const registerThunk = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await userApi.post('auth/sign-up', user);
-      if (data.token) token.set(data.token);
+      token.set(data.token);
       return data;
     } catch (error) {
       return toast(rejectWithValue(error.message), {
@@ -60,8 +55,9 @@ export const logOutThunk = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
     try {
-      const data = await userApi.delete('auth/sign-out');
-      token.unset(data.token);
+      await userApi.delete('auth/sign-out');
+      console.log('logout');
+      token.unset();
     } catch (error) {
       return toast(rejectWithValue(error.message), {
         toastOpions,
