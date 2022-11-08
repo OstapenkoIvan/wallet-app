@@ -59,7 +59,9 @@ const StatisticsPage = () => {
           <div className={scss.tableWrapper}>
             <DateSelect />
             {stasticsSummary && (
-              <StatisticsTable statData={{ preparedArray, expenseSummary }} />
+              <StatisticsTable
+                statData={{ preparedArray, incomeSummary, expenseSummary }}
+              />
             )}
           </div>
         </>
