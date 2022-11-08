@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authOperation } from 'redux/session';
 import { sessionSelectors } from 'redux/session';
 import scss from './App.module.scss';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer } from 'react-toastify';
 
 const PrivateRoute = lazy(() => import('./Routes/PrivateRoute'));
 const PublicRoute = lazy(() => import('./Routes/PublicRoute'));
@@ -78,6 +80,7 @@ export const App = () => {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 };
