@@ -1,21 +1,16 @@
-import { Suspense } from 'react';
-import PropTypes from 'prop-types';
-import AppLoader from 'components/AppLoader/AppLoader';
-import { Navigate, Outlet } from 'react-router-dom';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+
 import { sessionSelectors } from 'redux/session';
-export default function PrivateRoute({ redirectTo, ...routeProps }) {
+
+export default function PrivateRoute({ redirectDest = 'login' }) {
+  const location = useLocation();
   const isLoggedIn = useSelector(sessionSelectors.getIsAuth);
 
   return isLoggedIn ? (
-    <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
-      <Outlet />
-    </Suspense>
+    <Outlet />
   ) : (
-    <Navigate to={redirectTo} replace={true} />
+    <Navigate to={redirectDest} state={{ from: location }} replace /> //* save state=from to return user after refresh to this location in PublicRoute
   );
 }
-
-PrivateRoute.propTypes = {
-  redirectTo: PropTypes.string,
-};

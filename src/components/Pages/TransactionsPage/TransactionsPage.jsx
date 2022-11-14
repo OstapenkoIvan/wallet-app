@@ -1,4 +1,7 @@
-// import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { financeSelectors, financeOperation } from 'redux/finance';
 import TableMobile from 'components/TableMobile/TableMobile';
 import TableTransactions from 'components/TableTransactions/TableTransactions';
 import {
@@ -6,13 +9,15 @@ import {
   Mobile,
 } from 'components/DeviceTypeControl/DeviseTypeController';
 import scss from './TransactionsPage.module.scss';
-// import CreateTransaction from 'components/CreateTransaction/CreateTransaction';
-
-import { useSelector } from 'react-redux';
-import { financeSelectors } from 'redux/finance';
 
 const TransactionsPage = props => {
   const transactions = useSelector(financeSelectors.getTransactions);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (transactions.length > 0) return;
+    dispatch(financeOperation.getTransactionsThunk());
+  }, [dispatch, transactions.length]);
 
   return (
     <div className={scss.TransactionsPage}>
@@ -24,11 +29,8 @@ const TransactionsPage = props => {
           <TableTransactions data={transactions} />
         </div>
       </NotMobile>
-      {/* <CreateTransaction /> */}
     </div>
   );
 };
-
-// TransactionsPage.propTypes = {};
 
 export default TransactionsPage;
