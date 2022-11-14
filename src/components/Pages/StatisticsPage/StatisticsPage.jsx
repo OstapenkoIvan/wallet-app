@@ -11,15 +11,15 @@ import DateSelect from '../../DateSelect/DateSelect';
 import scss from './StatisticsPage.module.scss';
 
 const StatisticsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const stasticsSummary = useSelector(financeSelectors.getSummary);
-  const transactions = useSelector(financeSelectors.getTransactions);
   const { categoriesSummary, expenseSummary, incomeSummary, periodTotal } =
     stasticsSummary || {};
+
   const preparedArray = categoriesSummary?.filter(
     item => item.type === 'EXPENSE'
   );
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
@@ -43,7 +43,7 @@ const StatisticsPage = () => {
 
   return (
     <div className={scss.Statistics}>
-      {transactions.length > 0 ? (
+      {categoriesSummary?.length > 0 ? (
         <>
           <div className={scss.chartWrapper}>
             <h2 className={scss.statisticsTitle}>Statistics</h2>
