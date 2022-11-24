@@ -9,12 +9,13 @@ export default function PublicRoute({
   restricted = false,
 }) {
   const isLoggedIn = useSelector(sessionSelectors.getIsAuth);
+  const isLoading = useSelector(sessionSelectors.getIsLoading);
   const shouldRedirect = isLoggedIn && restricted;
 
   const location = useLocation();
   let from = location.state?.from?.pathname || '/';
 
-  return shouldRedirect ? (
+  return shouldRedirect && !isLoading ? (
     <Navigate to={from ? from : redirectDest} replace />
   ) : (
     <Outlet />

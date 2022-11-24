@@ -23,9 +23,7 @@ const CreateTransaction = props => {
 
   return (
     <>
-      {pathname === '/dashboard/transactions' && (
-        <ButtonAddTransactions onClick={toggleModal} />
-      )}
+      {pathname === '/' && <ButtonAddTransactions onClick={toggleModal} />}
       {isModalOpen && (
         <Modal defaultButton={false} handleToggle={toggleModal}>
           <FormAddTransaction onClose={toggleModal} />

@@ -38,8 +38,8 @@ const DashboardPage = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
       <CreateTransaction />
+      <ToastContainer />
     </div>
   );
 };

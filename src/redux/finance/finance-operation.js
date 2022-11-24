@@ -8,6 +8,7 @@ export const getTransactionsThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await userApi.get('transactions');
+
       return data;
     } catch (error) {
       toast(error.message, {
