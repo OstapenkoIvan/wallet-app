@@ -25,18 +25,6 @@ export default function Currency() {
     };
     fetchCurrency().catch(console.error);
   }, []);
-  // useEffect(() => {
-  //   const fetchCurrency = async () => {
-  //     const data = await (
-  //       await fetch(
-  //         `https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`
-  //       )
-  //     ).json();
-
-  //     setRates(data);
-  //   };
-  //   fetchCurrency().catch(console.error);
-  // }, []);
 
   const usdBuy = rates.length > 0 ? Number(rates[0].rateBuy).toFixed(2) : 0;
   const eurBuy = rates.length > 0 ? Number(rates[1].rateBuy).toFixed(2) : 0;
