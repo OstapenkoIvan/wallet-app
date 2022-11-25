@@ -10,20 +10,38 @@ export default function Currency() {
   useEffect(() => {
     const fetchCurrency = async () => {
       const data = await (
-        await fetch(
-          `https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`
-        )
+        await fetch(`https://api.monobank.ua/bank/currency`)
       ).json();
-
-      setRates(data);
+      const curList = data.filter(
+        cur =>
+          (cur.currencyCodeA === 840 && cur.currencyCodeB === 980) ||
+          (cur.currencyCodeA === 978 && cur.currencyCodeB === 980) ||
+          (cur.currencyCodeA === 826 && cur.currencyCodeB === 980) ||
+          (cur.currencyCodeA === 392 && cur.currencyCodeB === 980) ||
+          (cur.currencyCodeA === 756 && cur.currencyCodeB === 980)
+      );
+      console.log(curList);
+      setRates(curList);
     };
     fetchCurrency().catch(console.error);
   }, []);
+  // useEffect(() => {
+  //   const fetchCurrency = async () => {
+  //     const data = await (
+  //       await fetch(
+  //         `https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`
+  //       )
+  //     ).json();
 
-  const usdBuy = rates.length > 0 ? Number(rates[0].buy).toFixed(2) : 0;
-  const eurBuy = rates.length > 0 ? Number(rates[1].buy).toFixed(2) : 0;
-  const usdSale = rates.length > 0 ? Number(rates[0].sale).toFixed(2) : 0;
-  const eurSale = rates.length > 0 ? Number(rates[1].sale).toFixed(2) : 0;
+  //     setRates(data);
+  //   };
+  //   fetchCurrency().catch(console.error);
+  // }, []);
+
+  const usdBuy = rates.length > 0 ? Number(rates[0].rateBuy).toFixed(2) : 0;
+  const eurBuy = rates.length > 0 ? Number(rates[1].rateBuy).toFixed(2) : 0;
+  const usdSale = rates.length > 0 ? Number(rates[0].rateSell).toFixed(2) : 0;
+  const eurSale = rates.length > 0 ? Number(rates[1].rateSell).toFixed(2) : 0;
 
   // const calculateExchange = (value, exchangeType) => {
   //   switch (exchangeType) {
