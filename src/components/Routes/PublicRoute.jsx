@@ -13,7 +13,7 @@ export default function PublicRoute({
   const shouldRedirect = isLoggedIn && restricted;
 
   const location = useLocation();
-  let from = location.state?.from?.pathname || '/';
+  let from = location.state?.from?.pathname || '';
 
   return shouldRedirect && !isLoading ? (
     <Navigate to={from ? from : redirectDest} replace />

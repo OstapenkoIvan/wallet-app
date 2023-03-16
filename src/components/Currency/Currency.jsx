@@ -20,7 +20,6 @@ export default function Currency() {
           (cur.currencyCodeA === 392 && cur.currencyCodeB === 980) ||
           (cur.currencyCodeA === 756 && cur.currencyCodeB === 980)
       );
-      console.log(curList);
       setRates(curList);
     };
     fetchCurrency().catch(console.error);
