@@ -1,7 +1,8 @@
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { Navigate, Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
-import AppLoader from 'components/AppLoader/AppLoader';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+
+import { sessionSelectors } from 'redux/session';
 
 export const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -19,14 +20,16 @@ export const NotMobile = ({ children }) => {
   const isNotMobile = useMediaQuery({ minWidth: 768 });
   return isNotMobile ? children : null;
 };
+
 const MobileRoute = ({ redirectTo }) => {
+  const location = useLocation();
+  const isLoggedIn = useSelector(sessionSelectors.getIsAuth);
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  return isMobile ? (
-    <Suspense fallback={<AppLoader isLoading={true} global={true} />}>
-      <Outlet />
-    </Suspense>
+
+  return isMobile && isLoggedIn ? (
+    <Outlet />
   ) : (
-    <Navigate to={redirectTo} />
+    <Navigate to={redirectTo} state={{ from: location }} replace />
   );
 };
 

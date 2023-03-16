@@ -16,7 +16,7 @@ const NavBar = () => {
             className={({ isActive }) =>
               isActive ? scss.activeLink : scss.primaryLink
             }
-            to="transactions"
+            to="/"
             end
           >
             <div className={scss.navIcon}>
@@ -48,7 +48,7 @@ const NavBar = () => {
               className={obj =>
                 obj.isActive ? scss.activeLink : scss.primaryLink
               }
-              to="exchangeMobile"
+              to="exchange"
             >
               <div className={scss.navIcon}>
                 <svg className={scss.svg}>

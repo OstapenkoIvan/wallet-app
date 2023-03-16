@@ -8,12 +8,13 @@ export const getTransactionsThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await userApi.get('transactions');
+
       return data;
     } catch (error) {
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -28,7 +29,7 @@ export const addTransactionThunk = createAsyncThunk(
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -43,7 +44,7 @@ export const deleteTransactionThunk = createAsyncThunk(
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -58,7 +59,7 @@ export const editTransactionThunk = createAsyncThunk(
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -75,7 +76,7 @@ export const getSummaryThunk = createAsyncThunk(
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

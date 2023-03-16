@@ -24,7 +24,7 @@ export const registerThunk = createAsyncThunk(
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -38,16 +38,9 @@ export const logInThunk = createAsyncThunk(
       return data;
     } catch (error) {
       toast(error.message, {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
+        toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -57,13 +50,12 @@ export const logOutThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await userApi.delete('auth/sign-out');
-      console.log('logout');
       token.unset();
     } catch (error) {
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -74,8 +66,6 @@ export const refreshThunk = createAsyncThunk(
     const {
       session: { token: persistedToken },
     } = getState();
-    // const token = selectToken(getState());
-    // console.log(token);
 
     if (persistedToken === null) return rejectWithValue();
 
@@ -88,7 +78,7 @@ export const refreshThunk = createAsyncThunk(
       toast(error.message, {
         toastOptions,
       });
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

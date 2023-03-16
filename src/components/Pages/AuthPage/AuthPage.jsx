@@ -68,6 +68,7 @@ const AuthPage = ({ forRegister }) => {
               <h1 className={css.formTitle}>Wallet</h1>
             </div>
           </Link>
+
           {forRegister ? <Form userRegister /> : <Form />}
         </div>
       </div>
